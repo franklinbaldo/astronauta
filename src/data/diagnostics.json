@@ -1,0 +1,2066 @@
+[
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "conjuntos/proposta-auditoria-2026-07.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0059.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "conjuntos/proposta-auditoria-2026-07.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0060.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "conjuntos/proposta-auditoria-2026-07.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0061.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "conjuntos/proposta-auditoria-2026-07.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0062.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "conjuntos/proposta-auditoria-2026-07.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0063.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "conjuntos/proposta-auditoria-2026-07.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0064.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "conjuntos/proposta-auditoria-2026-07.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0078.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "conjuntos/proposta-auditoria-2026-07.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0016.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "conjuntos/proposta-auditoria-2026-07.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0017.md"
+  },
+  {
+    "code": "OKF004",
+    "severity": "error",
+    "path": "dispositivos/index.md",
+    "message": "only the bundle-root index.md may contain frontmatter"
+  },
+  {
+    "code": "OKF004",
+    "severity": "error",
+    "path": "formas-calculo/index.md",
+    "message": "only the bundle-root index.md may contain frontmatter"
+  },
+  {
+    "code": "OKF004",
+    "severity": "error",
+    "path": "regras-auditadas/index.md",
+    "message": "only the bundle-root index.md may contain frontmatter"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0001.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0012.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0001.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0013.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0002.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0014.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0002.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0015.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0003.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0059.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0003.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0063.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0004.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0060.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0004.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0064.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0005.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0065.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0005.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0066.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0006.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0068.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0006.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0069.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0006.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0070.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0007.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0074.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0007.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0075.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0007.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0076.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0007.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0077.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0003.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0004.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0005.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0023.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0024.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0025.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0026.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0087.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0088.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0089.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0090.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0091.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0008.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0092.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0002.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0014.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0015.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0016.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0017.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0018.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0021.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0033.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0034.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0039.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0040.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0057.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0107.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0108.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0109.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0009.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0110.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0010.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0078.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0011.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0039.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0011.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0093.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0012.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0012.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0012.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0013.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0013.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0028.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0013.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0029.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0014.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0027.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0014.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0028.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0014.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0029.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0015.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0001.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0015.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0002.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0015.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0003.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0015.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0023.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0015.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0024.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0015.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0088.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0016.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0041.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0016.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0042.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0016.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0107.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0016.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0108.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0017.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0078.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0017.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0084.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0018.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0092.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0018.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0099.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0018.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0100.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0019.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0030.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0019.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0031.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0001.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0002.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0016.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0017.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0059.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0060.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0061.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0062.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0063.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0064.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0078.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0079.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0084.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0109.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0020.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0110.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0021.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0061.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0021.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0062.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0022.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0006.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0022.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0007.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0022.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0008.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0022.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0009.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0022.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0032.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0023.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0032.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0024.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0019.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0024.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0024.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0021.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0024.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0022.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0025.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0006.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0025.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0007.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0025.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0008.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0025.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0009.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0025.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0019.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0025.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0022.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0026.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0006.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0026.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0007.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0026.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0008.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0026.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0009.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0026.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0021.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0026.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0022.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0027.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0049.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0027.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0050.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0028.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0037.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0028.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0038.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0029.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0035.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0029.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0036.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0029.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0037.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0029.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0038.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0030.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0043.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0030.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0044.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0030.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0045.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0030.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0046.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0030.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0047.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0030.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0048.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0030.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0049.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0030.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0050.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0031.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0037.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0031.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0038.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0031.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0043.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0031.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0044.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0032.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0055.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0032.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0056.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0032.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0057.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0032.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0058.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0033.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0053.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0033.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0054.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0033.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0057.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0033.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0058.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0034.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0057.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0034.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0058.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0035.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0085.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0035.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0086.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0036.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0085.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0036.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0086.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0037.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0072.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0037.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0073.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0037.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0111.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0037.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0112.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0038.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0111.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0038.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0112.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0039.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0111.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0039.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0112.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0040.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0080.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0040.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0081.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0040.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0082.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0040.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0083.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0041.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0072.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0042.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0067.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0042.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0071.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0043.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0095.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0043.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0096.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0044.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0094.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0045.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0094.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0046.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0097.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0046.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0098.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0046.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0105.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0046.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0106.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0010.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0011.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0028.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0029.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0030.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0031.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0093.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0094.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0095.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0096.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0107.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0108.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0109.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0110.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0111.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0047.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0112.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0048.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0011.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0049.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0006.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0049.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0007.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0049.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0008.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0049.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0009.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0050.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0021.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0050.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0022.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0051.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0039.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0051.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0040.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0052.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0107.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0052.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0108.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0004.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0006.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0007.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0008.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0009.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0010.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0011.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0012.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0013.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0025.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0026.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0030.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0031.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0033.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0034.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0035.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0036.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0037.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0038.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0041.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0042.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0043.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0044.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0045.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0046.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0047.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0048.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0049.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0050.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0051.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0052.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0053.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0054.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0055.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0056.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0057.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0058.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0059.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0060.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0061.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0062.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0063.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0064.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0068.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0069.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0070.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0071.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0072.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0073.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0074.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0075.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0076.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0077.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0078.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0079.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0080.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0081.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0082.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0083.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0089.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0090.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0091.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0053.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0092.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0054.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0065.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0054.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0066.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0054.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0067.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0054.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0068.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0054.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0069.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0054.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0070.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0054.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0071.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0055.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0084.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0056.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0016.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0056.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0017.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0057.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0065.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0057.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0066.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0058.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0084.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0058.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0109.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/achados/achado-0058.md",
+    "message": "local Markdown link does not resolve: /regras/regra-0110.md"
+  },
+  {
+    "code": "OKF004",
+    "severity": "error",
+    "path": "regras-sisprev/index.md",
+    "message": "only the bundle-root index.md may contain frontmatter"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0001.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0002.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0006.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0022.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0006.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0049.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0007.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0022.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0007.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0049.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0008.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0022.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0008.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0049.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0009.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0022.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0009.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0049.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0016.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0056.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0016.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0017.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0056.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0017.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0019.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0024.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0020.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0020.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0024.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0021.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0024.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0021.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0050.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0022.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0024.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0022.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0050.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0025.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0008.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0032.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0022.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0035.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0029.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0036.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0029.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0037.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0029.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0038.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0029.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0039.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0051.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0040.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0051.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0059.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0059.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0003.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0060.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0060.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0004.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0061.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0061.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0021.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0062.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0062.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0021.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0063.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0063.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0003.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0064.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0064.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0004.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0065.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0057.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0066.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0057.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0078.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0078.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0017.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0078.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0010.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0079.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0084.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0084.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0017.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0084.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0055.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0084.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0058.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0109.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0109.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0058.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0110.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0020.md"
+  },
+  {
+    "code": "OKF101",
+    "severity": "warning",
+    "path": "regras-sisprev/regras/regra-0110.md",
+    "message": "local Markdown link does not resolve: /achados/achado-0058.md"
+  }
+]

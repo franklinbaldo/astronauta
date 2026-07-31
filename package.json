@@ -12,6 +12,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.1.6"
+    "@astrojs/tailwind": "^6.0.2",
+    "@types/d3": "^7.4.3",
+    "astro": "^7.1.6",
+    "d3": "^7.9.0",
+    "lucide-astro": "^0.556.0",
+    "tailwindcss": "^4.3.3"
   }
 }

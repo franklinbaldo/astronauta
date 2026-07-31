@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import concepts from '../data/concepts.json';
+---
+
+<Layout title="Explorador de Conceitos — Astronauta">
+  <div class="space-y-6">
+    <div>
+      <h1 class="text-3xl font-bold text-slate-100 tracking-tight">Conceitos OKF</h1>
+      <p class="text-slate-400 text-sm mt-1">
+        Navegue e inspecione os {concepts.length} conceitos extraídos do bundle.
+      </p>
+    </div>
+
+    <!-- Filter Search Box -->
+    <div class="glass-card p-4 flex gap-4">
+      <input
+        type="text"
+        id="search"
+        placeholder="Buscar conceito por ID, título ou tipo..."
+        class="w-full bg-slate-950 border border-slate-700 rounded px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-400"
+      />
+    </div>
+
+    <!-- Concepts Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="concepts-grid">
+      {concepts.map((concept) => (
+        <div class="glass-card p-5 flex flex-col justify-between concept-card space-y-3" data-id={concept.id} data-type={concept.type} data-title={concept.title}>
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="badge badge-purple font-mono text-xs">{concept.type}</span>
+              <span class="text-xs text-slate-500 font-mono truncate">{concept.path}</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-200 line-clamp-2">{concept.title}</h3>
+            <p class="text-xs text-slate-400 font-mono mt-1">ID: {concept.id}</p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span>Links de entrada: <strong class="text-sky-400">{concept.incoming_links.length}</strong></span>
+            <span>Links de saída: <strong class="text-purple-400">{concept.outgoing_links.length}</strong></span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('search') as HTMLInputElement;
+    const cards = document.querySelectorAll('.concept-card');
+
+    searchInput?.addEventListener('input', (e) => {
+      const q = (e.target as HTMLInputElement).value.toLowerCase();
+      cards.forEach((card) => {
+        const id = card.getAttribute('data-id')?.toLowerCase() || '';
+        const title = card.getAttribute('data-title')?.toLowerCase() || '';
+        const type = card.getAttribute('data-type')?.toLowerCase() || '';
+        
+        if (id.includes(q) || title.includes(q) || type.includes(q)) {
+          (card as HTMLElement).style.display = 'flex';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  </script>
+</Layout>

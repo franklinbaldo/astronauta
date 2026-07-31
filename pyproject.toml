@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "astronauta"
+version = "0.1.0"
+description = "Automatic Admin Panel & Web Dashboard generator for OKF bundles"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "okf-parser",
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+]
+
+[project.scripts]
+astronauta = "astronauta.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/astronauta"]

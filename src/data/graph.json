@@ -1,0 +1,4210 @@
+{
+  "nodes": [
+    {
+      "id": "conjuntos/catalogo-legado",
+      "label": "conjuntos/catalogo-legado"
+    },
+    {
+      "id": "conjuntos/proposta-auditoria-2026-07",
+      "label": "conjuntos/proposta-auditoria-2026-07"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-caput/original",
+      "label": "dispositivos/cf88/art-40-caput/original"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-inc-i/original",
+      "label": "dispositivos/cf88/art-40-inc-i/original"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-inc-ii/original",
+      "label": "dispositivos/cf88/art-40-inc-ii/original"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-inc-iii-al-a/original",
+      "label": "dispositivos/cf88/art-40-inc-iii-al-a/original"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-inc-iii-al-b/original",
+      "label": "dispositivos/cf88/art-40-inc-iii-al-b/original"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-inc-iii-al-c/original",
+      "label": "dispositivos/cf88/art-40-inc-iii-al-c/original"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-inc-iii-al-d/original",
+      "label": "dispositivos/cf88/art-40-inc-iii-al-d/original"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-caput/ec-103-2019",
+      "label": "dispositivos/cf88/art-40-par-1-caput/ec-103-2019"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-inc-i/ec-103-2019",
+      "label": "dispositivos/cf88/art-40-par-1-inc-i/ec-103-2019"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-inc-i/ec-20-1998",
+      "label": "dispositivos/cf88/art-40-par-1-inc-i/ec-20-1998"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-inc-i/ec-41-2003",
+      "label": "dispositivos/cf88/art-40-par-1-inc-i/ec-41-2003"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-inc-ii/ec-103-2019",
+      "label": "dispositivos/cf88/art-40-par-1-inc-ii/ec-103-2019"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-inc-ii/ec-20-1998",
+      "label": "dispositivos/cf88/art-40-par-1-inc-ii/ec-20-1998"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-inc-ii/ec-41-2003",
+      "label": "dispositivos/cf88/art-40-par-1-inc-ii/ec-41-2003"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-inc-ii/ec-88-2015",
+      "label": "dispositivos/cf88/art-40-par-1-inc-ii/ec-88-2015"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019",
+      "label": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-inc-iii-al-a/ec-20-1998",
+      "label": "dispositivos/cf88/art-40-par-1-inc-iii-al-a/ec-20-1998"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-inc-iii-al-a/ec-41-2003",
+      "label": "dispositivos/cf88/art-40-par-1-inc-iii-al-a/ec-41-2003"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-inc-iii-al-b/ec-20-1998",
+      "label": "dispositivos/cf88/art-40-par-1-inc-iii-al-b/ec-20-1998"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-1-inc-iii-al-b/ec-41-2003",
+      "label": "dispositivos/cf88/art-40-par-1-inc-iii-al-b/ec-41-2003"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-3/ec-20-1998",
+      "label": "dispositivos/cf88/art-40-par-3/ec-20-1998"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-3/ec-41-2003",
+      "label": "dispositivos/cf88/art-40-par-3/ec-41-2003"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-4a/ec-103-2019",
+      "label": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-4b/ec-103-2019",
+      "label": "dispositivos/cf88/art-40-par-4b/ec-103-2019"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-4c/ec-103-2019",
+      "label": "dispositivos/cf88/art-40-par-4c/ec-103-2019"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-5/ec-103-2019",
+      "label": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-5/ec-20-1998",
+      "label": "dispositivos/cf88/art-40-par-5/ec-20-1998"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-5/ec-41-2003",
+      "label": "dispositivos/cf88/art-40-par-5/ec-41-2003"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-5/original",
+      "label": "dispositivos/cf88/art-40-par-5/original"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-7/ec-103-2019",
+      "label": "dispositivos/cf88/art-40-par-7/ec-103-2019"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-7/ec-20-1998",
+      "label": "dispositivos/cf88/art-40-par-7/ec-20-1998"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-7-caput/ec-41-2003",
+      "label": "dispositivos/cf88/art-40-par-7-caput/ec-41-2003"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-7-inc-i/ec-41-2003",
+      "label": "dispositivos/cf88/art-40-par-7-inc-i/ec-41-2003"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-7-inc-ii/ec-41-2003",
+      "label": "dispositivos/cf88/art-40-par-7-inc-ii/ec-41-2003"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-8/ec-20-1998",
+      "label": "dispositivos/cf88/art-40-par-8/ec-20-1998"
+    },
+    {
+      "id": "dispositivos/cf88/art-40-par-8/ec-41-2003",
+      "label": "dispositivos/cf88/art-40-par-8/ec-41-2003"
+    },
+    {
+      "id": "dispositivos/cf88/norma",
+      "label": "dispositivos/cf88/norma"
+    },
+    {
+      "id": "dispositivos/ec-103-2019/norma",
+      "label": "dispositivos/ec-103-2019/norma"
+    },
+    {
+      "id": "dispositivos/ec-20-1998/art-8/original",
+      "label": "dispositivos/ec-20-1998/art-8/original"
+    },
+    {
+      "id": "dispositivos/ec-20-1998/norma",
+      "label": "dispositivos/ec-20-1998/norma"
+    },
+    {
+      "id": "dispositivos/ec-41-2003/art-2/original",
+      "label": "dispositivos/ec-41-2003/art-2/original"
+    },
+    {
+      "id": "dispositivos/ec-41-2003/art-6/original",
+      "label": "dispositivos/ec-41-2003/art-6/original"
+    },
+    {
+      "id": "dispositivos/ec-41-2003/art-6a/ec-70-2012",
+      "label": "dispositivos/ec-41-2003/art-6a/ec-70-2012"
+    },
+    {
+      "id": "dispositivos/ec-41-2003/art-7/original",
+      "label": "dispositivos/ec-41-2003/art-7/original"
+    },
+    {
+      "id": "dispositivos/ec-41-2003/norma",
+      "label": "dispositivos/ec-41-2003/norma"
+    },
+    {
+      "id": "dispositivos/ec-47-2005/art-3/original",
+      "label": "dispositivos/ec-47-2005/art-3/original"
+    },
+    {
+      "id": "dispositivos/ec-47-2005/art-3-par-unico/original",
+      "label": "dispositivos/ec-47-2005/art-3-par-unico/original"
+    },
+    {
+      "id": "dispositivos/ec-47-2005/norma",
+      "label": "dispositivos/ec-47-2005/norma"
+    },
+    {
+      "id": "dispositivos/ec-70-2012/norma",
+      "label": "dispositivos/ec-70-2012/norma"
+    },
+    {
+      "id": "dispositivos/ec-88-2015/norma",
+      "label": "dispositivos/ec-88-2015/norma"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-4/original",
+      "label": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-5-par-4/original",
+      "label": "dispositivos/ece-146-2021/art-5-par-4/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-5-par-6-inc-i/original",
+      "label": "dispositivos/ece-146-2021/art-5-par-6-inc-i/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-5-par-6-inc-ii/original",
+      "label": "dispositivos/ece-146-2021/art-5-par-6-inc-ii/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-5-par-7-inc-i/original",
+      "label": "dispositivos/ece-146-2021/art-5-par-7-inc-i/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-5-par-7-inc-ii/original",
+      "label": "dispositivos/ece-146-2021/art-5-par-7-inc-ii/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-6-par-1/original",
+      "label": "dispositivos/ece-146-2021/art-6-par-1/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-6-par-2-inc-i/original",
+      "label": "dispositivos/ece-146-2021/art-6-par-2-inc-i/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-6-par-2-inc-ii/original",
+      "label": "dispositivos/ece-146-2021/art-6-par-2-inc-ii/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-6-par-3-inc-i/original",
+      "label": "dispositivos/ece-146-2021/art-6-par-3-inc-i/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-6-par-3-inc-ii/original",
+      "label": "dispositivos/ece-146-2021/art-6-par-3-inc-ii/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-7-par-1/original",
+      "label": "dispositivos/ece-146-2021/art-7-par-1/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-7-par-2/original",
+      "label": "dispositivos/ece-146-2021/art-7-par-2/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-7-par-3/original",
+      "label": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-8-inc-i/original",
+      "label": "dispositivos/ece-146-2021/art-8-inc-i/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-8-inc-ii/original",
+      "label": "dispositivos/ece-146-2021/art-8-inc-ii/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-8-inc-iii/original",
+      "label": "dispositivos/ece-146-2021/art-8-inc-iii/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-8-par-1/original",
+      "label": "dispositivos/ece-146-2021/art-8-par-1/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/art-8-par-2/original",
+      "label": "dispositivos/ece-146-2021/art-8-par-2/original"
+    },
+    {
+      "id": "dispositivos/ece-146-2021/norma",
+      "label": "dispositivos/ece-146-2021/norma"
+    },
+    {
+      "id": "dispositivos/lc-144-2014/norma",
+      "label": "dispositivos/lc-144-2014/norma"
+    },
+    {
+      "id": "dispositivos/lc-152-2015/art-2/original",
+      "label": "dispositivos/lc-152-2015/art-2/original"
+    },
+    {
+      "id": "dispositivos/lc-152-2015/norma",
+      "label": "dispositivos/lc-152-2015/norma"
+    },
+    {
+      "id": "dispositivos/lc-51-1985/art-1/lc-144-2014",
+      "label": "dispositivos/lc-51-1985/art-1/lc-144-2014"
+    },
+    {
+      "id": "dispositivos/lc-51-1985/art-1-inc-ii/lc-144-2014",
+      "label": "dispositivos/lc-51-1985/art-1-inc-ii/lc-144-2014"
+    },
+    {
+      "id": "dispositivos/lc-51-1985/art-1-inc-ii-al-a/lc-144-2014",
+      "label": "dispositivos/lc-51-1985/art-1-inc-ii-al-a/lc-144-2014"
+    },
+    {
+      "id": "dispositivos/lc-51-1985/art-1-inc-ii-al-b/lc-144-2014",
+      "label": "dispositivos/lc-51-1985/art-1-inc-ii-al-b/lc-144-2014"
+    },
+    {
+      "id": "dispositivos/lc-51-1985/norma",
+      "label": "dispositivos/lc-51-1985/norma"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-24/original",
+      "label": "dispositivos/lce-1100-2021/art-24/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-25/original",
+      "label": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-26/original",
+      "label": "dispositivos/lce-1100-2021/art-26/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-27-inc-i/original",
+      "label": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-27-inc-ii/original",
+      "label": "dispositivos/lce-1100-2021/art-27-inc-ii/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-30-caput/original",
+      "label": "dispositivos/lce-1100-2021/art-30-caput/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-30-par-1/original",
+      "label": "dispositivos/lce-1100-2021/art-30-par-1/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-30-par-2/original",
+      "label": "dispositivos/lce-1100-2021/art-30-par-2/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-30-par-5/original",
+      "label": "dispositivos/lce-1100-2021/art-30-par-5/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-30-par-6/original",
+      "label": "dispositivos/lce-1100-2021/art-30-par-6/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-30-par-8/original",
+      "label": "dispositivos/lce-1100-2021/art-30-par-8/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-31/original",
+      "label": "dispositivos/lce-1100-2021/art-31/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-32/original",
+      "label": "dispositivos/lce-1100-2021/art-32/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-33/original",
+      "label": "dispositivos/lce-1100-2021/art-33/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-34/original",
+      "label": "dispositivos/lce-1100-2021/art-34/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-35/original",
+      "label": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-35-inc-i/original",
+      "label": "dispositivos/lce-1100-2021/art-35-inc-i/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-35-inc-ii/original",
+      "label": "dispositivos/lce-1100-2021/art-35-inc-ii/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-35-inc-iii/original",
+      "label": "dispositivos/lce-1100-2021/art-35-inc-iii/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-41-inc-i/original",
+      "label": "dispositivos/lce-1100-2021/art-41-inc-i/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-41-inc-ii/original",
+      "label": "dispositivos/lce-1100-2021/art-41-inc-ii/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-41-inc-iii/original",
+      "label": "dispositivos/lce-1100-2021/art-41-inc-iii/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-46-inc-i/original",
+      "label": "dispositivos/lce-1100-2021/art-46-inc-i/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-47-inc-i/original",
+      "label": "dispositivos/lce-1100-2021/art-47-inc-i/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-47-inc-ii/original",
+      "label": "dispositivos/lce-1100-2021/art-47-inc-ii/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-49/original",
+      "label": "dispositivos/lce-1100-2021/art-49/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-50/original",
+      "label": "dispositivos/lce-1100-2021/art-50/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-51-inc-i/original",
+      "label": "dispositivos/lce-1100-2021/art-51-inc-i/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-51-inc-ii/original",
+      "label": "dispositivos/lce-1100-2021/art-51-inc-ii/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-51-inc-iii/original",
+      "label": "dispositivos/lce-1100-2021/art-51-inc-iii/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/art-51-inc-viii-al-c/original",
+      "label": "dispositivos/lce-1100-2021/art-51-inc-viii-al-c/original"
+    },
+    {
+      "id": "dispositivos/lce-1100-2021/norma",
+      "label": "dispositivos/lce-1100-2021/norma"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-10-inc-i/lce-949-2017",
+      "label": "dispositivos/lce-432-2008/art-10-inc-i/lce-949-2017"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-17/original",
+      "label": "dispositivos/lce-432-2008/art-17/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-20/original",
+      "label": "dispositivos/lce-432-2008/art-20/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-20-caput/original",
+      "label": "dispositivos/lce-432-2008/art-20-caput/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-20-par-1/original",
+      "label": "dispositivos/lce-432-2008/art-20-par-1/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-20-par-14/original",
+      "label": "dispositivos/lce-432-2008/art-20-par-14/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-20-par-2/original",
+      "label": "dispositivos/lce-432-2008/art-20-par-2/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-20-par-6/original",
+      "label": "dispositivos/lce-432-2008/art-20-par-6/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-20-par-7/original",
+      "label": "dispositivos/lce-432-2008/art-20-par-7/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-20-par-9/original",
+      "label": "dispositivos/lce-432-2008/art-20-par-9/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-21-par-1/original",
+      "label": "dispositivos/lce-432-2008/art-21-par-1/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-24/original",
+      "label": "dispositivos/lce-432-2008/art-24/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-28-inc-i/original",
+      "label": "dispositivos/lce-432-2008/art-28-inc-i/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-30-inc-ii/original",
+      "label": "dispositivos/lce-432-2008/art-30-inc-ii/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-31-par-1/lce-504-2009",
+      "label": "dispositivos/lce-432-2008/art-31-par-1/lce-504-2009"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-31-par-2/lce-504-2009",
+      "label": "dispositivos/lce-432-2008/art-31-par-2/lce-504-2009"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-32-inc-i/original",
+      "label": "dispositivos/lce-432-2008/art-32-inc-i/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-32-inc-ii-al-a/lce-949-2017",
+      "label": "dispositivos/lce-432-2008/art-32-inc-ii-al-a/lce-949-2017"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-32-par-1/lce-949-2017",
+      "label": "dispositivos/lce-432-2008/art-32-par-1/lce-949-2017"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-33/lce-949-2017",
+      "label": "dispositivos/lce-432-2008/art-33/lce-949-2017"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-34-inc-i/lce-949-2017",
+      "label": "dispositivos/lce-432-2008/art-34-inc-i/lce-949-2017"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-34-par-2/lce-949-2017",
+      "label": "dispositivos/lce-432-2008/art-34-par-2/lce-949-2017"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-38/original",
+      "label": "dispositivos/lce-432-2008/art-38/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-39/original",
+      "label": "dispositivos/lce-432-2008/art-39/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-45/lce-672-2012",
+      "label": "dispositivos/lce-432-2008/art-45/lce-672-2012"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-46/original",
+      "label": "dispositivos/lce-432-2008/art-46/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-62/original",
+      "label": "dispositivos/lce-432-2008/art-62/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/art-63/original",
+      "label": "dispositivos/lce-432-2008/art-63/original"
+    },
+    {
+      "id": "dispositivos/lce-432-2008/norma",
+      "label": "dispositivos/lce-432-2008/norma"
+    },
+    {
+      "id": "dispositivos/lce-504-2009/norma",
+      "label": "dispositivos/lce-504-2009/norma"
+    },
+    {
+      "id": "dispositivos/lce-672-2012/norma",
+      "label": "dispositivos/lce-672-2012/norma"
+    },
+    {
+      "id": "dispositivos/lce-949-2017/norma",
+      "label": "dispositivos/lce-949-2017/norma"
+    },
+    {
+      "id": "dispositivos/lei-10887-2004/art-1/original",
+      "label": "dispositivos/lei-10887-2004/art-1/original"
+    },
+    {
+      "id": "dispositivos/lei-10887-2004/norma",
+      "label": "dispositivos/lei-10887-2004/norma"
+    },
+    {
+      "id": "formas-calculo/forma-calculo-totalidade-proporcional-tempo",
+      "label": "formas-calculo/forma-calculo-totalidade-proporcional-tempo"
+    },
+    {
+      "id": "regras-auditadas/unidades/policial-civil-voluntaria-masculino",
+      "label": "regras-auditadas/unidades/policial-civil-voluntaria-masculino"
+    },
+    {
+      "id": "regras-auditadas/unidades/servidor-com-deficiencia-grave-feminino",
+      "label": "regras-auditadas/unidades/servidor-com-deficiencia-grave-feminino"
+    },
+    {
+      "id": "regras-auditadas/unidades/servidor-com-deficiencia-grave-masculino",
+      "label": "regras-auditadas/unidades/servidor-com-deficiencia-grave-masculino"
+    },
+    {
+      "id": "regras-auditadas/unidades/servidor-com-deficiencia-leve-feminino",
+      "label": "regras-auditadas/unidades/servidor-com-deficiencia-leve-feminino"
+    },
+    {
+      "id": "regras-auditadas/unidades/servidor-com-deficiencia-leve-masculino",
+      "label": "regras-auditadas/unidades/servidor-com-deficiencia-leve-masculino"
+    },
+    {
+      "id": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-feminino",
+      "label": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-feminino"
+    },
+    {
+      "id": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-masculino",
+      "label": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-masculino"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0001",
+      "label": "regras-sisprev/achados/achado-0001"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0002",
+      "label": "regras-sisprev/achados/achado-0002"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0003",
+      "label": "regras-sisprev/achados/achado-0003"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0004",
+      "label": "regras-sisprev/achados/achado-0004"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0005",
+      "label": "regras-sisprev/achados/achado-0005"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0006",
+      "label": "regras-sisprev/achados/achado-0006"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0007",
+      "label": "regras-sisprev/achados/achado-0007"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0008",
+      "label": "regras-sisprev/achados/achado-0008"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0009",
+      "label": "regras-sisprev/achados/achado-0009"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0010",
+      "label": "regras-sisprev/achados/achado-0010"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0011",
+      "label": "regras-sisprev/achados/achado-0011"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0012",
+      "label": "regras-sisprev/achados/achado-0012"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0013",
+      "label": "regras-sisprev/achados/achado-0013"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0014",
+      "label": "regras-sisprev/achados/achado-0014"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0015",
+      "label": "regras-sisprev/achados/achado-0015"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0016",
+      "label": "regras-sisprev/achados/achado-0016"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0017",
+      "label": "regras-sisprev/achados/achado-0017"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0018",
+      "label": "regras-sisprev/achados/achado-0018"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0019",
+      "label": "regras-sisprev/achados/achado-0019"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0020",
+      "label": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0021",
+      "label": "regras-sisprev/achados/achado-0021"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0022",
+      "label": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0023",
+      "label": "regras-sisprev/achados/achado-0023"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0024",
+      "label": "regras-sisprev/achados/achado-0024"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0025",
+      "label": "regras-sisprev/achados/achado-0025"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0026",
+      "label": "regras-sisprev/achados/achado-0026"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0027",
+      "label": "regras-sisprev/achados/achado-0027"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0028",
+      "label": "regras-sisprev/achados/achado-0028"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0029",
+      "label": "regras-sisprev/achados/achado-0029"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0030",
+      "label": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0031",
+      "label": "regras-sisprev/achados/achado-0031"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0032",
+      "label": "regras-sisprev/achados/achado-0032"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0033",
+      "label": "regras-sisprev/achados/achado-0033"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0034",
+      "label": "regras-sisprev/achados/achado-0034"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0035",
+      "label": "regras-sisprev/achados/achado-0035"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0036",
+      "label": "regras-sisprev/achados/achado-0036"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0037",
+      "label": "regras-sisprev/achados/achado-0037"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0038",
+      "label": "regras-sisprev/achados/achado-0038"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0039",
+      "label": "regras-sisprev/achados/achado-0039"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0040",
+      "label": "regras-sisprev/achados/achado-0040"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0041",
+      "label": "regras-sisprev/achados/achado-0041"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0042",
+      "label": "regras-sisprev/achados/achado-0042"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0043",
+      "label": "regras-sisprev/achados/achado-0043"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0044",
+      "label": "regras-sisprev/achados/achado-0044"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0045",
+      "label": "regras-sisprev/achados/achado-0045"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0046",
+      "label": "regras-sisprev/achados/achado-0046"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0047",
+      "label": "regras-sisprev/achados/achado-0047"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0048",
+      "label": "regras-sisprev/achados/achado-0048"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0049",
+      "label": "regras-sisprev/achados/achado-0049"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0050",
+      "label": "regras-sisprev/achados/achado-0050"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0051",
+      "label": "regras-sisprev/achados/achado-0051"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0052",
+      "label": "regras-sisprev/achados/achado-0052"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0053",
+      "label": "regras-sisprev/achados/achado-0053"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0054",
+      "label": "regras-sisprev/achados/achado-0054"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0055",
+      "label": "regras-sisprev/achados/achado-0055"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0056",
+      "label": "regras-sisprev/achados/achado-0056"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0057",
+      "label": "regras-sisprev/achados/achado-0057"
+    },
+    {
+      "id": "regras-sisprev/achados/achado-0058",
+      "label": "regras-sisprev/achados/achado-0058"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0001",
+      "label": "regras-sisprev/regras/regra-0001"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0002",
+      "label": "regras-sisprev/regras/regra-0002"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0003",
+      "label": "regras-sisprev/regras/regra-0003"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0004",
+      "label": "regras-sisprev/regras/regra-0004"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0005",
+      "label": "regras-sisprev/regras/regra-0005"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0006",
+      "label": "regras-sisprev/regras/regra-0006"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0007",
+      "label": "regras-sisprev/regras/regra-0007"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0008",
+      "label": "regras-sisprev/regras/regra-0008"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0009",
+      "label": "regras-sisprev/regras/regra-0009"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0010",
+      "label": "regras-sisprev/regras/regra-0010"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0011",
+      "label": "regras-sisprev/regras/regra-0011"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0012",
+      "label": "regras-sisprev/regras/regra-0012"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0013",
+      "label": "regras-sisprev/regras/regra-0013"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0014",
+      "label": "regras-sisprev/regras/regra-0014"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0015",
+      "label": "regras-sisprev/regras/regra-0015"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0016",
+      "label": "regras-sisprev/regras/regra-0016"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0017",
+      "label": "regras-sisprev/regras/regra-0017"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0018",
+      "label": "regras-sisprev/regras/regra-0018"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0019",
+      "label": "regras-sisprev/regras/regra-0019"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0020",
+      "label": "regras-sisprev/regras/regra-0020"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0021",
+      "label": "regras-sisprev/regras/regra-0021"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0022",
+      "label": "regras-sisprev/regras/regra-0022"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0023",
+      "label": "regras-sisprev/regras/regra-0023"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0024",
+      "label": "regras-sisprev/regras/regra-0024"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0025",
+      "label": "regras-sisprev/regras/regra-0025"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0026",
+      "label": "regras-sisprev/regras/regra-0026"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0027",
+      "label": "regras-sisprev/regras/regra-0027"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0028",
+      "label": "regras-sisprev/regras/regra-0028"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0029",
+      "label": "regras-sisprev/regras/regra-0029"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0030",
+      "label": "regras-sisprev/regras/regra-0030"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0031",
+      "label": "regras-sisprev/regras/regra-0031"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0032",
+      "label": "regras-sisprev/regras/regra-0032"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0033",
+      "label": "regras-sisprev/regras/regra-0033"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0034",
+      "label": "regras-sisprev/regras/regra-0034"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0035",
+      "label": "regras-sisprev/regras/regra-0035"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0036",
+      "label": "regras-sisprev/regras/regra-0036"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0037",
+      "label": "regras-sisprev/regras/regra-0037"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0038",
+      "label": "regras-sisprev/regras/regra-0038"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0039",
+      "label": "regras-sisprev/regras/regra-0039"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0040",
+      "label": "regras-sisprev/regras/regra-0040"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0041",
+      "label": "regras-sisprev/regras/regra-0041"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0042",
+      "label": "regras-sisprev/regras/regra-0042"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0043",
+      "label": "regras-sisprev/regras/regra-0043"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0044",
+      "label": "regras-sisprev/regras/regra-0044"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0045",
+      "label": "regras-sisprev/regras/regra-0045"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0046",
+      "label": "regras-sisprev/regras/regra-0046"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0047",
+      "label": "regras-sisprev/regras/regra-0047"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0048",
+      "label": "regras-sisprev/regras/regra-0048"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0049",
+      "label": "regras-sisprev/regras/regra-0049"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0050",
+      "label": "regras-sisprev/regras/regra-0050"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0051",
+      "label": "regras-sisprev/regras/regra-0051"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0052",
+      "label": "regras-sisprev/regras/regra-0052"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0053",
+      "label": "regras-sisprev/regras/regra-0053"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0054",
+      "label": "regras-sisprev/regras/regra-0054"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0055",
+      "label": "regras-sisprev/regras/regra-0055"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0056",
+      "label": "regras-sisprev/regras/regra-0056"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0057",
+      "label": "regras-sisprev/regras/regra-0057"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0058",
+      "label": "regras-sisprev/regras/regra-0058"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0059",
+      "label": "regras-sisprev/regras/regra-0059"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0060",
+      "label": "regras-sisprev/regras/regra-0060"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0061",
+      "label": "regras-sisprev/regras/regra-0061"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0062",
+      "label": "regras-sisprev/regras/regra-0062"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0063",
+      "label": "regras-sisprev/regras/regra-0063"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0064",
+      "label": "regras-sisprev/regras/regra-0064"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0065",
+      "label": "regras-sisprev/regras/regra-0065"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0066",
+      "label": "regras-sisprev/regras/regra-0066"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0067",
+      "label": "regras-sisprev/regras/regra-0067"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0068",
+      "label": "regras-sisprev/regras/regra-0068"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0069",
+      "label": "regras-sisprev/regras/regra-0069"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0070",
+      "label": "regras-sisprev/regras/regra-0070"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0071",
+      "label": "regras-sisprev/regras/regra-0071"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0072",
+      "label": "regras-sisprev/regras/regra-0072"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0073",
+      "label": "regras-sisprev/regras/regra-0073"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0074",
+      "label": "regras-sisprev/regras/regra-0074"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0075",
+      "label": "regras-sisprev/regras/regra-0075"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0076",
+      "label": "regras-sisprev/regras/regra-0076"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0077",
+      "label": "regras-sisprev/regras/regra-0077"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0078",
+      "label": "regras-sisprev/regras/regra-0078"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0079",
+      "label": "regras-sisprev/regras/regra-0079"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0080",
+      "label": "regras-sisprev/regras/regra-0080"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0081",
+      "label": "regras-sisprev/regras/regra-0081"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0082",
+      "label": "regras-sisprev/regras/regra-0082"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0083",
+      "label": "regras-sisprev/regras/regra-0083"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0084",
+      "label": "regras-sisprev/regras/regra-0084"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0085",
+      "label": "regras-sisprev/regras/regra-0085"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0086",
+      "label": "regras-sisprev/regras/regra-0086"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0087",
+      "label": "regras-sisprev/regras/regra-0087"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0088",
+      "label": "regras-sisprev/regras/regra-0088"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0089",
+      "label": "regras-sisprev/regras/regra-0089"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0090",
+      "label": "regras-sisprev/regras/regra-0090"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0091",
+      "label": "regras-sisprev/regras/regra-0091"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0092",
+      "label": "regras-sisprev/regras/regra-0092"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0093",
+      "label": "regras-sisprev/regras/regra-0093"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0094",
+      "label": "regras-sisprev/regras/regra-0094"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0095",
+      "label": "regras-sisprev/regras/regra-0095"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0096",
+      "label": "regras-sisprev/regras/regra-0096"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0097",
+      "label": "regras-sisprev/regras/regra-0097"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0098",
+      "label": "regras-sisprev/regras/regra-0098"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0099",
+      "label": "regras-sisprev/regras/regra-0099"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0100",
+      "label": "regras-sisprev/regras/regra-0100"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0101",
+      "label": "regras-sisprev/regras/regra-0101"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0102",
+      "label": "regras-sisprev/regras/regra-0102"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0103",
+      "label": "regras-sisprev/regras/regra-0103"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0104",
+      "label": "regras-sisprev/regras/regra-0104"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0105",
+      "label": "regras-sisprev/regras/regra-0105"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0106",
+      "label": "regras-sisprev/regras/regra-0106"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0107",
+      "label": "regras-sisprev/regras/regra-0107"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0108",
+      "label": "regras-sisprev/regras/regra-0108"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0109",
+      "label": "regras-sisprev/regras/regra-0109"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0110",
+      "label": "regras-sisprev/regras/regra-0110"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0111",
+      "label": "regras-sisprev/regras/regra-0111"
+    },
+    {
+      "id": "regras-sisprev/regras/regra-0112",
+      "label": "regras-sisprev/regras/regra-0112"
+    },
+    {
+      "id": "regras-sisprev/regras-sisprev",
+      "label": "regras-sisprev/regras-sisprev"
+    }
+  ],
+  "edges": [
+    {
+      "source": "conjuntos/proposta-auditoria-2026-07",
+      "target": "regras-sisprev/achados/achado-0017"
+    },
+    {
+      "source": "conjuntos/proposta-auditoria-2026-07",
+      "target": "regras-sisprev/achados/achado-0021"
+    },
+    {
+      "source": "conjuntos/proposta-auditoria-2026-07",
+      "target": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-feminino"
+    },
+    {
+      "source": "conjuntos/proposta-auditoria-2026-07",
+      "target": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-masculino"
+    },
+    {
+      "source": "conjuntos/proposta-auditoria-2026-07",
+      "target": "regras-auditadas/unidades/servidor-com-deficiencia-grave-feminino"
+    },
+    {
+      "source": "conjuntos/proposta-auditoria-2026-07",
+      "target": "regras-auditadas/unidades/servidor-com-deficiencia-grave-masculino"
+    },
+    {
+      "source": "conjuntos/proposta-auditoria-2026-07",
+      "target": "regras-auditadas/unidades/servidor-com-deficiencia-leve-feminino"
+    },
+    {
+      "source": "conjuntos/proposta-auditoria-2026-07",
+      "target": "regras-auditadas/unidades/servidor-com-deficiencia-leve-masculino"
+    },
+    {
+      "source": "conjuntos/proposta-auditoria-2026-07",
+      "target": "regras-auditadas/unidades/policial-civil-voluntaria-masculino"
+    },
+    {
+      "source": "formas-calculo/forma-calculo-totalidade-proporcional-tempo",
+      "target": "dispositivos/cf88/art-40-par-3/ec-20-1998"
+    },
+    {
+      "source": "formas-calculo/forma-calculo-totalidade-proporcional-tempo",
+      "target": "dispositivos/cf88/art-40-par-1-inc-ii/ec-20-1998"
+    },
+    {
+      "source": "formas-calculo/forma-calculo-totalidade-proporcional-tempo",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii-al-a/ec-20-1998"
+    },
+    {
+      "source": "regras-auditadas/unidades/policial-civil-voluntaria-masculino",
+      "target": "regras-sisprev/achados/achado-0017"
+    },
+    {
+      "source": "regras-auditadas/unidades/policial-civil-voluntaria-masculino",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-auditadas/unidades/policial-civil-voluntaria-masculino",
+      "target": "dispositivos/ece-146-2021/art-7-par-1/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/policial-civil-voluntaria-masculino",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/policial-civil-voluntaria-masculino",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-a/lc-144-2014"
+    },
+    {
+      "source": "regras-auditadas/unidades/policial-civil-voluntaria-masculino",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-a/lc-144-2014"
+    },
+    {
+      "source": "regras-auditadas/unidades/policial-civil-voluntaria-masculino",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-auditadas/unidades/policial-civil-voluntaria-masculino",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-b/lc-144-2014"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-feminino",
+      "target": "regras-sisprev/achados/achado-0021"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-feminino",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-feminino",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-feminino",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-feminino",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-feminino",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-feminino",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-masculino",
+      "target": "regras-sisprev/achados/achado-0021"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-masculino",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-masculino",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-masculino",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-masculino",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-masculino",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-grave-masculino",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-feminino",
+      "target": "regras-sisprev/achados/achado-0021"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-feminino",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-feminino",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-feminino",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-feminino",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-feminino",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-feminino",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-masculino",
+      "target": "regras-sisprev/achados/achado-0021"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-masculino",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-masculino",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-masculino",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-masculino",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-masculino",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-leve-masculino",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-feminino",
+      "target": "regras-sisprev/achados/achado-0021"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-feminino",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-feminino",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-feminino",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-feminino",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-feminino",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-feminino",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-masculino",
+      "target": "regras-sisprev/achados/achado-0021"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-masculino",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-masculino",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-masculino",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-masculino",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-masculino",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-auditadas/unidades/servidor-com-deficiencia-moderada-masculino",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0017",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0019",
+      "target": "regras-sisprev/achados/achado-0018"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0022",
+      "target": "regras-sisprev/achados/achado-0051"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0022",
+      "target": "regras-sisprev/achados/achado-0051"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0022",
+      "target": "regras-sisprev/achados/achado-0036"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0023",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0024",
+      "target": "regras-sisprev/achados/achado-0015"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0026",
+      "target": "regras-sisprev/achados/achado-0025"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0026",
+      "target": "regras-sisprev/achados/achado-0050"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0026",
+      "target": "regras-sisprev/achados/achado-0021"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0027",
+      "target": "regras-sisprev/achados/achado-0015"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0028",
+      "target": "regras-sisprev/achados/achado-0029"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0029",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0029",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0029",
+      "target": "regras-sisprev/achados/achado-0016"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0029",
+      "target": "regras-sisprev/achados/achado-0005"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0029",
+      "target": "regras-sisprev/achados/achado-0028"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0029",
+      "target": "regras-sisprev/achados/achado-0028"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0029",
+      "target": "regras-sisprev/achados/achado-0028"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0030",
+      "target": "regras-sisprev/achados/achado-0019"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0030",
+      "target": "regras-sisprev/achados/achado-0027"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0031",
+      "target": "regras-sisprev/achados/achado-0021"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0031",
+      "target": "regras-sisprev/achados/achado-0015"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0031",
+      "target": "regras-sisprev/achados/achado-0028"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0031",
+      "target": "regras-sisprev/achados/achado-0027"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0038",
+      "target": "regras-sisprev/achados/achado-0037"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0038",
+      "target": "regras-sisprev/achados/achado-0039"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0039",
+      "target": "regras-sisprev/achados/achado-0037"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0039",
+      "target": "regras-sisprev/achados/achado-0038"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0041",
+      "target": "regras-sisprev/achados/achado-0039"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0043",
+      "target": "regras-sisprev/achados/achado-0047"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0044",
+      "target": "regras-sisprev/achados/achado-0011"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0044",
+      "target": "regras-sisprev/achados/achado-0047"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0047",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0047",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0047",
+      "target": "regras-sisprev/achados/achado-0039"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0047",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0047",
+      "target": "regras-sisprev/achados/achado-0011"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0047",
+      "target": "regras-sisprev/achados/achado-0044"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0047",
+      "target": "regras-sisprev/achados/achado-0045"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0048",
+      "target": "regras-sisprev/achados/achado-0047"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0048",
+      "target": "regras-sisprev/achados/achado-0015"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0049",
+      "target": "regras-sisprev/achados/achado-0014"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0051",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0051",
+      "target": "regras-sisprev/achados/achado-0052"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0052",
+      "target": "regras-sisprev/achados/achado-0047"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0052",
+      "target": "regras-sisprev/achados/achado-0016"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0053",
+      "target": "regras-sisprev/achados/achado-0015"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0053",
+      "target": "regras-sisprev/achados/achado-0015"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0053",
+      "target": "regras-sisprev/achados/achado-0015"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0053",
+      "target": "regras-sisprev/achados/achado-0024"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0054",
+      "target": "regras-sisprev/achados/achado-0053"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0054",
+      "target": "regras-sisprev/achados/achado-0024"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0054",
+      "target": "regras-sisprev/achados/achado-0006"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0054",
+      "target": "regras-sisprev/achados/achado-0005"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0057",
+      "target": "regras-sisprev/achados/achado-0005"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0057",
+      "target": "regras-sisprev/achados/achado-0005"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0057",
+      "target": "regras-sisprev/achados/achado-0042"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0057",
+      "target": "regras-sisprev/achados/achado-0042"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0057",
+      "target": "regras-sisprev/achados/achado-0016"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0058",
+      "target": "regras-sisprev/achados/achado-0055"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0058",
+      "target": "regras-sisprev/achados/achado-0017"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0058",
+      "target": "regras-sisprev/achados/achado-0039"
+    },
+    {
+      "source": "regras-sisprev/achados/achado-0058",
+      "target": "regras-sisprev/achados/achado-0057"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0001",
+      "target": "dispositivos/cf88/art-40-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0002",
+      "target": "dispositivos/cf88/art-40-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0004",
+      "target": "dispositivos/cf88/art-40-par-1-inc-i/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "regras-sisprev/achados/achado-0014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "regras-sisprev/achados/achado-0026"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "regras-sisprev/achados/achado-0025"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "dispositivos/cf88/art-40-par-1-inc-i/ec-41-2003"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "dispositivos/lce-432-2008/art-17/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "dispositivos/lce-432-2008/art-20-caput/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "dispositivos/lce-432-2008/art-45/lce-672-2012"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0006",
+      "target": "dispositivos/lce-432-2008/art-62/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0007",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0007",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0007",
+      "target": "regras-sisprev/achados/achado-0026"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0007",
+      "target": "regras-sisprev/achados/achado-0025"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0007",
+      "target": "dispositivos/cf88/art-40-par-1-inc-i/ec-41-2003"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0007",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0007",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0007",
+      "target": "dispositivos/lce-432-2008/art-17/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0007",
+      "target": "dispositivos/lce-432-2008/art-20-caput/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0007",
+      "target": "dispositivos/lce-432-2008/art-20-par-14/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0007",
+      "target": "dispositivos/lce-432-2008/art-45/lce-672-2012"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0007",
+      "target": "dispositivos/lce-432-2008/art-62/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0008",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0008",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0008",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0008",
+      "target": "regras-sisprev/achados/achado-0026"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0008",
+      "target": "regras-sisprev/achados/achado-0025"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0008",
+      "target": "dispositivos/cf88/art-40-par-1-inc-i/ec-41-2003"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0008",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0008",
+      "target": "dispositivos/ec-41-2003/art-6a/ec-70-2012"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0008",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0008",
+      "target": "dispositivos/lce-432-2008/art-20-caput/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0008",
+      "target": "dispositivos/lce-432-2008/art-20-par-9/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0008",
+      "target": "dispositivos/lce-432-2008/art-20/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0009",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0009",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0009",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0009",
+      "target": "regras-sisprev/achados/achado-0026"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0009",
+      "target": "regras-sisprev/achados/achado-0025"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0009",
+      "target": "dispositivos/cf88/art-40-par-1-inc-i/ec-41-2003"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0009",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0009",
+      "target": "dispositivos/ec-41-2003/art-6a/ec-70-2012"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0009",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0009",
+      "target": "dispositivos/lce-432-2008/art-20-caput/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0009",
+      "target": "dispositivos/lce-432-2008/art-20-par-9/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0009",
+      "target": "dispositivos/lce-432-2008/art-20/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0010",
+      "target": "regras-sisprev/achados/achado-0047"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0010",
+      "target": "dispositivos/cf88/art-40-par-7-inc-i/ec-41-2003"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0010",
+      "target": "dispositivos/cf88/art-40-par-7-inc-ii/ec-41-2003"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0010",
+      "target": "dispositivos/ec-41-2003/art-6a/ec-70-2012"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0011",
+      "target": "regras-sisprev/achados/achado-0048"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0011",
+      "target": "regras-sisprev/achados/achado-0047"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0011",
+      "target": "regras-sisprev/achados/achado-0015"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0011",
+      "target": "dispositivos/cf88/art-40-par-7-inc-i/ec-41-2003"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0011",
+      "target": "dispositivos/ec-47-2005/art-3-par-unico/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0012",
+      "target": "dispositivos/cf88/art-40-par-7-inc-ii/ec-41-2003"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0012",
+      "target": "dispositivos/cf88/art-40-par-7/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0012",
+      "target": "dispositivos/cf88/art-40-par-8/ec-41-2003"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0012",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0012",
+      "target": "dispositivos/lce-432-2008/art-10-inc-i/lce-949-2017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0012",
+      "target": "dispositivos/lce-432-2008/art-32-inc-ii-al-a/lce-949-2017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0012",
+      "target": "dispositivos/lce-432-2008/art-32-par-1/lce-949-2017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0012",
+      "target": "dispositivos/lce-432-2008/art-33/lce-949-2017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0012",
+      "target": "dispositivos/lce-432-2008/art-34-inc-i/lce-949-2017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0012",
+      "target": "dispositivos/lce-432-2008/art-34-par-2/lce-949-2017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0013",
+      "target": "dispositivos/cf88/art-40-par-7-inc-ii/ec-41-2003"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0013",
+      "target": "dispositivos/cf88/art-40-par-7/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0013",
+      "target": "dispositivos/cf88/art-40-par-8/ec-41-2003"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0013",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0013",
+      "target": "dispositivos/lce-432-2008/art-10-inc-i/lce-949-2017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0013",
+      "target": "dispositivos/lce-432-2008/art-32-inc-ii-al-a/lce-949-2017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0013",
+      "target": "dispositivos/lce-432-2008/art-32-par-1/lce-949-2017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0013",
+      "target": "dispositivos/lce-432-2008/art-33/lce-949-2017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0013",
+      "target": "dispositivos/lce-432-2008/art-34-inc-i/lce-949-2017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0013",
+      "target": "dispositivos/lce-432-2008/art-34-par-2/lce-949-2017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0014",
+      "target": "dispositivos/cf88/art-40-par-7/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0014",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0014",
+      "target": "dispositivos/lce-1100-2021/art-46-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0014",
+      "target": "dispositivos/lce-1100-2021/art-47-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0014",
+      "target": "dispositivos/lce-1100-2021/art-47-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0014",
+      "target": "dispositivos/lce-1100-2021/art-49/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0014",
+      "target": "dispositivos/lce-1100-2021/art-50/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0014",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0014",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0014",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-iii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0014",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-viii-al-c/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0015",
+      "target": "dispositivos/cf88/art-40-par-7/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0015",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0015",
+      "target": "dispositivos/lce-1100-2021/art-46-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0015",
+      "target": "dispositivos/lce-1100-2021/art-47-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0015",
+      "target": "dispositivos/lce-1100-2021/art-47-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0015",
+      "target": "dispositivos/lce-1100-2021/art-49/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0015",
+      "target": "dispositivos/lce-1100-2021/art-50/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0015",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0015",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0015",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-iii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0015",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-viii-al-c/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0016",
+      "target": "dispositivos/cf88/art-40-par-7/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0016",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0016",
+      "target": "dispositivos/lce-1100-2021/art-46-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0016",
+      "target": "dispositivos/lce-1100-2021/art-47-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0016",
+      "target": "dispositivos/lce-1100-2021/art-47-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0016",
+      "target": "dispositivos/lce-1100-2021/art-49/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0016",
+      "target": "dispositivos/lce-1100-2021/art-50/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0016",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0016",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0016",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-iii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0016",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-viii-al-c/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0017",
+      "target": "dispositivos/cf88/art-40-par-7/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0017",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0017",
+      "target": "dispositivos/lce-1100-2021/art-46-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0017",
+      "target": "dispositivos/lce-1100-2021/art-47-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0017",
+      "target": "dispositivos/lce-1100-2021/art-47-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0017",
+      "target": "dispositivos/lce-1100-2021/art-49/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0017",
+      "target": "dispositivos/lce-1100-2021/art-50/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0017",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0017",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0017",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-iii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0017",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-viii-al-c/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0018",
+      "target": "dispositivos/cf88/art-40-par-7/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0018",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0018",
+      "target": "dispositivos/lce-1100-2021/art-46-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0018",
+      "target": "dispositivos/lce-1100-2021/art-47-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0018",
+      "target": "dispositivos/lce-1100-2021/art-47-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0018",
+      "target": "dispositivos/lce-1100-2021/art-49/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0018",
+      "target": "dispositivos/lce-1100-2021/art-50/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0018",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0018",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0018",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-iii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0018",
+      "target": "dispositivos/lce-1100-2021/art-51-inc-viii-al-c/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0019",
+      "target": "regras-sisprev/achados/achado-0026"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0019",
+      "target": "regras-sisprev/achados/achado-0024"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0019",
+      "target": "regras-sisprev/achados/achado-0025"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0019",
+      "target": "dispositivos/cf88/art-40-par-1-inc-i/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0019",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0019",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0019",
+      "target": "dispositivos/lce-1100-2021/art-30-par-8/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0020",
+      "target": "dispositivos/cf88/art-40-par-1-inc-i/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0020",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0020",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0020",
+      "target": "dispositivos/lce-1100-2021/art-30-par-8/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0021",
+      "target": "regras-sisprev/achados/achado-0024"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0022",
+      "target": "regras-sisprev/achados/achado-0023"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0022",
+      "target": "regras-sisprev/achados/achado-0023"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0022",
+      "target": "regras-sisprev/achados/achado-0025"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0022",
+      "target": "regras-sisprev/achados/achado-0024"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0022",
+      "target": "regras-sisprev/achados/achado-0024"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0022",
+      "target": "regras-sisprev/achados/achado-0026"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0023",
+      "target": "dispositivos/cf88/art-40-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0024",
+      "target": "dispositivos/cf88/art-40-inc-iii-al-d/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0025",
+      "target": "regras-sisprev/achados/achado-0008"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0025",
+      "target": "dispositivos/cf88/art-40-par-3/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0025",
+      "target": "dispositivos/cf88/art-40-par-3/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0025",
+      "target": "formas-calculo/forma-calculo-totalidade-proporcional-tempo"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0025",
+      "target": "dispositivos/cf88/art-40-par-8/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0025",
+      "target": "regras-sisprev/achados/achado-0053"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0025",
+      "target": "dispositivos/cf88/art-40-par-1-inc-ii/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0026",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii-al-b/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0027",
+      "target": "dispositivos/cf88/art-40-par-1-inc-ii/ec-88-2015"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0027",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0027",
+      "target": "dispositivos/lce-432-2008/art-17/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0027",
+      "target": "dispositivos/lce-432-2008/art-21-par-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0027",
+      "target": "dispositivos/lce-432-2008/art-45/lce-672-2012"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0027",
+      "target": "dispositivos/lce-432-2008/art-62/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0028",
+      "target": "dispositivos/lce-432-2008/art-17/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0028",
+      "target": "dispositivos/lce-432-2008/art-45/lce-672-2012"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0028",
+      "target": "dispositivos/lce-432-2008/art-62/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0028",
+      "target": "dispositivos/lei-10887-2004/art-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0029",
+      "target": "dispositivos/lce-432-2008/art-17/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0029",
+      "target": "dispositivos/lce-432-2008/art-45/lce-672-2012"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0029",
+      "target": "dispositivos/lce-432-2008/art-62/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0029",
+      "target": "dispositivos/lei-10887-2004/art-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0030",
+      "target": "dispositivos/cf88/art-40-par-1-inc-ii/ec-88-2015"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0030",
+      "target": "dispositivos/lc-152-2015/art-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0030",
+      "target": "dispositivos/lce-1100-2021/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0030",
+      "target": "dispositivos/lce-1100-2021/art-26/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0030",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0030",
+      "target": "dispositivos/lce-1100-2021/art-31/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0031",
+      "target": "dispositivos/cf88/art-40-par-1-inc-ii/ec-88-2015"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0031",
+      "target": "dispositivos/lc-152-2015/art-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0031",
+      "target": "dispositivos/lce-1100-2021/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0031",
+      "target": "dispositivos/lce-1100-2021/art-26/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0031",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0031",
+      "target": "dispositivos/lce-1100-2021/art-31/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0032",
+      "target": "regras-sisprev/achados/achado-0023"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0032",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0032",
+      "target": "dispositivos/cf88/art-40-par-1-inc-ii/ec-88-2015"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0032",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0032",
+      "target": "dispositivos/lce-432-2008/art-17/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0032",
+      "target": "dispositivos/lce-432-2008/art-21-par-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0032",
+      "target": "dispositivos/lce-432-2008/art-45/lce-672-2012"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0032",
+      "target": "dispositivos/lce-432-2008/art-62/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0033",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0033",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0033",
+      "target": "dispositivos/lce-1100-2021/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0033",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0033",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0034",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0034",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0034",
+      "target": "dispositivos/lce-1100-2021/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0034",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0034",
+      "target": "dispositivos/lce-1100-2021/art-35/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0035",
+      "target": "regras-sisprev/achados/achado-0028"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0035",
+      "target": "regras-sisprev/achados/achado-0029"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0035",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0035",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0035",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0035",
+      "target": "dispositivos/lce-1100-2021/art-32/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0036",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0036",
+      "target": "regras-sisprev/achados/achado-0028"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0036",
+      "target": "regras-sisprev/achados/achado-0029"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0036",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0036",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0036",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0036",
+      "target": "dispositivos/lce-1100-2021/art-32/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0037",
+      "target": "regras-sisprev/achados/achado-0028"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0037",
+      "target": "regras-sisprev/achados/achado-0028"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0037",
+      "target": "regras-sisprev/achados/achado-0031"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0037",
+      "target": "regras-sisprev/achados/achado-0029"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0037",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0037",
+      "target": "dispositivos/lce-1100-2021/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0037",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0037",
+      "target": "dispositivos/lce-1100-2021/art-32/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0038",
+      "target": "regras-sisprev/achados/achado-0031"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0038",
+      "target": "regras-sisprev/achados/achado-0031"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0038",
+      "target": "regras-sisprev/achados/achado-0028"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0038",
+      "target": "regras-sisprev/achados/achado-0028"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0038",
+      "target": "regras-sisprev/achados/achado-0029"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0038",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0038",
+      "target": "dispositivos/lce-1100-2021/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0038",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0038",
+      "target": "dispositivos/lce-1100-2021/art-32/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0039",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0039",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii-al-a/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0039",
+      "target": "dispositivos/cf88/art-40-par-5/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0039",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0039",
+      "target": "dispositivos/lce-432-2008/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0039",
+      "target": "dispositivos/lce-432-2008/art-45/lce-672-2012"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0039",
+      "target": "dispositivos/lce-432-2008/art-62/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0040",
+      "target": "regras-sisprev/achados/achado-0022"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0040",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii-al-a/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0040",
+      "target": "dispositivos/cf88/art-40-par-5/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0040",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0040",
+      "target": "dispositivos/lce-432-2008/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0040",
+      "target": "dispositivos/lce-432-2008/art-45/lce-672-2012"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0040",
+      "target": "dispositivos/lce-432-2008/art-62/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0041",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0041",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0041",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0041",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0041",
+      "target": "dispositivos/lce-1100-2021/art-33/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0042",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0042",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0042",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0042",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0042",
+      "target": "dispositivos/lce-1100-2021/art-33/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0043",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0043",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0043",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0043",
+      "target": "regras-sisprev/achados/achado-0031"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0043",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0043",
+      "target": "dispositivos/ece-146-2021/art-6-par-2-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0043",
+      "target": "dispositivos/ece-146-2021/art-6-par-3-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0044",
+      "target": "regras-sisprev/achados/achado-0031"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0044",
+      "target": "regras-sisprev/achados/achado-0031"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0044",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0044",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0044",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0044",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0044",
+      "target": "dispositivos/ece-146-2021/art-6-par-2-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0044",
+      "target": "dispositivos/ece-146-2021/art-6-par-3-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0045",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0045",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0045",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0045",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0045",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0045",
+      "target": "dispositivos/ece-146-2021/art-6-par-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0045",
+      "target": "dispositivos/ece-146-2021/art-6-par-2-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0045",
+      "target": "dispositivos/ece-146-2021/art-6-par-3-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0046",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0046",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0046",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0046",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0046",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0046",
+      "target": "dispositivos/ece-146-2021/art-6-par-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0046",
+      "target": "dispositivos/ece-146-2021/art-6-par-2-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0046",
+      "target": "dispositivos/ece-146-2021/art-6-par-3-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0047",
+      "target": "regras-sisprev/achados/achado-0027"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0047",
+      "target": "regras-sisprev/achados/achado-0027"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0047",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0047",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0047",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0047",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0047",
+      "target": "dispositivos/ece-146-2021/art-6-par-2-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0047",
+      "target": "dispositivos/ece-146-2021/art-6-par-3-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0048",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0048",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0048",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0048",
+      "target": "regras-sisprev/achados/achado-0027"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0048",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0048",
+      "target": "dispositivos/ece-146-2021/art-6-par-2-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0048",
+      "target": "dispositivos/ece-146-2021/art-6-par-3-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0049",
+      "target": "regras-sisprev/achados/achado-0027"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0049",
+      "target": "regras-sisprev/achados/achado-0027"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0049",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0049",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0049",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0049",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0049",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0049",
+      "target": "dispositivos/ece-146-2021/art-6-par-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0049",
+      "target": "dispositivos/ece-146-2021/art-6-par-2-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0049",
+      "target": "dispositivos/ece-146-2021/art-6-par-3-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0050",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0050",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0050",
+      "target": "regras-sisprev/achados/achado-0030"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0050",
+      "target": "regras-sisprev/achados/achado-0027"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0050",
+      "target": "regras-sisprev/achados/achado-0027"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0050",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0050",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0050",
+      "target": "dispositivos/ece-146-2021/art-6-par-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0050",
+      "target": "dispositivos/ece-146-2021/art-6-par-2-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0050",
+      "target": "dispositivos/ece-146-2021/art-6-par-3-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0051",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0051",
+      "target": "dispositivos/ece-146-2021/art-5-par-6-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0051",
+      "target": "dispositivos/ece-146-2021/art-5-par-7-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0052",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0052",
+      "target": "dispositivos/ece-146-2021/art-5-par-6-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0052",
+      "target": "dispositivos/ece-146-2021/art-5-par-7-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0053",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0053",
+      "target": "dispositivos/ece-146-2021/art-5-par-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0053",
+      "target": "dispositivos/ece-146-2021/art-5-par-6-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0053",
+      "target": "dispositivos/ece-146-2021/art-5-par-7-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0054",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0054",
+      "target": "dispositivos/ece-146-2021/art-5-par-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0054",
+      "target": "dispositivos/ece-146-2021/art-5-par-6-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0054",
+      "target": "dispositivos/ece-146-2021/art-5-par-7-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0055",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0055",
+      "target": "dispositivos/ece-146-2021/art-5-par-6-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0055",
+      "target": "dispositivos/ece-146-2021/art-5-par-7-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0056",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0056",
+      "target": "dispositivos/ece-146-2021/art-5-par-6-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0056",
+      "target": "dispositivos/ece-146-2021/art-5-par-7-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0057",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0057",
+      "target": "dispositivos/ece-146-2021/art-5-par-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0057",
+      "target": "dispositivos/ece-146-2021/art-5-par-6-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0057",
+      "target": "dispositivos/ece-146-2021/art-5-par-7-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0058",
+      "target": "regras-sisprev/achados/achado-0034"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0058",
+      "target": "regras-sisprev/achados/achado-0034"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0058",
+      "target": "regras-sisprev/achados/achado-0032"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0058",
+      "target": "regras-sisprev/achados/achado-0033"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0058",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0058",
+      "target": "dispositivos/ece-146-2021/art-5-par-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0058",
+      "target": "dispositivos/ece-146-2021/art-5-par-6-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0058",
+      "target": "dispositivos/ece-146-2021/art-5-par-7-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0059",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0059",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0059",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0059",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0059",
+      "target": "dispositivos/lce-1100-2021/art-35-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0060",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0060",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0060",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0060",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0060",
+      "target": "dispositivos/lce-1100-2021/art-35-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0061",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0061",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0061",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0061",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0061",
+      "target": "dispositivos/lce-1100-2021/art-35-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0062",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0062",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0062",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0062",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0062",
+      "target": "dispositivos/lce-1100-2021/art-35-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0063",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0063",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0063",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0063",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0063",
+      "target": "dispositivos/lce-1100-2021/art-35-inc-iii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0064",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0064",
+      "target": "dispositivos/cf88/art-40-par-4a/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0064",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0064",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0064",
+      "target": "dispositivos/lce-1100-2021/art-35-inc-iii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0065",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0065",
+      "target": "dispositivos/cf88/art-40-par-4c/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0065",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0065",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0065",
+      "target": "dispositivos/lce-1100-2021/art-41-inc-iii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0066",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0066",
+      "target": "dispositivos/cf88/art-40-par-4c/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0066",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0066",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0066",
+      "target": "dispositivos/lce-1100-2021/art-41-inc-iii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0067",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0067",
+      "target": "dispositivos/cf88/art-40-par-4c/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0067",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0067",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0067",
+      "target": "dispositivos/lce-1100-2021/art-41-inc-iii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0068",
+      "target": "dispositivos/cf88/art-40-par-4c/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0068",
+      "target": "dispositivos/ece-146-2021/art-8-par-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0068",
+      "target": "dispositivos/ece-146-2021/art-8-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0069",
+      "target": "dispositivos/cf88/art-40-par-4c/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0069",
+      "target": "dispositivos/ece-146-2021/art-8-par-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0069",
+      "target": "dispositivos/ece-146-2021/art-8-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0070",
+      "target": "dispositivos/cf88/art-40-par-4c/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0070",
+      "target": "dispositivos/ece-146-2021/art-8-par-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0070",
+      "target": "dispositivos/ece-146-2021/art-8-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0071",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0071",
+      "target": "dispositivos/cf88/art-40-par-4c/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0071",
+      "target": "dispositivos/lce-1100-2021/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0071",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0071",
+      "target": "dispositivos/lce-1100-2021/art-41-inc-iii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0072",
+      "target": "regras-sisprev/achados/achado-0037"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0072",
+      "target": "regras-sisprev/achados/achado-0041"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0072",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0072",
+      "target": "dispositivos/ece-146-2021/art-7-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0072",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0072",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-a/lc-144-2014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0073",
+      "target": "regras-sisprev/achados/achado-0041"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0073",
+      "target": "regras-sisprev/achados/achado-0037"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0073",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0073",
+      "target": "dispositivos/ece-146-2021/art-7-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0073",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0073",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-b/lc-144-2014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0074",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0074",
+      "target": "dispositivos/ece-146-2021/art-7-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0074",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0074",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-a/lc-144-2014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0075",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0075",
+      "target": "dispositivos/ece-146-2021/art-7-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0075",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0075",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-a/lc-144-2014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0076",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0076",
+      "target": "dispositivos/ece-146-2021/art-7-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0076",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0076",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-a/lc-144-2014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0077",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0077",
+      "target": "dispositivos/ece-146-2021/art-7-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0077",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0077",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-a/lc-144-2014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0078",
+      "target": "regras-sisprev/achados/achado-0017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0078",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0078",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0078",
+      "target": "dispositivos/ece-146-2021/art-7-par-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0078",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0078",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-a/lc-144-2014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0079",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0079",
+      "target": "dispositivos/ece-146-2021/art-7-par-1/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0079",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0079",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-b/lc-144-2014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0080",
+      "target": "regras-sisprev/achados/achado-0040"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0080",
+      "target": "regras-sisprev/achados/achado-0040"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0080",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0080",
+      "target": "dispositivos/cf88/art-40-par-4b/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0080",
+      "target": "dispositivos/lce-1100-2021/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0080",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0080",
+      "target": "dispositivos/lce-1100-2021/art-34/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0081",
+      "target": "regras-sisprev/achados/achado-0040"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0081",
+      "target": "regras-sisprev/achados/achado-0040"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0081",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0081",
+      "target": "dispositivos/cf88/art-40-par-4b/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0081",
+      "target": "dispositivos/lce-1100-2021/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0081",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-ii/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0081",
+      "target": "dispositivos/lce-1100-2021/art-34/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0082",
+      "target": "regras-sisprev/achados/achado-0040"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0082",
+      "target": "regras-sisprev/achados/achado-0040"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0082",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0082",
+      "target": "dispositivos/cf88/art-40-par-4b/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0082",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0082",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0082",
+      "target": "dispositivos/lce-1100-2021/art-34/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0083",
+      "target": "regras-sisprev/achados/achado-0040"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0083",
+      "target": "regras-sisprev/achados/achado-0040"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0083",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0083",
+      "target": "dispositivos/cf88/art-40-par-4b/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0083",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0083",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0083",
+      "target": "dispositivos/lce-1100-2021/art-34/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0084",
+      "target": "regras-sisprev/achados/achado-0058"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0084",
+      "target": "regras-sisprev/achados/achado-0055"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0084",
+      "target": "regras-sisprev/achados/achado-0017"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0084",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0084",
+      "target": "dispositivos/ece-146-2021/art-7-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0084",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0084",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-b/lc-144-2014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0085",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0085",
+      "target": "regras-sisprev/achados/achado-0035"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0085",
+      "target": "regras-sisprev/achados/achado-0035"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0085",
+      "target": "regras-sisprev/achados/achado-0035"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0085",
+      "target": "regras-sisprev/achados/achado-0036"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0085",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0085",
+      "target": "dispositivos/ec-47-2005/art-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0085",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0086",
+      "target": "regras-sisprev/achados/achado-0020"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0086",
+      "target": "regras-sisprev/achados/achado-0035"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0086",
+      "target": "regras-sisprev/achados/achado-0035"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0086",
+      "target": "regras-sisprev/achados/achado-0035"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0086",
+      "target": "regras-sisprev/achados/achado-0036"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0086",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0086",
+      "target": "dispositivos/ec-47-2005/art-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0086",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0087",
+      "target": "dispositivos/cf88/art-40-inc-iii-al-a/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0087",
+      "target": "dispositivos/cf88/art-40-inc-iii-al-c/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0088",
+      "target": "dispositivos/cf88/art-40-inc-iii-al-b/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0089",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii-al-a/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0090",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii-al-a/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0090",
+      "target": "dispositivos/cf88/art-40-par-5/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0091",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0091",
+      "target": "dispositivos/ec-20-1998/art-8/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0091",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0092",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0092",
+      "target": "dispositivos/ec-20-1998/art-8/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0092",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0093",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii-al-a/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0094",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii-al-a/ec-20-1998"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0095",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0095",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0095",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0095",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0095",
+      "target": "dispositivos/lce-1100-2021/art-33/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0096",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0096",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0096",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0096",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0096",
+      "target": "dispositivos/lce-1100-2021/art-33/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0097",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0097",
+      "target": "dispositivos/ec-41-2003/art-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0097",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0098",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0098",
+      "target": "dispositivos/ec-41-2003/art-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0098",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0099",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0099",
+      "target": "dispositivos/ec-41-2003/art-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0099",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0100",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0100",
+      "target": "dispositivos/ec-41-2003/art-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0100",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0101",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0101",
+      "target": "dispositivos/ec-41-2003/art-6/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0101",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0102",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0102",
+      "target": "dispositivos/ec-41-2003/art-6/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0102",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0103",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0103",
+      "target": "dispositivos/ec-41-2003/art-6/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0103",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0103",
+      "target": "dispositivos/lce-432-2008/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0103",
+      "target": "dispositivos/lce-432-2008/art-46/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0103",
+      "target": "dispositivos/lce-432-2008/art-63/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0104",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0104",
+      "target": "dispositivos/ec-41-2003/art-6/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0104",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0104",
+      "target": "dispositivos/lce-432-2008/art-24/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0104",
+      "target": "dispositivos/lce-432-2008/art-46/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0104",
+      "target": "dispositivos/lce-432-2008/art-63/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0105",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0105",
+      "target": "dispositivos/ec-47-2005/art-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0105",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0106",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0106",
+      "target": "dispositivos/ec-47-2005/art-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0106",
+      "target": "dispositivos/ece-146-2021/art-4/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0107",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0107",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0107",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0107",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0107",
+      "target": "dispositivos/lce-1100-2021/art-33/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0108",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0108",
+      "target": "dispositivos/cf88/art-40-par-5/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0108",
+      "target": "dispositivos/lce-1100-2021/art-25/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0108",
+      "target": "dispositivos/lce-1100-2021/art-27-inc-i/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0108",
+      "target": "dispositivos/lce-1100-2021/art-33/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0109",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0109",
+      "target": "dispositivos/ece-146-2021/art-7-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0109",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0109",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-a/lc-144-2014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0110",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0110",
+      "target": "dispositivos/ece-146-2021/art-7-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0110",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0110",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-b/lc-144-2014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0111",
+      "target": "regras-sisprev/achados/achado-0039"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0111",
+      "target": "regras-sisprev/achados/achado-0038"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0111",
+      "target": "regras-sisprev/achados/achado-0037"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0111",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0111",
+      "target": "dispositivos/ece-146-2021/art-7-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0111",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0111",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-a/lc-144-2014"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0112",
+      "target": "regras-sisprev/achados/achado-0039"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0112",
+      "target": "regras-sisprev/achados/achado-0038"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0112",
+      "target": "regras-sisprev/achados/achado-0037"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0112",
+      "target": "dispositivos/cf88/art-40-par-1-inc-iii/ec-103-2019"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0112",
+      "target": "dispositivos/ece-146-2021/art-7-par-2/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0112",
+      "target": "dispositivos/ece-146-2021/art-7-par-3/original"
+    },
+    {
+      "source": "regras-sisprev/regras/regra-0112",
+      "target": "dispositivos/lc-51-1985/art-1-inc-ii-al-b/lc-144-2014"
+    }
+  ]
+}
