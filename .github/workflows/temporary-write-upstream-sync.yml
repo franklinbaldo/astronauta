@@ -1,0 +1,122 @@
+name: Temporary write upstream sync
+
+on:
+  pull_request:
+    branches:
+      - stack/05-remove-static-generator
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.head_ref == 'stack/06-write-capable-gateway'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: stack/06-write-capable-gateway
+      - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: "0.11.21"
+          python-version: "3.12"
+      - name: Resolve reviewed upstream edit head
+        id: upstream
+        run: |
+          set -euo pipefail
+          sha=$(git ls-remote https://github.com/franklinbaldo/okf-parser.git refs/heads/feat/single-concept-edit-0.24.0 | cut -f1)
+          test -n "$sha"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+      - name: Pin immutable upstream and enable CLI write gate
+        env:
+          UPSTREAM_SHA: ${{ steps.upstream.outputs.sha }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          sha = os.environ['UPSTREAM_SHA']
+          project = Path('pyproject.toml')
+          text = project.read_text(encoding='utf-8')
+          pattern = r'git\+https://github\.com/franklinbaldo/okf-parser\.git@[0-9a-f]+'
+          replacement = f'git+https://github.com/franklinbaldo/okf-parser.git@{sha}'
+          text, count = re.subn(pattern, replacement, text)
+          if count != 1:
+              raise SystemExit(f'expected one okf-parser git pin, found {count}')
+          project.write_text(text, encoding='utf-8')
+
+          Path('src/astronauta/cli.py').write_text('''from __future__ import annotations
+
+from pathlib import Path
+
+import typer
+from rich.console import Console
+
+from astronauta.gateway_http import GatewayServer
+
+app = typer.Typer(add_completion=False, help="Live admin for an OKF directory")
+console = Console()
+
+
+@app.command()
+def serve(
+    path: Path = typer.Argument(
+        ...,
+        exists=True,
+        file_okay=False,
+        dir_okay=True,
+        resolve_path=True,
+        help="OKF bundle directory",
+    ),
+    port: int = typer.Option(8765, "--port", min=0, max=65535),
+    spec_template: str | None = typer.Option(
+        None,
+        "--spec-template",
+        help="opt into trusted RFC 0006 .schema.sql discovery",
+    ),
+    write: bool = typer.Option(
+        False,
+        "--write",
+        help="enable filesystem-changing OKF capabilities for this local process",
+    ),
+) -> None:
+    """Serve the local OKF application gateway for PATH."""
+    server = GatewayServer(
+        ("127.0.0.1", port),
+        path,
+        spec_template=spec_template,
+        allow_write=write,
+    )
+    host, actual_port = server.server_address
+    mode = "read/write" if write else "read/preview"
+    console.print(
+        f"Astronauta gateway: http://{host}:{actual_port}/gateway "
+        f"({mode}, root={server.bundle_root})"
+    )
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        server.server_close()
+
+
+if __name__ == "__main__":
+    app()
+''', encoding='utf-8')
+          PY
+          uv lock
+      - name: Validate write-capable gateway
+        run: |
+          uv sync --frozen
+          uv run python -m unittest discover -s tests -v
+          uv run astronauta --help | grep -F -- '--write'
+      - name: Commit clean write-capable base
+        run: |
+          git rm -f .github/workflows/temporary-write-upstream-sync.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add pyproject.toml uv.lock src/astronauta/cli.py
+          git commit -m 'feat(write): gate parser mutations behind --write'
+          git push
