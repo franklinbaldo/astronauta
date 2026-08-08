@@ -1,11 +1,19 @@
 ---
-import FrontmatterFields from '../../components/FrontmatterFields.astro';
+import SchemaAwareFields from '../../components/SchemaAwareFields.astro';
 import Layout from '../../layouts/Layout.astro';
 import { okf } from '../../lib/server/okf';
 
 const id = Astro.params.id || '';
-const [concept, collection] = await Promise.all([okf.concept(id), okf.concepts()]);
+const [concept, collection, schemaProjection] = await Promise.all([
+  okf.concept(id),
+  okf.concepts(),
+  okf.schema(),
+]);
 const byId = new Map(collection.map((item) => [item.id, item]));
+const typeSchema = concept ? schemaProjection.schemas[concept.type] : undefined;
+const hasDeclaredFields = Boolean(
+  typeSchema?.properties && Object.values(typeSchema.properties).some((field) => typeof field['x-okf-duckdb-type'] === 'string'),
+);
 const conceptHref = (targetId: string) => `/concepts/${targetId.split('/').map(encodeURIComponent).join('/')}`;
 const typeHref = (type: string) => `/types/${encodeURIComponent(type)}`;
 ---
@@ -33,11 +41,21 @@ const typeHref = (type: string) => `/types/${encodeURIComponent(type)}`;
       )}
 
       <section class="glass-card p-6 space-y-4">
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Frontmatter</p>
-          <h2 class="text-lg font-bold text-slate-200 mt-1">Campos authored</h2>
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Frontmatter</p>
+            <h2 class="text-lg font-bold text-slate-200 mt-1">Formulário read-only derivado do contrato</h2>
+          </div>
+          <span class={hasDeclaredFields ? 'badge badge-green' : 'badge badge-blue'}>
+            {hasDeclaredFields ? 'declared types active' : 'generic contract'}
+          </span>
         </div>
-        <FrontmatterFields fields={concept.frontmatter} />
+        {!hasDeclaredFields && (
+          <p class="text-xs text-slate-500">
+            Nenhuma declaração física RFC 0006 está ativa para este tipo. Os valores continuam visíveis, mas o Astronauta não os promove a tipos normativos por observação.
+          </p>
+        )}
+        <SchemaAwareFields fields={concept.frontmatter} schema={typeSchema} />
       </section>
 
       <section class="glass-card p-6 space-y-4">
