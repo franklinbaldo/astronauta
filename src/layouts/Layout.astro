@@ -17,47 +17,33 @@ const { title = "Astronauta — OKF Admin Panel" } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="bg-slate-900 text-slate-100 flex flex-col min-h-screen">
-    <!-- Top Navigation Header -->
     <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div class="flex items-center space-x-3">
           <a href="/" class="flex items-center space-x-3 group">
             <span class="text-2xl">👩‍🚀</span>
-            <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent group-hover:opacity-90">
-              Astronauta
-            </span>
+            <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent group-hover:opacity-90">Astronauta</span>
           </a>
-          <span class="px-2 py-0.5 text-xs font-semibold rounded bg-slate-800 text-slate-400 border border-slate-700">
-            OKF v0.2
-          </span>
+          <span class="px-2 py-0.5 text-xs font-semibold rounded bg-slate-800 text-slate-400 border border-slate-700">OKF v0.2</span>
         </div>
 
-        <nav class="flex items-center space-x-6">
-          <a href="/" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">
-            Dashboard
-          </a>
-          <a href="/concepts" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">
-            Conceitos
-          </a>
-          <a href="/graph" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">
-            Grafo
-          </a>
-          <a href="/diagnostics" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">
-            Diagnósticos
-          </a>
+        <nav class="flex items-center space-x-5">
+          <a href="/" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Dashboard</a>
+          <a href="/types" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Tipos</a>
+          <a href="/concepts" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Conceitos</a>
+          <a href="/graph" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Grafo</a>
+          <a href="/diagnostics" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Diagnósticos</a>
         </nav>
       </div>
     </header>
 
-    <!-- Main Content Area -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <slot />
     </main>
 
-    <!-- Footer -->
     <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500">
       <div class="max-w-7xl mx-auto px-4">
-        Astronauta OKF Admin Panel • Gerado por <a href="https://github.com/franklinbaldo/okf-parser" class="text-sky-400 hover:underline">okf-parser</a> e Astro.js
+        Astronauta · apresentação e interação sobre a autoridade semântica do <a href="https://github.com/franklinbaldo/okf-parser" class="text-sky-400 hover:underline">okf-parser</a>
       </div>
     </footer>
   </body>

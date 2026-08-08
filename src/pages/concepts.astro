@@ -6,6 +6,7 @@ const selectedType = Astro.url.searchParams.get('type') || undefined;
 const [concepts, graph] = await Promise.all([okf.concepts(selectedType), okf.graph()]);
 const incoming = new Map<string, number>();
 const outgoing = new Map<string, number>();
+const conceptHref = (id: string) => `/concepts/${id.split('/').map(encodeURIComponent).join('/')}`;
 for (const edge of graph.edges) {
   outgoing.set(edge.source_id, (outgoing.get(edge.source_id) || 0) + 1);
   if (edge.target_id) incoming.set(edge.target_id, (incoming.get(edge.target_id) || 0) + 1);
@@ -33,10 +34,10 @@ for (const edge of graph.edges) {
         <article class="glass-card p-5 flex flex-col justify-between concept-card space-y-3" data-id={concept.id} data-type={concept.type} data-title={concept.title || ''} data-path={concept.path}>
           <div>
             <div class="flex items-center justify-between gap-2 mb-2">
-              <span class="badge badge-purple font-mono text-xs">{concept.type}</span>
+              <a href={`/types/${encodeURIComponent(concept.type)}`} class="badge badge-purple font-mono text-xs hover:opacity-80">{concept.type}</a>
               <span class="text-xs text-slate-500 font-mono truncate">{concept.path}</span>
             </div>
-            <h3 class="text-base font-bold text-slate-200 line-clamp-2">{concept.title || concept.id}</h3>
+            <h3 class="text-base font-bold line-clamp-2"><a href={conceptHref(concept.id)} class="text-slate-200 hover:text-sky-400 transition-colors">{concept.title || concept.id}</a></h3>
             <p class="text-xs text-slate-400 font-mono mt-1 break-all">ID: {concept.id}</p>
           </div>
           <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
