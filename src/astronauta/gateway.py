@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any
 
 from okf_parser import load_bundle
+from okf_parser.service import schema_bundle
 
 
 def _json_cell(value: Any) -> Any:
@@ -59,9 +60,6 @@ def _concept_record(row: dict[str, Any]) -> dict[str, Any]:
         "frontmatter": frontmatter,
         "body": row.get("body") or "",
     }
-    # New parser releases may add exact-source/revision identities to the
-    # canonical relation. Preserve them when present without making Astronauta
-    # responsible for computing them.
     for key in ("source_digest", "revision_digest"):
         if key in row:
             concept[key] = row[key]
@@ -128,6 +126,24 @@ def concept(root: Path, concept_id: str) -> dict[str, Any] | None:
     return selected
 
 
+def schemas(root: Path, *, spec_template: str | None = None) -> dict[str, Any]:
+    """Return the parser's canonical JSON Schema contracts without type inference.
+
+    Declared ``.schema.sql`` discovery is opt-in because RFC 0006 treats those
+    files as trusted DuckDB SQL. The template is process/operator configuration,
+    never a browser-supplied capability argument.
+    """
+    payload = schema_bundle(
+        str(root.resolve()),
+        fmt="json",
+        infer_types=False,
+        spec_template=spec_template,
+    )
+    if not isinstance(payload, dict):
+        raise TypeError("okf-parser JSON schema service returned a non-object payload")
+    return payload
+
+
 def diagnostics(root: Path) -> list[dict[str, Any]]:
     """Return deterministic parser diagnostics without reclassifying severity."""
     bundle = load_bundle(root.resolve())
@@ -175,6 +191,7 @@ def read(
     *,
     concept_id: str | None = None,
     concept_type: str | None = None,
+    spec_template: str | None = None,
 ) -> Any:
     """Dispatch a small capability vocabulary for process/HTTP/GraphQL adapters."""
     if capability == "summary":
@@ -185,6 +202,8 @@ def read(
         if not concept_id:
             raise ValueError("concept capability requires concept_id")
         return concept(root, concept_id)
+    if capability == "schema":
+        return schemas(root, spec_template=spec_template)
     if capability == "diagnostics":
         return diagnostics(root)
     if capability == "graph":
@@ -199,10 +218,14 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("root", type=Path, help="OKF bundle root")
     parser.add_argument(
         "capability",
-        choices=("summary", "concepts", "concept", "diagnostics", "graph", "snapshot"),
+        choices=("summary", "concepts", "concept", "schema", "diagnostics", "graph", "snapshot"),
     )
     parser.add_argument("--concept-id")
     parser.add_argument("--type", dest="concept_type")
+    parser.add_argument(
+        "--spec-template",
+        help="opt into trusted RFC 0006 .schema.sql discovery using this type-spec template",
+    )
     return parser
 
 
@@ -213,6 +236,7 @@ def main() -> None:
         args.capability,
         concept_id=args.concept_id,
         concept_type=args.concept_type,
+        spec_template=args.spec_template,
     )
     print(json.dumps(result, ensure_ascii=False, separators=(",", ":")))
 
