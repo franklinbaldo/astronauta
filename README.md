@@ -51,7 +51,7 @@ bun install --frozen-lockfile
 Run the private Python gateway in one terminal:
 
 ```bash
-uv run astronauta gateway /path/to/okf-bundle
+uv run astronauta /path/to/okf-bundle
 ```
 
 Then run Astro in another:
@@ -67,7 +67,7 @@ Astro defaults to `http://127.0.0.1:8765/gateway`. `ASTRONAUTA_GATEWAY_URL` may 
 RFC 0006 `.schema.sql` files are trusted DuckDB SQL. Astronauta therefore does **not** discover or execute them merely because they are present in a bundle. The local operator must opt in with the same type-spec template used by `okf-parser`:
 
 ```bash
-uv run astronauta gateway /path/to/okf-bundle \
+uv run astronauta /path/to/okf-bundle \
   --spec-template 'docs/types/{slug}.md'
 ```
 
@@ -75,13 +75,13 @@ Browser requests cannot enable or override this setting.
 
 ## What is intentionally not implemented yet
 
-The final product command remains:
+The target product shape remains:
 
 ```text
 astronauta PATH [--write]
 ```
 
-Issue #7 tracks packaging and ownership of the Python + Astro process lifecycle. Until that lands, `astronauta gateway` is explicit developer plumbing rather than a claim that packaging is solved.
+The current `astronauta PATH` command starts **only the private read-only Python gateway**. Issue #7 tracks expanding that same command so it owns the Astro process, packaging, lifecycle, and eventually explicit write capability. The syntax has converged; the product lifecycle has not.
 
 Web editing is also intentionally absent until `okf-parser#65` provides parser-owned preview/commit semantics with optimistic concurrency. Astronauta will not regain a direct Markdown/YAML writer to get there sooner.
 
