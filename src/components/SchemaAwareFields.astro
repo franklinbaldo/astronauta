@@ -1,0 +1,62 @@
+---
+import type { JsonSchemaNode } from '../lib/server/okf';
+
+interface Props {
+  fields: Record<string, unknown>;
+  schema?: JsonSchemaNode;
+}
+
+const { fields, schema } = Astro.props;
+const properties = schema?.properties || {};
+const names = Array.from(new Set([...Object.keys(properties), ...Object.keys(fields)])).sort();
+
+function displayValue(value: unknown): string {
+  if (value === undefined) return '—';
+  if (value === null) return 'null';
+  if (typeof value === 'string') return value;
+  if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+  return JSON.stringify(value, null, 2);
+}
+
+function contractLabel(node: JsonSchemaNode | undefined): string {
+  const duckdb = node?.['x-okf-duckdb-type'];
+  if (typeof duckdb === 'string') return duckdb;
+  const jsonType = node?.type;
+  if (Array.isArray(jsonType)) return jsonType.join(' | ');
+  return typeof jsonType === 'string' ? jsonType : 'generic';
+}
+
+function isDeclared(node: JsonSchemaNode | undefined): boolean {
+  return typeof node?.['x-okf-duckdb-type'] === 'string';
+}
+
+function isStructured(value: unknown): boolean {
+  return Array.isArray(value) || (typeof value === 'object' && value !== null);
+}
+---
+
+<div class="space-y-4">
+  {names.map((name) => {
+    const node = properties[name];
+    const value = fields[name];
+    const declared = isDeclared(node);
+    return (
+      <div class="rounded border border-slate-800 bg-slate-950/35 p-4 space-y-2">
+        <div class="flex flex-wrap items-center gap-2">
+          <label class="font-mono text-xs font-semibold text-sky-400">{name}</label>
+          <span class={declared ? 'badge badge-green font-mono' : 'badge badge-blue font-mono'}>{contractLabel(node)}</span>
+          {declared && <span class="text-[10px] uppercase tracking-wider text-slate-500">declared</span>}
+        </div>
+        {node?.description && <p class="text-xs text-slate-500">{node.description}</p>}
+        {isStructured(value) ? (
+          <pre class="w-full rounded border border-slate-800 bg-slate-950 p-3 text-xs text-slate-300 whitespace-pre-wrap break-words">{displayValue(value)}</pre>
+        ) : typeof value === 'string' && value.includes('\n') ? (
+          <textarea disabled rows={Math.min(10, Math.max(3, value.split('\n').length + 1))} class="w-full rounded border border-slate-800 bg-slate-950 p-3 text-sm text-slate-300 disabled:opacity-100">{value}</textarea>
+        ) : (
+          <input disabled value={displayValue(value)} class="w-full rounded border border-slate-800 bg-slate-950 px-3 py-2 text-sm text-slate-300 disabled:opacity-100" />
+        )}
+      </div>
+    );
+  })}
+  {names.length === 0 && <p class="text-sm text-slate-500">Sem campos de frontmatter.</p>}
+</div>
