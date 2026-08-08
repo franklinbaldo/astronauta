@@ -1,0 +1,129 @@
+---
+import { actions } from "astro:actions";
+
+import Layout from "../layouts/Layout.astro";
+
+const preview = Astro.getActionResult(actions.applyPreview);
+const commit = Astro.getActionResult(actions.applyCommit);
+const previewData = preview?.data;
+const commitData = commit?.data;
+const previewMutation = previewData?.mutation;
+const commitMutation = commitData?.mutation;
+const sql = previewData?.input.sql ?? commitData?.input.sql ?? "";
+---
+
+<Layout title="DuckDB Apply — Astronauta">
+  <div class="space-y-6">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-wider text-sky-400">RFC 0005</p>
+      <h1 class="text-3xl font-bold text-slate-100 tracking-tight mt-1">DuckDB Apply</h1>
+      <p class="text-slate-400 text-sm mt-2 max-w-4xl">
+        Execute a superfície relacional de escrita do okf-parser: ALTERs de coluna opcionais seguidos de um UPDATE.
+        O preview materializa o bundle em DuckDB, compila o estado final de volta para frontmatter e valida o candidato sem escrever.
+      </p>
+    </div>
+
+    <div class="glass-card p-5 border border-slate-700/70">
+      <h2 class="font-semibold text-slate-200">Exemplo</h2>
+      <pre class="mt-3 overflow-x-auto text-xs text-slate-400"><code>UPDATE "Note"
+SET status = 'done'
+WHERE __okf_concept_id = 'notes/example'</code></pre>
+      <p class="text-xs text-slate-500 mt-3">
+        Identidade, cardinalidade, body e colunas protegidas continuam sob controle do compilador upstream.
+        A UI não interpreta o SQL nem reimplementa seu efeito.
+      </p>
+    </div>
+
+    {commit?.error && (
+      <div class="glass-card p-5 border border-red-800/70">
+        <h2 class="font-semibold text-red-300">Commit não autorizado ou inválido</h2>
+        <p class="text-sm text-slate-400 mt-2">{commit.error.message}</p>
+      </div>
+    )}
+
+    {commitMutation && (
+      <section class:list={["glass-card p-5 border", commitMutation.succeeded && commitMutation.written ? "border-emerald-700/70" : "border-amber-700/70"]}>
+        <h2 class:list={["font-semibold", commitMutation.succeeded && commitMutation.written ? "text-emerald-300" : "text-amber-300"]}>
+          {commitMutation.succeeded && commitMutation.written ? "Alterações gravadas" : "Alterações não gravadas"}
+        </h2>
+        {commitMutation.error && <p class="text-sm text-amber-300 mt-2">{commitMutation.error}</p>}
+        {commitMutation.changed_paths.length > 0 && (
+          <p class="text-sm text-slate-400 mt-2">Arquivos: {commitMutation.changed_paths.join(", ")}</p>
+        )}
+        {commitMutation.conflict_paths.length > 0 && (
+          <p class="text-sm text-amber-300 mt-2">Conflitos: {commitMutation.conflict_paths.join(", ")}</p>
+        )}
+      </section>
+    )}
+
+    {preview?.error && (
+      <div class="glass-card p-5 border border-red-800/70">
+        <h2 class="font-semibold text-red-300">Preview inválido</h2>
+        <p class="text-sm text-slate-400 mt-2">{preview.error.message}</p>
+      </div>
+    )}
+
+    {previewMutation && (
+      <section class="glass-card p-5 space-y-4 border border-sky-800/60">
+        <div>
+          <p class="text-xs uppercase tracking-wider text-sky-400 font-semibold">Preview do compilador</p>
+          <h2 class="font-semibold text-slate-100 mt-1">
+            {previewMutation.succeeded
+              ? `${previewMutation.changed_paths.length} arquivo(s) serão alterados`
+              : "O candidato foi rejeitado"}
+          </h2>
+        </div>
+        {previewMutation.error && <p class="text-sm text-amber-300">{previewMutation.error}</p>}
+        {previewMutation.validation.length > 0 && (
+          <div>
+            <p class="font-semibold text-red-300 text-sm">Novos diagnósticos normativos</p>
+            <ul class="mt-2 space-y-1 text-xs text-slate-400">
+              {previewMutation.validation.map((item) => (
+                <li class="font-mono">{item.code} · {item.path} · {item.message}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {previewMutation.changed_paths.length > 0 && (
+          <div>
+            <p class="text-sm font-semibold text-slate-300">Changed paths</p>
+            <ul class="mt-2 text-xs font-mono text-slate-500 space-y-1">
+              {previewMutation.changed_paths.map((path) => <li>{path}</li>)}
+            </ul>
+          </div>
+        )}
+        {previewMutation.succeeded && previewMutation.changed_paths.length > 0 && previewData && (
+          <form method="POST" action={actions.applyCommit}>
+            <textarea name="sql" class="hidden">{previewData.input.sql}</textarea>
+            <button type="submit" class="rounded bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition">
+              Commit deste plano
+            </button>
+            <p class="text-xs text-slate-500 mt-2">
+              O okf-parser revalida o bundle e verifica conflitos imediatamente antes da escrita.
+            </p>
+          </form>
+        )}
+      </section>
+    )}
+
+    <form method="POST" action={actions.applyPreview} class="glass-card p-6 space-y-4">
+      <div>
+        <label for="sql" class="font-semibold text-slate-100">SQL DuckDB bounded</label>
+        <p class="text-xs text-slate-500 mt-1">
+          O contrato aceito é definido pelo RFC 0005 upstream; Astronauta apenas transporta a operação.
+        </p>
+      </div>
+      <textarea
+        id="sql"
+        name="sql"
+        rows="14"
+        required
+        class="w-full bg-slate-950 border border-slate-700 rounded p-4 font-mono text-sm text-slate-100 focus:outline-none focus:border-sky-400"
+        placeholder={`UPDATE "Type" SET field = 'value' WHERE __okf_concept_id = 'id'`}
+      >{sql}</textarea>
+      <button type="submit" class="rounded bg-sky-600 hover:bg-sky-500 px-4 py-2 text-sm font-semibold text-white transition">
+        Gerar preview
+      </button>
+    </form>
+  </div>
+</Layout>
