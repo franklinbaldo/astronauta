@@ -2,14 +2,15 @@
 
 Astronauta presentation code should depend on these capabilities rather than on
 Markdown parsing, Ibis expressions, MCP tool names, GraphQL query documents, or
-filesystem mutation.  The module intentionally remains a thin read adapter:
-all OKF semantics come from :mod:`okf_parser`.
+filesystem mutation. The module intentionally remains a thin read adapter: all
+OKF semantics come from :mod:`okf_parser`.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import math
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -17,9 +18,21 @@ from typing import Any
 from okf_parser import load_bundle
 
 
+def _json_cell(value: Any) -> Any:
+    """Normalize pandas' nullable-string float sentinel into JSON ``null``."""
+    if isinstance(value, float) and math.isnan(value):
+        return None
+    return value
+
+
 def _records(table: Any) -> list[dict[str, Any]]:
-    """Materialize an Ibis relation into JSON-friendly record dictionaries."""
-    return table.execute().to_dict(orient="records")
+    """Materialize an Ibis relation into deterministic JSON-friendly records."""
+    rows = table.execute().to_dict(orient="records")
+    return [{key: _json_cell(value) for key, value in row.items()} for row in rows]
+
+
+def _sort_text(value: Any) -> str:
+    return value if isinstance(value, str) else ""
 
 
 def _diagnostic_record(diagnostic: Any) -> dict[str, Any]:
@@ -59,15 +72,15 @@ def _load_state(root: Path) -> tuple[Any, list[dict[str, Any]], list[dict[str, A
     bundle = load_bundle(root.resolve())
     concepts = sorted(
         (_concept_record(row) for row in _records(bundle.concepts)),
-        key=lambda item: (item["path"], item["id"]),
+        key=lambda item: (_sort_text(item["path"]), _sort_text(item["id"])),
     )
     links = sorted(
         _records(bundle.links),
         key=lambda item: (
-            item.get("source_id") or "",
-            item.get("target_id") or "",
-            item.get("raw_target") or "",
-            item.get("origin") or "",
+            _sort_text(item.get("source_id")),
+            _sort_text(item.get("target_id")),
+            _sort_text(item.get("raw_target")),
+            _sort_text(item.get("origin")),
         ),
     )
     return bundle, concepts, links
@@ -75,12 +88,12 @@ def _load_state(root: Path) -> tuple[Any, list[dict[str, Any]], list[dict[str, A
 
 def summary(root: Path) -> dict[str, Any]:
     """Return live bundle-level state derived only from canonical parser data."""
-    bundle, concepts, links = _load_state(root)
-    type_counts = Counter(item["type"] for item in concepts)
+    bundle, concept_rows, links = _load_state(root)
+    type_counts = Counter(item["type"] for item in concept_rows)
     return {
         "root": str(bundle.root),
         "markdown_count": bundle.markdown_count,
-        "total_concepts": len(concepts),
+        "total_concepts": len(concept_rows),
         "total_reserved": len(_records(bundle.reserved)),
         "total_links": len(links),
         "is_conformant": bundle.is_conformant,
@@ -156,7 +169,13 @@ def snapshot(root: Path) -> dict[str, Any]:
     }
 
 
-def read(root: Path, capability: str, *, concept_id: str | None = None, concept_type: str | None = None) -> Any:
+def read(
+    root: Path,
+    capability: str,
+    *,
+    concept_id: str | None = None,
+    concept_type: str | None = None,
+) -> Any:
     """Dispatch a small capability vocabulary for process/HTTP/GraphQL adapters."""
     if capability == "summary":
         return summary(root)
