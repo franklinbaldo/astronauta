@@ -1,0 +1,39 @@
+name: Refresh Bun Lock
+
+on:
+  pull_request:
+    paths:
+      - "package.json"
+      - ".github/workflows/refresh-bun-lock.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  lockfile:
+    if: github.head_ref == 'stack/02-live-astro-ssr'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out stack branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: package.json
+
+      - name: Resolve and commit declared web dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          bun install
+          git add bun.lock
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git commit -m "chore: refresh Bun dependency lock"
+          git push origin "HEAD:${{ github.head_ref }}"
