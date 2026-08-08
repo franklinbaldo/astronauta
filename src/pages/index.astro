@@ -1,92 +1,86 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import summary from '../data/summary.json';
-import diagnostics from '../data/diagnostics.json';
+import { okf } from '../lib/server/okf';
 
+const [summary, diagnostics] = await Promise.all([okf.summary(), okf.diagnostics()]);
 const conceptsByType = summary.concepts_by_type || {};
-const sortedTypes = Object.entries(conceptsByType).sort((a, b) => (b[1] as number) - (a[1] as number));
+const sortedTypes = Object.entries(conceptsByType).sort((a, b) => b[1] - a[1]);
 ---
 
 <Layout title="Astronauta — Dashboard OKF">
   <div class="space-y-8">
-    <!-- Header Title Section -->
     <div>
       <h1 class="text-3xl font-bold text-slate-100 tracking-tight">Dashboard do Bundle OKF</h1>
       <p class="text-slate-400 text-sm mt-1">
-        Inspeção relacional e métricas do repositório <code class="text-sky-400 font-mono">{summary.root}</code>
+        Estado vivo do bundle <code class="text-sky-400 font-mono">{summary.root}</code>
       </p>
     </div>
 
-    <!-- Key Metrics Cards -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
       <div class="glass-card p-5 flex flex-col">
         <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Total de Conceitos</span>
         <span class="text-3xl font-extrabold text-sky-400 mt-2">{summary.total_concepts}</span>
-        <span class="text-xs text-slate-500 mt-1">{summary.markdown_count} arquivos Markdown</span>
+        <span class="text-xs text-slate-500 mt-1">{summary.markdown_count} Markdown; {summary.total_reserved} reservados</span>
       </div>
 
       <div class="glass-card p-5 flex flex-col">
-        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Vínculos Relacionais</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Links Observados</span>
         <span class="text-3xl font-extrabold text-purple-400 mt-2">{summary.total_links}</span>
-        <span class="text-xs text-slate-500 mt-1">Arestas no Grafo</span>
+        <span class="text-xs text-slate-500 mt-1">Relação canônica do parser</span>
       </div>
 
       <div class="glass-card p-5 flex flex-col">
-        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Status de Conformidade</span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Conformidade</span>
         <div class="mt-2">
           {summary.is_conformant ? (
-            <span class="badge badge-green text-sm">Conforme (OKF v0.2)</span>
+            <span class="badge badge-green text-sm">Conforme</span>
           ) : (
-            <span class="badge badge-yellow text-sm">Com Avisos / Achados</span>
+            <span class="badge badge-red text-sm">Erros normativos</span>
           )}
         </div>
-        <span class="text-xs text-slate-500 mt-1">OKF001/101 regras</span>
+        <span class="text-xs text-slate-500 mt-1">Sem reinterpretar severidade</span>
       </div>
 
       <div class="glass-card p-5 flex flex-col">
         <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Diagnósticos</span>
         <span class="text-3xl font-extrabold text-yellow-400 mt-2">{summary.diagnostics_count}</span>
-        <span class="text-xs text-slate-500 mt-1">Avisos relacionais</span>
+        <span class="text-xs text-slate-500 mt-1">Normativos e advisory</span>
       </div>
     </div>
 
-    <!-- Breakdowns -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <!-- Concepts by Type -->
       <div class="glass-card p-6 space-y-4">
         <h2 class="text-lg font-bold text-slate-200 border-b border-slate-800 pb-3">
-          Distribuição de Conceitos por Tipo
+          Conceitos por tipo authored
         </h2>
         <div class="space-y-3 max-h-80 overflow-y-auto pr-2">
           {sortedTypes.map(([type, count]) => (
-            <div class="flex items-center justify-between p-2.5 rounded bg-slate-800/50 hover:bg-slate-800 transition">
+            <a href={`/concepts?type=${encodeURIComponent(type)}`} class="flex items-center justify-between p-2.5 rounded bg-slate-800/50 hover:bg-slate-800 transition">
               <span class="font-mono text-sm text-slate-300">{type}</span>
               <span class="badge badge-blue">{count}</span>
-            </div>
+            </a>
           ))}
         </div>
       </div>
 
-      <!-- Recent Diagnostics Preview -->
       <div class="glass-card p-6 space-y-4">
         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-          <h2 class="text-lg font-bold text-slate-200">
-            Últimos Diagnósticos Relacionais
-          </h2>
+          <h2 class="text-lg font-bold text-slate-200">Diagnósticos recentes</h2>
           <a href="/diagnostics" class="text-xs font-semibold text-sky-400 hover:underline">Ver todos →</a>
         </div>
         <div class="space-y-3 max-h-80 overflow-y-auto pr-2">
           {diagnostics.slice(0, 6).map((diag) => (
             <div class="p-3 rounded bg-slate-800/40 border border-slate-800 space-y-1">
-              <div class="flex items-center justify-between">
-                <span class="font-mono text-xs text-slate-400">{diag.path}</span>
-                <span class={diag.severity === 'warning' ? 'badge badge-yellow' : 'badge badge-red'}>
-                  {diag.code}
-                </span>
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-mono text-xs text-slate-400 truncate">{diag.path}</span>
+                <span class={diag.severity === 'warning' ? 'badge badge-yellow' : 'badge badge-red'}>{diag.code}</span>
               </div>
               <p class="text-xs text-slate-300">{diag.message}</p>
             </div>
           ))}
+          {diagnostics.length === 0 && (
+            <p class="text-sm text-slate-500">Nenhum diagnóstico no estado atual do bundle.</p>
+          )}
         </div>
       </div>
     </div>
