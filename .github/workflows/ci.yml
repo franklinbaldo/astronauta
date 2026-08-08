@@ -89,7 +89,7 @@ jobs:
           mkdir -p "$fixture"
           printf '%s\n' '---' 'type: Note' 'title: First' '---' '# First' > "$fixture/first.md"
 
-          uv run astronauta gateway "$fixture" --port 8765 > "$RUNNER_TEMP/gateway.log" 2>&1 &
+          uv run astronauta "$fixture" --port 8765 > "$RUNNER_TEMP/gateway.log" 2>&1 &
           gateway_pid=$!
           HOST=127.0.0.1 PORT=4321 node dist/server/entry.mjs > "$RUNNER_TEMP/astro.log" 2>&1 &
           astro_pid=$!
