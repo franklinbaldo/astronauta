@@ -111,7 +111,20 @@ jobs:
           grep -F '1 conceito(s)' "$RUNNER_TEMP/before.html"
 
           printf '%s\n' '---' 'type: Note' 'title: Second' '---' '# Second' > "$fixture/second.md"
-          curl --fail --silent http://127.0.0.1:4321/types/Note > "$RUNNER_TEMP/after.html"
+
+          curl --fail --silent \
+            --header 'content-type: application/json' \
+            --data '{"capability":"concepts","concept_type":"Note"}' \
+            http://127.0.0.1:8765/gateway > "$RUNNER_TEMP/gateway-after.json"
+          python -c 'import json,sys; data=json.load(open(sys.argv[1])); assert len(data["result"]) == 2' "$RUNNER_TEMP/gateway-after.json"
+
+          if ! curl --fail --silent http://127.0.0.1:4321/types/Note > "$RUNNER_TEMP/after.html"; then
+            echo '--- gateway log ---'
+            cat "$RUNNER_TEMP/gateway.log"
+            echo '--- astro log ---'
+            cat "$RUNNER_TEMP/astro.log"
+            exit 1
+          fi
 
           grep -F 'Second' "$RUNNER_TEMP/after.html"
           grep -F '2 conceito(s)' "$RUNNER_TEMP/after.html"
