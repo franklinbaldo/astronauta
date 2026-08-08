@@ -20,12 +20,13 @@
 ## Commands
 - `bun install --frozen-lockfile`: install locked web dependencies.
 - `uv sync --frozen`: install locked Python dependencies.
-- `uv run astronauta gateway PATH`: start the private read-only gateway on loopback for development.
+- `uv run astronauta PATH`: start the private read-only gateway on loopback for development.
 - `bun run dev`: start Astro dev server against the local gateway.
 - `bun run verify`: production SSR build + compiled Tailwind verification.
 - `uv run python -m unittest discover -s tests -v`: run Python gateway/architecture tests.
 
 ## Roadmap constraints
+- The current `astronauta PATH` starts only the gateway; #7 expands the same syntax to own Astro packaging/lifecycle and later `--write`.
 - GraphQL (`okf-parser#56`) is the preferred read adapter when available, behind the server-side capability boundary.
 - Editing waits for parser-owned preview/commit semantics (`okf-parser#65`); Astronauta must not add direct concept-file writes as a shortcut.
 - Final lifecycle/packaging is tracked by Astronauta #7 (`astronauta PATH [--write]`).
