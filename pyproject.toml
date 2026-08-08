@@ -17,5 +17,10 @@ dependencies = [
 [project.scripts]
 astronauta = "astronauta.cli:app"
 
+[tool.hatch.metadata]
+# okf-parser 0.22 is not published yet. Keep the exact reviewed Git commit
+# explicit until Astronauta can return to a normal released SemVer dependency.
+allow-direct-references = true
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/astronauta"]
