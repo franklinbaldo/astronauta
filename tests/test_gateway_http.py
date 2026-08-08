@@ -59,6 +59,32 @@ title: Hello
         self.assertEqual(result[0]["type"], "Note")
         self.assertEqual(result[0]["path"], "note.md")
 
+    def test_running_server_observes_new_concepts(self) -> None:
+        status, payload = self.post({"capability": "concepts", "concept_type": "Note"})
+        self.assertEqual(status, 200)
+        before = payload["result"]
+        self.assertIsInstance(before, list)
+        assert isinstance(before, list)
+        self.assertEqual(len(before), 1)
+
+        (self.root / "second.md").write_text(
+            """---
+type: Note
+title: Second
+---
+# Second
+""",
+            encoding="utf-8",
+        )
+
+        status, payload = self.post({"capability": "concepts", "concept_type": "Note"})
+        self.assertEqual(status, 200)
+        after = payload["result"]
+        self.assertIsInstance(after, list)
+        assert isinstance(after, list)
+        self.assertEqual(len(after), 2)
+        self.assertEqual({item["title"] for item in after}, {"Hello", "Second"})
+
     def test_rejects_unknown_capability_as_client_error(self) -> None:
         status, payload = self.post({"capability": "arbitrary-filesystem-operation"})
         self.assertEqual(status, 400)
