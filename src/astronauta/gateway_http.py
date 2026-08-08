@@ -52,11 +52,15 @@ class GatewayHandler(BaseHTTPRequestHandler):
                 raise ValueError("concept_id must be a string")
             if concept_type is not None and not isinstance(concept_type, str):
                 raise ValueError("concept_type must be a string")
+            # spec_template deliberately cannot come from the browser payload:
+            # RFC 0006 declarations are trusted DuckDB SQL and must be opted in
+            # by the operator when the local gateway process starts.
             result = read(
                 self.server.bundle_root,
                 capability,
                 concept_id=concept_id,
                 concept_type=concept_type,
+                spec_template=self.server.spec_template,
             )
         except (json.JSONDecodeError, ValueError) as exc:
             self._json(
@@ -86,22 +90,47 @@ class GatewayHandler(BaseHTTPRequestHandler):
 
 
 class GatewayServer(ThreadingHTTPServer):
-    """HTTP server carrying the bundle root as immutable process configuration."""
+    """HTTP server carrying immutable local operator configuration."""
 
-    def __init__(self, address: tuple[str, int], bundle_root: Path) -> None:
+    def __init__(
+        self,
+        address: tuple[str, int],
+        bundle_root: Path,
+        *,
+        spec_template: str | None = None,
+    ) -> None:
         super().__init__(address, GatewayHandler)
         self.bundle_root = bundle_root.resolve()
+        self.spec_template = spec_template
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Serve Astronauta gateway on loopback")
     parser.add_argument("root", type=Path)
     parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument(
+        "--spec-template",
+        help="opt into trusted RFC 0006 .schema.sql discovery using this type-spec template",
+    )
     args = parser.parse_args()
 
-    server = GatewayServer((_LOOPBACK_HOST, args.port), args.root)
+    server = GatewayServer(
+        (_LOOPBACK_HOST, args.port),
+        args.root,
+        spec_template=args.spec_template,
+    )
     host, port = server.server_address
-    print(json.dumps({"host": host, "port": port, "root": str(server.bundle_root)}), flush=True)
+    print(
+        json.dumps(
+            {
+                "host": host,
+                "port": port,
+                "root": str(server.bundle_root),
+                "spec_template": server.spec_template,
+            }
+        ),
+        flush=True,
+    )
     try:
         server.serve_forever()
     except KeyboardInterrupt:
