@@ -5,11 +5,11 @@ build-backend = "hatchling.build"
 [project]
 name = "astronauta"
 version = "0.1.0"
-description = "Automatic Admin Panel & Web Dashboard generator for OKF bundles"
+description = "Live Django-admin-style interface for OKF bundles"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "okf-parser",
+    "okf-parser>=0.22,<0.23",
     "typer>=0.9.0",
     "rich>=13.0.0",
 ]
