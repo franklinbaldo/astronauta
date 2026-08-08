@@ -1,0 +1,47 @@
+---
+interface Props {
+  fields: Record<string, unknown>;
+}
+
+const { fields } = Astro.props;
+const entries = Object.entries(fields).sort(([left], [right]) => left.localeCompare(right));
+
+function displayValue(value: unknown): string {
+  if (value === null) return 'null';
+  if (typeof value === 'string') return value;
+  if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+  return JSON.stringify(value, null, 2);
+}
+
+function isStructured(value: unknown): boolean {
+  return Array.isArray(value) || (typeof value === 'object' && value !== null);
+}
+---
+
+<div class="overflow-x-auto">
+  <table class="w-full text-left text-sm text-slate-300">
+    <thead class="text-xs uppercase tracking-wider text-slate-500 border-b border-slate-800">
+      <tr>
+        <th class="py-3 pr-4 w-48">Campo</th>
+        <th class="py-3">Valor authored</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-slate-800">
+      {entries.map(([name, value]) => (
+        <tr>
+          <th class="py-3 pr-4 align-top font-mono text-xs text-sky-400 font-medium">{name}</th>
+          <td class="py-3 align-top">
+            {isStructured(value) ? (
+              <pre class="text-xs whitespace-pre-wrap break-words text-slate-300">{displayValue(value)}</pre>
+            ) : (
+              <span class="whitespace-pre-wrap break-words">{displayValue(value)}</span>
+            )}
+          </td>
+        </tr>
+      ))}
+      {entries.length === 0 && (
+        <tr><td colspan="2" class="py-6 text-center text-slate-500">Sem campos de frontmatter.</td></tr>
+      )}
+    </tbody>
+  </table>
+</div>
