@@ -162,32 +162,17 @@ Old body
         self.assertEqual(payload["error"], "WriteCapabilityDisabled")
         self.assertEqual(self.source.read_text(encoding="utf-8"), before)
 
-    def test_write_enabled_process_commits_duckdb_apply(self) -> None:
+    def test_write_enabled_apply_still_requires_reviewed_preview_token(self) -> None:
         url = self.start(allow_write=True)
+        before = self.source.read_text(encoding="utf-8")
         sql = 'UPDATE "Note" SET status = \'done\' WHERE __okf_concept_id = \'note\''
 
-        preview_status, preview_payload = self.post(
-            url, {"capability": "apply_preview", "sql": sql}
-        )
-        self.assertEqual(preview_status, 200)
-        preview = preview_payload["result"]
-        self.assertIsInstance(preview, dict)
-        assert isinstance(preview, dict)
-        token = preview.get("preview_token")
-        self.assertIsInstance(token, str)
+        status, payload = self.post(url, {"capability": "apply_write", "sql": sql})
 
-        status, payload = self.post(
-            url,
-            {"capability": "apply_write", "sql": sql, "preview_token": token},
-        )
-
-        self.assertEqual(status, 200)
-        result = payload["result"]
-        self.assertIsInstance(result, dict)
-        assert isinstance(result, dict)
-        self.assertTrue(result["written"])
-        self.assertEqual(result["preview_token"], token)
-        self.assertIn("status: done", self.source.read_text(encoding="utf-8"))
+        self.assertEqual(status, 400)
+        self.assertEqual(payload["error"], "ValueError")
+        self.assertIn("preview_token", str(payload["message"]))
+        self.assertEqual(self.source.read_text(encoding="utf-8"), before)
 
 
 if __name__ == "__main__":
