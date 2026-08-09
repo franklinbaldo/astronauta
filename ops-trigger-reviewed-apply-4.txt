@@ -1,0 +1,1 @@
+Mechanical trigger after isolating native DuckDB commit semantics from the HTTP thread fixture.
