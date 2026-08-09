@@ -14,7 +14,9 @@ const applyPreviewInput = z.object({
 });
 
 const applyCommitInput = applyPreviewInput.extend({
-  preview_token: z.string().regex(/^okf-apply-preview-v1-sha256:[0-9a-f]{64}$/u),
+  // The parser owns the token format and semantics. Astronauta only transports
+  // an opaque, bounded value from the reviewed preview back to the commit.
+  preview_token: z.string().min(1).max(4096),
 });
 
 function actionFailure(error: unknown): never {
