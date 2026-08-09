@@ -1,12 +1,20 @@
 import { ActionError, defineAction } from "astro:actions";
 import { z } from "astro:schema";
 
-import { okf } from "../lib/okf";
+import { okf } from "../lib/server/okf";
 
 const editInput = z.object({
   concept_id: z.string().min(1),
   body: z.string().max(4 * 1024 * 1024),
   expected_source_digest: z.string().regex(/^sha256:[0-9a-f]{64}$/u),
+});
+
+const applyPreviewInput = z.object({
+  sql: z.string().min(1).max(256 * 1024),
+});
+
+const applyCommitInput = applyPreviewInput.extend({
+  preview_token: z.string().regex(/^okf-apply-preview-v1-sha256:[0-9a-f]{64}$/u),
 });
 
 function actionFailure(error: unknown): never {
@@ -38,6 +46,36 @@ export const server = {
         return {
           input,
           mutation: await okf.editWrite(input),
+        };
+      } catch (error) {
+        actionFailure(error);
+      }
+    },
+  }),
+
+  applyPreview: defineAction({
+    accept: "form",
+    input: applyPreviewInput,
+    handler: async (input) => {
+      try {
+        return {
+          input,
+          mutation: await okf.applyPreview(input.sql),
+        };
+      } catch (error) {
+        actionFailure(error);
+      }
+    },
+  }),
+
+  applyCommit: defineAction({
+    accept: "form",
+    input: applyCommitInput,
+    handler: async (input) => {
+      try {
+        return {
+          input,
+          mutation: await okf.applyWrite(input.sql, input.preview_token),
         };
       } catch (error) {
         actionFailure(error);
