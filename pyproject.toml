@@ -9,7 +9,7 @@ description = "Live Django-admin-style interface for OKF bundles"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "okf-parser @ git+https://github.com/franklinbaldo/okf-parser.git@33b3e1fc5de3395cc890d06b128899b8e4adbd06",
+    "okf-parser @ git+https://github.com/franklinbaldo/okf-parser.git@9da4b53724295b759a9cfbc83ed3f1d4d6291f8c",
     "typer>=0.9.0",
     "rich>=13.0.0",
 ]
@@ -18,8 +18,8 @@ dependencies = [
 astronauta = "astronauta.cli:app"
 
 [tool.hatch.metadata]
-# okf-parser 0.22 is not published yet. Keep the exact reviewed Git commit
-# explicit until Astronauta can return to a normal released SemVer dependency.
+# Pin the immutable reviewed upstream release commit until Astronauta can
+# return to a normal published SemVer dependency.
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
