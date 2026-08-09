@@ -18,8 +18,7 @@ const sql = previewData?.input.sql ?? commitData?.input.sql ?? "";
       <p class="text-xs font-semibold uppercase tracking-wider text-sky-400">RFC 0005</p>
       <h1 class="text-3xl font-bold text-slate-100 tracking-tight mt-1">DuckDB Apply</h1>
       <p class="text-slate-400 text-sm mt-2 max-w-4xl">
-        Execute a superfície relacional de escrita do okf-parser: ALTERs de coluna opcionais seguidos de um UPDATE.
-        O preview materializa o bundle em DuckDB, compila o estado final de volta para frontmatter e valida o candidato sem escrever.
+        O preview é produzido pelo okf-parser e o commit só fica alcançável quando o parser devolve um token opaco que vincula exatamente o candidato revisado.
       </p>
     </div>
 
@@ -29,8 +28,8 @@ const sql = previewData?.input.sql ?? commitData?.input.sql ?? "";
 SET status = 'done'
 WHERE __okf_concept_id = 'notes/example'</code></pre>
       <p class="text-xs text-slate-500 mt-3">
-        Identidade, cardinalidade, body e colunas protegidas continuam sob controle do compilador upstream.
-        A UI não interpreta o SQL nem reimplementa seu efeito.
+        Identidade, cardinalidade, body, colunas protegidas, compilação e detecção de conflitos permanecem no upstream.
+        Astronauta apenas transporta SQL + token do preview revisado.
       </p>
     </div>
 
@@ -92,16 +91,20 @@ WHERE __okf_concept_id = 'notes/example'</code></pre>
             </ul>
           </div>
         )}
-        {previewMutation.succeeded && previewMutation.changed_paths.length > 0 && previewData && (
+        {previewMutation.succeeded && previewMutation.changed_paths.length > 0 && previewMutation.preview_token && previewData && (
           <form method="POST" action={actions.applyCommit}>
             <textarea name="sql" class="hidden">{previewData.input.sql}</textarea>
+            <input type="hidden" name="preview_token" value={previewMutation.preview_token} />
             <button type="submit" class="rounded bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition">
-              Commit deste plano
+              Commit deste preview
             </button>
             <p class="text-xs text-slate-500 mt-2">
-              O okf-parser revalida o bundle e verifica conflitos imediatamente antes da escrita.
+              O commit reproduz o candidato e falha fechado se já não corresponder ao preview revisado.
             </p>
           </form>
+        )}
+        {previewMutation.succeeded && previewMutation.changed_paths.length > 0 && !previewMutation.preview_token && (
+          <p class="text-xs text-amber-300">O parser não devolveu token de preview; commit indisponível.</p>
         )}
       </section>
     )}
@@ -110,7 +113,7 @@ WHERE __okf_concept_id = 'notes/example'</code></pre>
       <div>
         <label for="sql" class="font-semibold text-slate-100">SQL DuckDB bounded</label>
         <p class="text-xs text-slate-500 mt-1">
-          O contrato aceito é definido pelo RFC 0005 upstream; Astronauta apenas transporta a operação.
+          O contrato aceito é definido pelo RFC 0005 upstream; Astronauta não interpreta o SQL nem seu efeito.
         </p>
       </div>
       <textarea
