@@ -60,14 +60,23 @@ def dispatch_mutation(
 
     if capability in {"apply_preview", "apply_write"}:
         sql = _required_string(payload, "sql")
-        if capability == "apply_write" and not allow_write:
-            raise WriteCapabilityDisabled(
-                "write capabilities are disabled; start Astronauta with --write"
+        if capability == "apply_write":
+            if not allow_write:
+                raise WriteCapabilityDisabled(
+                    "write capabilities are disabled; start Astronauta with --write"
+                )
+            preview_token = _required_string(payload, "preview_token")
+            return apply_bundle(
+                str(root),
+                sql=sql,
+                write=True,
+                expected_preview_token=preview_token,
+                spec_template=spec_template,
             )
         return apply_bundle(
             str(root),
             sql=sql,
-            write=capability == "apply_write",
+            write=False,
             spec_template=spec_template,
         )
 

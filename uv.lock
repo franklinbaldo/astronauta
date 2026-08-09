@@ -63,7 +63,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "okf-parser", git = "https://github.com/franklinbaldo/okf-parser.git?rev=68e630c4ca66864dee022af0a8c7b19375a33538" },
+    { name = "okf-parser", git = "https://github.com/franklinbaldo/okf-parser.git?rev=9da4b53724295b759a9cfbc83ed3f1d4d6291f8c" },
     { name = "rich", specifier = ">=13.0.0" },
     { name = "typer", specifier = ">=0.9.0" },
 ]
@@ -838,8 +838,8 @@ wheels = [
 
 [[package]]
 name = "okf-parser"
-version = "0.36.0"
-source = { git = "https://github.com/franklinbaldo/okf-parser.git?rev=68e630c4ca66864dee022af0a8c7b19375a33538#68e630c4ca66864dee022af0a8c7b19375a33538" }
+version = "0.37.0"
+source = { git = "https://github.com/franklinbaldo/okf-parser.git?rev=9da4b53724295b759a9cfbc83ed3f1d4d6291f8c#9da4b53724295b759a9cfbc83ed3f1d4d6291f8c" }
 dependencies = [
     { name = "cyclopts" },
     { name = "duckdb" },
