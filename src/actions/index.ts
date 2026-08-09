@@ -9,6 +9,10 @@ const editInput = z.object({
   expected_source_digest: z.string().regex(/^sha256:[0-9a-f]{64}$/u),
 });
 
+const applyInput = z.object({
+  sql: z.string().min(1).max(256 * 1024),
+});
+
 function actionFailure(error: unknown): never {
   const message = error instanceof Error ? error.message : String(error);
   throw new ActionError({ code: "BAD_REQUEST", message });
@@ -38,6 +42,21 @@ export const server = {
         return {
           input,
           mutation: await okf.editWrite(input),
+        };
+      } catch (error) {
+        actionFailure(error);
+      }
+    },
+  }),
+
+  applyPreview: defineAction({
+    accept: "form",
+    input: applyInput,
+    handler: async (input) => {
+      try {
+        return {
+          input,
+          mutation: await okf.applyPreview(input.sql),
         };
       } catch (error) {
         actionFailure(error);
