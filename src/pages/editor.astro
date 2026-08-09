@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { okf } from "../lib/server/okf";
+
+const concepts = await okf.concepts();
+const editHref = (id: string) =>
+  `/concepts/edit/${id.split("/").map(encodeURIComponent).join("/")}`;
+---
+
+<Layout title="Editor — Astronauta">
+  <div class="space-y-6">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-wider text-sky-400">Live editor</p>
+      <h1 class="text-3xl font-bold text-slate-100 tracking-tight mt-1">Editar conceitos</h1>
+      <p class="text-slate-400 text-sm mt-2 max-w-3xl">
+        O corpo Markdown é salvo pelo okf-parser com preview, validação e controle de conflito.
+        Campos de frontmatter e mudanças em massa ficam na superfície DuckDB/apply, separadamente.
+      </p>
+    </div>
+
+    <div class="glass-card overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm text-slate-300">
+          <thead class="bg-slate-950 text-xs uppercase tracking-wider text-slate-500 border-b border-slate-800">
+            <tr>
+              <th class="px-6 py-4">Conceito</th>
+              <th class="px-6 py-4">Tipo</th>
+              <th class="px-6 py-4">Caminho</th>
+              <th class="px-6 py-4 text-right">Ação</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800">
+            {concepts.map((concept) => (
+              <tr class="hover:bg-slate-800/40 transition">
+                <td class="px-6 py-4">
+                  <div class="font-semibold text-slate-100">{concept.title ?? concept.id}</div>
+                  <div class="mt-1 font-mono text-xs text-slate-500 break-all">{concept.id}</div>
+                </td>
+                <td class="px-6 py-4"><span class="badge badge-purple">{concept.type}</span></td>
+                <td class="px-6 py-4 font-mono text-xs text-slate-400">{concept.path}</td>
+                <td class="px-6 py-4 text-right">
+                  <a class="text-sky-400 hover:underline font-semibold" href={editHref(concept.id)}>
+                    Editar body →
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</Layout>
