@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Python runtime artifacts
+__pycache__/
+*.py[cod]
+.venv/
