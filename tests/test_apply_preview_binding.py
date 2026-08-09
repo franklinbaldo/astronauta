@@ -82,6 +82,27 @@ Other body
         self.assertIn("preview_token", str(payload["message"]))
         self.assertIn("status: todo", self.note.read_text(encoding="utf-8"))
 
+    def test_wrong_preview_token_fails_closed(self) -> None:
+        status, payload = self.post(
+            {
+                "capability": "apply_write",
+                "sql": self.sql,
+                "preview_token": "okf-apply-preview-v1-sha256:" + "0" * 64,
+            }
+        )
+
+        self.assertEqual(status, 200)
+        result = payload["result"]
+        self.assertIsInstance(result, dict)
+        assert isinstance(result, dict)
+        self.assertFalse(result["succeeded"])
+        self.assertFalse(result["written"])
+        self.assertEqual(
+            result["error"],
+            "apply candidate no longer matches the reviewed preview",
+        )
+        self.assertIn("status: todo", self.note.read_text(encoding="utf-8"))
+
     def test_exact_reviewed_preview_commits(self) -> None:
         token = self.preview_token()
 
