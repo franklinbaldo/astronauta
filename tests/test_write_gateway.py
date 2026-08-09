@@ -140,6 +140,7 @@ Old body
         assert isinstance(result, dict)
         self.assertEqual(result["changed_paths"], ["note.md"])
         self.assertFalse(result["written"])
+        self.assertIsInstance(result.get("preview_token"), str)
         self.assertEqual(self.source.read_text(encoding="utf-8"), before)
 
     def test_payload_cannot_grant_itself_apply_write_authority(self) -> None:
@@ -149,7 +150,12 @@ Old body
 
         status, payload = self.post(
             url,
-            {"capability": "apply_write", "sql": sql, "allow_write": True},
+            {
+                "capability": "apply_write",
+                "sql": sql,
+                "preview_token": "okf-apply-preview-v1-sha256:" + "0" * 64,
+                "allow_write": True,
+            },
         )
 
         self.assertEqual(status, 403)
@@ -160,13 +166,27 @@ Old body
         url = self.start(allow_write=True)
         sql = 'UPDATE "Note" SET status = \'done\' WHERE __okf_concept_id = \'note\''
 
-        status, payload = self.post(url, {"capability": "apply_write", "sql": sql})
+        preview_status, preview_payload = self.post(
+            url, {"capability": "apply_preview", "sql": sql}
+        )
+        self.assertEqual(preview_status, 200)
+        preview = preview_payload["result"]
+        self.assertIsInstance(preview, dict)
+        assert isinstance(preview, dict)
+        token = preview.get("preview_token")
+        self.assertIsInstance(token, str)
+
+        status, payload = self.post(
+            url,
+            {"capability": "apply_write", "sql": sql, "preview_token": token},
+        )
 
         self.assertEqual(status, 200)
         result = payload["result"]
         self.assertIsInstance(result, dict)
         assert isinstance(result, dict)
         self.assertTrue(result["written"])
+        self.assertEqual(result["preview_token"], token)
         self.assertIn("status: done", self.source.read_text(encoding="utf-8"))
 
 
