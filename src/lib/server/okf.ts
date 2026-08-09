@@ -66,12 +66,63 @@ export type SchemaProjection = {
   schemas: Record<string, JsonSchemaNode>;
 };
 
-type Capability = 'summary' | 'concepts' | 'concept' | 'schema' | 'diagnostics' | 'graph';
+export type EditMutationInput = {
+  concept_id: string;
+  body: string;
+  expected_source_digest: string;
+};
+
+export type MutationDiagnostic = {
+  code: string;
+  path: string;
+  message: string;
+};
+
+export type EditMutationResult = {
+  concept_id: string;
+  path: string;
+  source_digest: string;
+  candidate_source_digest: string;
+  candidate_parsed_digest: string;
+  changed: boolean;
+  succeeded: boolean;
+  written: boolean;
+  validation: MutationDiagnostic[];
+  conflict_paths: string[];
+  error?: string;
+};
+
+export type ApplyMutationResult = {
+  changed_paths: string[];
+  skipped_paths: string[];
+  succeeded: boolean;
+  written: boolean;
+  validation: MutationDiagnostic[];
+  conflict_paths: string[];
+  preview_token?: string;
+  error?: string;
+};
+
+type Capability =
+  | 'summary'
+  | 'concepts'
+  | 'concept'
+  | 'schema'
+  | 'diagnostics'
+  | 'graph'
+  | 'edit_preview'
+  | 'edit_write'
+  | 'apply_preview'
+  | 'apply_write';
 
 type GatewayRequest = {
   capability: Capability;
   concept_id?: string;
   concept_type?: string;
+  body?: string;
+  expected_source_digest?: string;
+  sql?: string;
+  preview_token?: string;
 };
 
 function gatewayUrl(): URL {
@@ -110,4 +161,16 @@ export const okf = {
   schema: () => gateway<SchemaProjection>({ capability: 'schema' }),
   diagnostics: () => gateway<Diagnostic[]>({ capability: 'diagnostics' }),
   graph: () => gateway<GraphProjection>({ capability: 'graph' }),
+  editPreview: (input: EditMutationInput) =>
+    gateway<EditMutationResult>({ capability: 'edit_preview', ...input }),
+  editWrite: (input: EditMutationInput) =>
+    gateway<EditMutationResult>({ capability: 'edit_write', ...input }),
+  applyPreview: (sql: string) =>
+    gateway<ApplyMutationResult>({ capability: 'apply_preview', sql }),
+  applyWrite: (sql: string, previewToken: string) =>
+    gateway<ApplyMutationResult>({
+      capability: 'apply_write',
+      sql,
+      preview_token: previewToken,
+    }),
 };
