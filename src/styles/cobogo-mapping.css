@@ -1,0 +1,47 @@
+/* Astronauta → Cobogó semantic mapping.
+ *
+ * Astronauta keeps its dark operational identity, glass surfaces and Tailwind
+ * composition. This bridge only aligns shared semantic foundations.
+ */
+
+:root {
+  --cobogo-canvas: #0f172a;
+  --cobogo-surface: #1e293b;
+  --cobogo-surface-muted: #172033;
+  --cobogo-text: #f8fafc;
+  --cobogo-text-muted: #94a3b8;
+  --cobogo-border: rgba(255, 255, 255, 0.1);
+  --cobogo-accent: #38bdf8;
+  --cobogo-focus: #38bdf8;
+  --cobogo-info: #38bdf8;
+  --cobogo-success: #4ade80;
+  --cobogo-warning: #facc15;
+  --cobogo-danger: #f87171;
+
+  --cobogo-font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --cobogo-font-display: var(--cobogo-font-body);
+  --cobogo-font-inscription: var(--cobogo-font-body);
+  --cobogo-font-data: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+  /* Astronauta is intentionally denser than editorial/public consumers. */
+  --cobogo-space-adjacent: 0.25rem;
+  --cobogo-space-group: 0.75rem;
+  --cobogo-space-section: 1.5rem;
+  --cobogo-space-pause: 3rem;
+
+  --cobogo-radius-control: 0.375rem;
+  --cobogo-radius-surface: 0.75rem;
+  --cobogo-motion-state: 150ms;
+  --cobogo-motion-spatial: 200ms;
+
+  /* Existing high-level local aliases now flow through the shared roles. */
+  --bg-primary: var(--cobogo-canvas);
+  --bg-secondary: var(--cobogo-surface);
+  --border-color: var(--cobogo-border);
+  --text-primary: var(--cobogo-text);
+  --text-secondary: var(--cobogo-text-muted);
+  --accent-blue: var(--cobogo-accent);
+  --accent-green: var(--cobogo-success);
+  --accent-yellow: var(--cobogo-warning);
+  --accent-red: var(--cobogo-danger);
+}
