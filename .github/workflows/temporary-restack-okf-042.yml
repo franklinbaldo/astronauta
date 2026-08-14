@@ -1,0 +1,196 @@
+name: Temporary restack Astronauta on OKF 0.42
+
+on:
+  pull_request:
+    branches: [stack/06-write-capable-gateway]
+
+permissions:
+  contents: write
+
+jobs:
+  restack:
+    if: github.event.pull_request.head.ref == 'ops/trigger-okf-042-restack'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: "0.11.21"
+          python-version: "3.12"
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: package.json
+
+      - name: Rebuild four-PR stack on immutable OKF 0.42.0
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          repo="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git remote set-url origin "$repo"
+          git fetch origin \
+            stack/05-remove-static-generator \
+            stack/06-write-capable-gateway \
+            stack/07-body-editor \
+            stack/08-duckdb-apply-admin \
+            stack/09-reviewed-apply-token
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          old14=adbe3bba78b1094dd3421c2c289530a412c07989
+          old15=2c33781b513cf6636c4c4015b304e71b8d43ab72
+          old16=c1746ba4909aa0755ab7e7429aad975c8ac948d1
+          old17=8c260754c915bcfd010c65298d93cad01d50c2e1
+          base13=29aaefe60dc3015d9b65041d61a0e8a624fe80cf
+          okf_old=68e630c4ca66864dee022af0a8c7b19375a33538
+          okf_new=85c023d7e1f3a4fc47c2dd5233c1bdd19ba72ab0
+
+          expected14=$(git rev-parse origin/stack/06-write-capable-gateway)
+          expected15=$(git rev-parse origin/stack/07-body-editor)
+          expected16=$(git rev-parse origin/stack/08-duckdb-apply-admin)
+          expected17=$(git rev-parse origin/stack/09-reviewed-apply-token)
+
+          # #14: preserve the reviewed semantic tree, change only the direct
+          # Git dependency and its deterministic lock metadata, then amend the
+          # existing single semantic commit.
+          git switch --detach "$old14"
+          cat > pyproject.toml <<'EOF'
+          [build-system]
+          requires = ["hatchling"]
+          build-backend = "hatchling.build"
+
+          [project]
+          name = "astronauta"
+          version = "0.1.0"
+          description = "Live Django-admin-style interface for OKF bundles"
+          readme = "README.md"
+          requires-python = ">=3.12"
+          dependencies = [
+              "okf-parser @ git+https://github.com/franklinbaldo/okf-parser.git@85c023d7e1f3a4fc47c2dd5233c1bdd19ba72ab0",
+              "typer>=0.9.0",
+              "rich>=13.0.0",
+          ]
+
+          [project.scripts]
+          astronauta = "astronauta.cli:app"
+
+          [tool.hatch.metadata]
+          # Keep the exact reviewed upstream 0.42.0 commit explicit while Astronauta
+          # consumes okf-parser directly from GitHub rather than a registry release.
+          allow-direct-references = true
+
+          [tool.hatch.build.targets.wheel]
+          packages = ["src/astronauta"]
+          EOF
+
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("uv.lock")
+          text = path.read_text(encoding="utf-8")
+          old = "68e630c4ca66864dee022af0a8c7b19375a33538"
+          new = "85c023d7e1f3a4fc47c2dd5233c1bdd19ba72ab0"
+          marker = 'name = "okf-parser"\nversion = "0.36.0"'
+          assert text.count(old) == 3, text.count(old)
+          assert text.count(marker) == 1, text.count(marker)
+          text = text.replace(old, new)
+          text = text.replace(marker, 'name = "okf-parser"\nversion = "0.42.0"', 1)
+          path.write_text(text, encoding="utf-8")
+          PY
+
+          test "$(git hash-object uv.lock)" = 00dd04a07290d3a428895211135c0292f5426966
+          test "$(git hash-object pyproject.toml)" = 98e611978727aeee1c13b500f5df2b6285362abc
+          git add pyproject.toml uv.lock
+          git commit --amend --no-edit
+          new14=$(git rev-parse HEAD)
+          test "$(git rev-parse HEAD^)" = "$base13"
+
+          # #15 and #16 do not touch dependency metadata, so replay their exact
+          # reviewed commits onto the new parent.
+          git switch -C work15 "$new14"
+          git cherry-pick "$old15"
+          new15=$(git rev-parse HEAD)
+
+          git switch -C work16 "$new15"
+          git cherry-pick "$old16"
+          new16=$(git rev-parse HEAD)
+
+          # #17 historically carried the 0.36 -> 0.37 dependency promotion.
+          # 0.42 is now inherited from #14, so replay only its semantic token
+          # binding changes and deliberately drop pyproject.toml / uv.lock.
+          git switch -C work17 "$new16"
+          git diff "$old16" "$old17" -- . ':(exclude)pyproject.toml' ':(exclude)uv.lock' > "$RUNNER_TEMP/pr17.patch"
+          git apply --index "$RUNNER_TEMP/pr17.patch"
+          git commit -m "fix(apply): bind commits to the reviewed DuckDB preview"
+          new17=$(git rev-parse HEAD)
+
+          # Mechanical invariants before spending time on the full gate.
+          test "$(git rev-list --count "$base13..$new14")" = 1
+          test "$(git rev-list --count "$new14..$new15")" = 1
+          test "$(git rev-list --count "$new15..$new16")" = 1
+          test "$(git rev-list --count "$new16..$new17")" = 1
+          test "$(git diff --name-only "$base13" "$new14" | wc -l)" = 7
+          test "$(git diff --name-only "$new14" "$new15" | wc -l)" = 6
+          test "$(git diff --name-only "$new15" "$new16" | wc -l)" = 5
+          test "$(git diff --name-only "$new16" "$new17" | wc -l)" = 6
+          ! git diff --name-only "$new16" "$new17" | grep -Eq '^(pyproject.toml|uv.lock)$'
+          ! git ls-tree -r --name-only "$new17" | grep -E 'temporary-|reviewed-apply-trigger|reviewed-apply-gate'
+
+          printf '%s\n' "$new14" > "$RUNNER_TEMP/new14"
+          printf '%s\n' "$new15" > "$RUNNER_TEMP/new15"
+          printf '%s\n' "$new16" > "$RUNNER_TEMP/new16"
+          printf '%s\n' "$new17" > "$RUNNER_TEMP/new17"
+          printf '%s\n' "$expected14" > "$RUNNER_TEMP/expected14"
+          printf '%s\n' "$expected15" > "$RUNNER_TEMP/expected15"
+          printf '%s\n' "$expected16" > "$RUNNER_TEMP/expected16"
+          printf '%s\n' "$expected17" > "$RUNNER_TEMP/expected17"
+
+      - name: Validate exact final product tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          new17=$(cat "$RUNNER_TEMP/new17")
+          git switch --detach "$new17"
+
+          uv sync --frozen
+          uv run python - <<'PY'
+          import importlib.metadata
+          assert importlib.metadata.version("okf-parser") == "0.42.0"
+          PY
+          uv run python -m unittest discover -s tests -v
+          uv build
+
+          bun install --frozen-lockfile
+          bun run verify
+          bun run build
+
+      - name: Publish restacked refs atomically
+        shell: bash
+        run: |
+          set -euo pipefail
+          new14=$(cat "$RUNNER_TEMP/new14")
+          new15=$(cat "$RUNNER_TEMP/new15")
+          new16=$(cat "$RUNNER_TEMP/new16")
+          new17=$(cat "$RUNNER_TEMP/new17")
+          expected14=$(cat "$RUNNER_TEMP/expected14")
+          expected15=$(cat "$RUNNER_TEMP/expected15")
+          expected16=$(cat "$RUNNER_TEMP/expected16")
+          expected17=$(cat "$RUNNER_TEMP/expected17")
+
+          git push --atomic origin \
+            --force-with-lease=refs/heads/stack/06-write-capable-gateway:$expected14 \
+            --force-with-lease=refs/heads/stack/07-body-editor:$expected15 \
+            --force-with-lease=refs/heads/stack/08-duckdb-apply-admin:$expected16 \
+            --force-with-lease=refs/heads/stack/09-reviewed-apply-token:$expected17 \
+            "$new14:refs/heads/stack/06-write-capable-gateway" \
+            "$new15:refs/heads/stack/07-body-editor" \
+            "$new16:refs/heads/stack/08-duckdb-apply-admin" \
+            "$new17:refs/heads/stack/09-reviewed-apply-token"
