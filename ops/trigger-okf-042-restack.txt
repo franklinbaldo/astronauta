@@ -1,2 +1,2 @@
 Trigger the temporary stack restack workflow. This branch is mechanical and must not be merged.
-Retry after fixing checkout credential reuse.
+Retry with granular validation gates and command timeouts.
