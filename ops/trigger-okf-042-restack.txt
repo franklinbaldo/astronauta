@@ -1,2 +1,2 @@
 Trigger the temporary stack restack workflow. This branch is mechanical and must not be merged.
-Retry allowing the Git-pinned Maturin/Rust source build to complete.
+Final retry with a 15-minute budget for the cold Maturin/Rust source build.
