@@ -45,7 +45,7 @@ jobs:
           mkdir -p "$fixture"
           printf '%s\n' '---' 'type: Note' 'title: Hello' 'status: todo' '---' 'Old body' > "$fixture/note.md"
 
-          uv run astronauta "$fixture" --write --port 8765 > "$RUNNER_TEMP/gateway.log" 2>&1 &
+          uv run python -m astronauta.gateway_http "$fixture" --write --port 8765 > "$RUNNER_TEMP/gateway.log" 2>&1 &
           gateway_pid=$!
           HOST=127.0.0.1 PORT=4321 node dist/server/entry.mjs > "$RUNNER_TEMP/astro.log" 2>&1 &
           astro_pid=$!
