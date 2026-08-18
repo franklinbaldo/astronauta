@@ -1,0 +1,147 @@
+---
+import { actions } from "astro:actions";
+
+import Layout from "../../../layouts/Layout.astro";
+import { okf } from "../../../lib/server/okf";
+
+const id = Astro.params.id ?? "";
+const concept = id ? await okf.concept(id) : null;
+if (concept === null) {
+  return new Response("Concept not found", { status: 404 });
+}
+
+const preview = Astro.getActionResult(actions.editPreview);
+const commit = Astro.getActionResult(actions.editCommit);
+const previewData = preview?.data;
+const commitData = commit?.data;
+const previewMutation = previewData?.mutation;
+const commitMutation = commitData?.mutation;
+const formBody = previewData?.input.body ?? commitData?.input.body ?? concept.body;
+const sourceDigest = concept.source_digest;
+const canEdit = typeof sourceDigest === "string" && /^sha256:[0-9a-f]{64}$/u.test(sourceDigest);
+const detailHref = `/concepts/${id.split("/").map(encodeURIComponent).join("/")}`;
+---
+
+<Layout title={`Editar ${concept.title ?? concept.id} — Astronauta`}>
+  <div class="space-y-6">
+    <div class="flex items-start justify-between gap-4">
+      <div>
+        <a href={detailHref} class="text-xs font-semibold text-sky-400 hover:underline">← Voltar ao conceito</a>
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-4">Markdown body</p>
+        <h1 class="text-3xl font-bold text-slate-100 tracking-tight mt-1">{concept.title ?? concept.id}</h1>
+        <p class="font-mono text-xs text-slate-500 mt-2 break-all">{concept.id} · {concept.path}</p>
+      </div>
+      <span class="badge badge-purple">{concept.type}</span>
+    </div>
+
+    {!canEdit && (
+      <div class="glass-card p-5 border border-amber-700/60">
+        <h2 class="font-semibold text-amber-300">Edição indisponível</h2>
+        <p class="text-sm text-slate-400 mt-2">
+          O snapshot atual não expõe um source_digest válido. Atualize o runtime do okf-parser antes de editar.
+        </p>
+      </div>
+    )}
+
+    {commit?.error && (
+      <div class="glass-card p-5 border border-red-800/70">
+        <h2 class="font-semibold text-red-300">Commit não autorizado ou inválido</h2>
+        <p class="text-sm text-slate-400 mt-2">{commit.error.message}</p>
+      </div>
+    )}
+
+    {commitMutation && (
+      <div class:list={["glass-card p-5 border", commitMutation.succeeded && commitMutation.written ? "border-emerald-700/70" : "border-amber-700/70"]}>
+        <h2 class:list={["font-semibold", commitMutation.succeeded && commitMutation.written ? "text-emerald-300" : "text-amber-300"]}>
+          {commitMutation.succeeded && commitMutation.written ? "Alteração gravada" : "Alteração não gravada"}
+        </h2>
+        {commitMutation.error && <p class="text-sm text-slate-400 mt-2">{commitMutation.error}</p>}
+        {commitMutation.conflict_paths.length > 0 && (
+          <p class="text-sm text-amber-300 mt-2">
+            Conflito detectado em: {commitMutation.conflict_paths.join(", ")}. Recarregue antes de tentar novamente.
+          </p>
+        )}
+        {commitMutation.succeeded && commitMutation.written && (
+          <p class="text-sm text-slate-400 mt-2">
+            O okf-parser validou o bundle e substituiu o documento somente após a verificação final de frescor.
+          </p>
+        )}
+      </div>
+    )}
+
+    {preview?.error && (
+      <div class="glass-card p-5 border border-red-800/70">
+        <h2 class="font-semibold text-red-300">Preview inválido</h2>
+        <p class="text-sm text-slate-400 mt-2">{preview.error.message}</p>
+      </div>
+    )}
+
+    {previewMutation && (
+      <section class="glass-card p-5 space-y-4 border border-sky-800/60">
+        <div>
+          <p class="text-xs uppercase tracking-wider text-sky-400 font-semibold">Preview do parser</p>
+          <h2 class="font-semibold text-slate-100 mt-1">
+            {previewMutation.changed ? "O documento será alterado" : "Nenhuma mudança material"}
+          </h2>
+        </div>
+        {previewMutation.error && <p class="text-sm text-amber-300">{previewMutation.error}</p>}
+        {previewMutation.validation.length > 0 && (
+          <div>
+            <p class="text-sm font-semibold text-red-300">Novos diagnósticos normativos</p>
+            <ul class="mt-2 space-y-1 text-xs text-slate-400">
+              {previewMutation.validation.map((item) => (
+                <li class="font-mono">{item.code} · {item.path} · {item.message}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {previewMutation.succeeded && previewMutation.changed && (
+          <div class="grid gap-2 text-xs font-mono text-slate-500">
+            <div>source atual: {previewMutation.source_digest}</div>
+            <div>source candidato: {previewMutation.candidate_source_digest}</div>
+            <div>parsed candidato: {previewMutation.candidate_parsed_digest}</div>
+          </div>
+        )}
+        {previewMutation.succeeded && previewMutation.changed && previewData && (
+          <form method="POST" action={actions.editCommit} class="pt-2">
+            <input type="hidden" name="concept_id" value={previewData.input.concept_id} />
+            <input type="hidden" name="expected_source_digest" value={previewData.input.expected_source_digest} />
+            <textarea name="body" class="hidden">{previewData.input.body}</textarea>
+            <button type="submit" class="rounded bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition">
+              Commit desta versão
+            </button>
+            <p class="text-xs text-slate-500 mt-2">
+              O commit reutiliza o digest original; se o arquivo mudou desde a abertura, falha como conflito.
+            </p>
+          </form>
+        )}
+      </section>
+    )}
+
+    <form method="POST" action={actions.editPreview} class="glass-card p-6 space-y-4">
+      <input type="hidden" name="concept_id" value={concept.id} />
+      <input type="hidden" name="expected_source_digest" value={sourceDigest ?? ""} />
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <label for="body" class="font-semibold text-slate-100">Corpo Markdown</label>
+          <p class="text-xs text-slate-500 mt-1">Frontmatter não é editado aqui; ele usa a superfície DuckDB/apply.</p>
+        </div>
+        <span class="text-xs text-slate-500">Preview obrigatório</span>
+      </div>
+      <textarea
+        id="body"
+        name="body"
+        rows="26"
+        disabled={!canEdit}
+        class="w-full bg-slate-950 border border-slate-700 rounded p-4 font-mono text-sm text-slate-100 focus:outline-none focus:border-sky-400 disabled:opacity-50"
+      >{formBody}</textarea>
+      <button
+        type="submit"
+        disabled={!canEdit}
+        class="rounded bg-sky-600 hover:bg-sky-500 px-4 py-2 text-sm font-semibold text-white transition disabled:opacity-40"
+      >
+        Gerar preview
+      </button>
+    </form>
+  </div>
+</Layout>
