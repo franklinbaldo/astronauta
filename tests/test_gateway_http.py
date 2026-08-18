@@ -69,6 +69,26 @@ title: Hello
         self.assertEqual(status, 400)
         self.assertEqual(payload["error"], "ValueError")
 
+    def test_browser_payload_cannot_enable_trusted_schema_sql(self) -> None:
+        (self.root / "types").mkdir()
+        (self.root / "types" / "note.schema.sql").write_text(
+            "this is deliberately invalid DuckDB SQL",
+            encoding="utf-8",
+        )
+
+        status, payload = self.post(
+            {
+                "capability": "schema",
+                "spec_template": "types/{slug}.md",
+            }
+        )
+
+        self.assertEqual(status, 200)
+        result = payload["result"]
+        self.assertIsInstance(result, dict)
+        assert isinstance(result, dict)
+        self.assertIn("Note", result["schemas"])
+
 
 if __name__ == "__main__":
     unittest.main()

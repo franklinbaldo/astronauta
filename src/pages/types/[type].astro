@@ -3,8 +3,19 @@ import Layout from '../../layouts/Layout.astro';
 import { okf } from '../../lib/server/okf';
 
 const type = Astro.params.type || '';
-const concepts = await okf.concepts(type);
+const [concepts, schemaProjection] = await Promise.all([okf.concepts(type), okf.schema()]);
+const typeSchema = schemaProjection.schemas[type];
+const properties = Object.entries(typeSchema?.properties || {}).sort(([left], [right]) => left.localeCompare(right));
+const required = new Set(typeSchema?.required || []);
 const conceptHref = (id: string) => `/concepts/${id.split('/').map(encodeURIComponent).join('/')}`;
+const contractLabel = (field: Record<string, unknown>) => {
+  const duckdb = field['x-okf-duckdb-type'];
+  if (typeof duckdb === 'string') return duckdb;
+  const jsonType = field.type;
+  if (Array.isArray(jsonType)) return jsonType.join(' | ');
+  return typeof jsonType === 'string' ? jsonType : 'generic';
+};
+const declaredCount = properties.filter(([, field]) => typeof field['x-okf-duckdb-type'] === 'string').length;
 ---
 
 <Layout title={`${type || 'Tipo'} — Astronauta`}>
@@ -15,8 +26,49 @@ const conceptHref = (id: string) => `/concepts/${id.split('/').map(encodeURIComp
         <h1 class="text-3xl font-bold text-slate-100 tracking-tight mt-2 font-mono">{type}</h1>
         <p class="text-slate-400 text-sm mt-1">{concepts.length} conceito(s) no estado atual do bundle.</p>
       </div>
-      <span class="badge badge-purple">type</span>
+      <div class="flex gap-2">
+        <span class="badge badge-purple">type</span>
+        <span class={declaredCount > 0 ? 'badge badge-green' : 'badge badge-blue'}>
+          {declaredCount > 0 ? `${declaredCount} declared field(s)` : 'generic contract'}
+        </span>
+      </div>
     </div>
+
+    <section class="glass-card p-6 space-y-4">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">TypeContract / JSON Schema</p>
+        <h2 class="text-lg font-bold text-slate-200 mt-1">Campos disponíveis para o admin</h2>
+        <p class="text-xs text-slate-500 mt-1">
+          Metadados vêm do contrato canônico do parser. A lista abaixo não transforma observações em tipos normativos.
+        </p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm text-slate-300">
+          <thead class="text-xs uppercase tracking-wider text-slate-500 border-b border-slate-800">
+            <tr>
+              <th class="py-3 pr-4">Campo</th>
+              <th class="py-3 pr-4">Contrato</th>
+              <th class="py-3 pr-4">Obrigatório</th>
+              <th class="py-3">Descrição</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800">
+            {properties.map(([name, field]) => (
+              <tr>
+                <td class="py-3 pr-4 font-mono text-xs text-sky-400">{name}</td>
+                <td class="py-3 pr-4"><span class={typeof field['x-okf-duckdb-type'] === 'string' ? 'badge badge-green font-mono' : 'badge badge-blue font-mono'}>{contractLabel(field)}</span></td>
+                <td class="py-3 pr-4 text-xs text-slate-400">{required.has(name) ? 'sim' : 'não'}</td>
+                <td class="py-3 text-xs text-slate-400">{typeof field.description === 'string' ? field.description : '—'}</td>
+              </tr>
+            ))}
+            {properties.length === 0 && (
+              <tr><td colspan="4" class="py-6 text-center text-slate-500">O contrato não expõe campos para este tipo.</td></tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </section>
 
     <div class="glass-card p-4">
       <input type="search" id="search" placeholder="Filtrar por ID, título ou caminho..." class="w-full bg-slate-950 border border-slate-700 rounded px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-400" />
