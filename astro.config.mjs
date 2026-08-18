@@ -8,5 +8,12 @@ export default defineConfig({
   adapter: node({ mode: 'standalone' }),
   vite: {
     plugins: [tailwindcss()],
+    ssr: {
+      // The standalone runtime is shipped inside the Python wheel, without a
+      // consumer-side node_modules tree. Bundle Node dependencies into the SSR
+      // output so the installed artifact is self-contained apart from Node
+      // itself. Node built-ins remain external for the node SSR target.
+      noExternal: true,
+    },
   },
 });
