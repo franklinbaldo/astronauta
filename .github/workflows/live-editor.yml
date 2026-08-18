@@ -1,0 +1,128 @@
+name: Live editor
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-editor-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  body-edit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: package.json
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: "0.11.21"
+          python-version: "3.12"
+
+      - name: Install locked dependencies and build SSR
+        run: |
+          bun install --frozen-lockfile
+          uv sync --frozen
+          bun run build
+
+      - name: Preview then commit through real Astro Actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          fixture="$RUNNER_TEMP/edit-okf"
+          page_url='http://127.0.0.1:4321/concepts/edit/note'
+          mkdir -p "$fixture"
+          printf '%s\n' '---' 'type: Note' 'title: Hello' 'status: todo' '---' 'Old body' > "$fixture/note.md"
+
+          uv run astronauta "$fixture" --write --port 8765 > "$RUNNER_TEMP/gateway.log" 2>&1 &
+          gateway_pid=$!
+          HOST=127.0.0.1 PORT=4321 node dist/server/entry.mjs > "$RUNNER_TEMP/astro.log" 2>&1 &
+          astro_pid=$!
+          trap 'kill "$astro_pid" "$gateway_pid" 2>/dev/null || true' EXIT
+
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent "$page_url" > "$RUNNER_TEMP/before.html"; then
+              break
+            fi
+            if [ "$attempt" -eq 30 ]; then
+              cat "$RUNNER_TEMP/gateway.log"
+              cat "$RUNNER_TEMP/astro.log"
+              exit 1
+            fi
+            sleep 1
+          done
+
+          grep -F 'Old body' "$RUNNER_TEMP/before.html"
+          python - "$RUNNER_TEMP/before.html" "$RUNNER_TEMP/preview-action" "$RUNNER_TEMP/digest" <<'PY'
+          import re
+          import sys
+
+          html = open(sys.argv[1], encoding="utf-8").read()
+          actions = re.findall(r'<form[^>]+action="([^"]+)"', html)
+          if len(actions) != 1:
+              raise SystemExit(f"expected one initial preview form, got {actions}")
+          open(sys.argv[2], "w", encoding="utf-8").write(actions[0])
+          match = re.search(r'name="expected_source_digest" value="([^"]+)"', html)
+          if match is None:
+              raise SystemExit("source digest field missing")
+          open(sys.argv[3], "w", encoding="utf-8").write(match.group(1))
+          PY
+
+          preview_action=$(cat "$RUNNER_TEMP/preview-action")
+          digest=$(cat "$RUNNER_TEMP/digest")
+          case "$preview_action" in
+            http*) preview_url="$preview_action" ;;
+            \?*) preview_url="$page_url$preview_action" ;;
+            /*) preview_url="http://127.0.0.1:4321$preview_action" ;;
+            *) preview_url="http://127.0.0.1:4321/concepts/edit/$preview_action" ;;
+          esac
+
+          curl --fail-with-body --silent --show-error "$preview_url" \
+            --header 'Origin: http://127.0.0.1:4321' \
+            --header "Referer: $page_url" \
+            --data-urlencode 'concept_id=note' \
+            --data-urlencode "expected_source_digest=$digest" \
+            --data-urlencode $'body=New body\n' > "$RUNNER_TEMP/preview.html"
+
+          grep -F 'O documento será alterado' "$RUNNER_TEMP/preview.html"
+          grep -F 'Old body' "$fixture/note.md"
+
+          python - "$RUNNER_TEMP/preview.html" "$RUNNER_TEMP/commit-action" <<'PY'
+          import re
+          import sys
+
+          html = open(sys.argv[1], encoding="utf-8").read()
+          actions = re.findall(r'<form[^>]+action="([^"]+)"', html)
+          if len(actions) < 2:
+              raise SystemExit(f"expected commit and preview forms, got {actions}")
+          open(sys.argv[2], "w", encoding="utf-8").write(actions[0])
+          PY
+
+          commit_action=$(cat "$RUNNER_TEMP/commit-action")
+          case "$commit_action" in
+            http*) commit_url="$commit_action" ;;
+            \?*) commit_url="$page_url$commit_action" ;;
+            /*) commit_url="http://127.0.0.1:4321$commit_action" ;;
+            *) commit_url="http://127.0.0.1:4321/concepts/edit/$commit_action" ;;
+          esac
+
+          curl --fail-with-body --silent --show-error "$commit_url" \
+            --header 'Origin: http://127.0.0.1:4321' \
+            --header "Referer: $page_url" \
+            --data-urlencode 'concept_id=note' \
+            --data-urlencode "expected_source_digest=$digest" \
+            --data-urlencode $'body=New body\n' > "$RUNNER_TEMP/commit.html"
+
+          grep -F 'Alteração gravada' "$RUNNER_TEMP/commit.html"
+          grep -F 'New body' "$fixture/note.md"
