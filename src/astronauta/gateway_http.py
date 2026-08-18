@@ -3,6 +3,11 @@
 This module is intentionally not a public REST API. It transports the small
 capability vocabulary defined in :mod:`astronauta.gateway` so Astro can run in
 a separate process while the final GraphQL/application packaging evolves.
+
+Requests are deliberately serialized. The transport is temporary local
+plumbing and must not impose an undocumented thread-safety requirement on the
+canonical parser/DuckDB/Ibis stack merely because Astro can issue reads in
+parallel.
 """
 
 from __future__ import annotations
@@ -10,7 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 from http import HTTPStatus
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from typing import Any
 
@@ -89,8 +94,8 @@ class GatewayHandler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
 
-class GatewayServer(ThreadingHTTPServer):
-    """HTTP server carrying immutable local operator configuration."""
+class GatewayServer(HTTPServer):
+    """Serialized loopback server carrying immutable operator configuration."""
 
     def __init__(
         self,
