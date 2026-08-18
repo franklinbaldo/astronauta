@@ -124,3 +124,77 @@ jobs:
             cat "$RUNNER_TEMP/runtime.log"
             exit 1
           fi
+
+  installed-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install Node
+        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6
+        with:
+          node-version: "22"
+
+      - name: Install Bun for artifact build only
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: package.json
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: "0.11.21"
+          python-version: "3.12"
+
+      - name: Build wheel with staged standalone web runtime
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+          python scripts/stage_web_runtime.py
+          uv build --wheel
+
+      - name: Install wheel into a fresh consumer environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv venv "$RUNNER_TEMP/consumer"
+          uv pip install --python "$RUNNER_TEMP/consumer/bin/python" dist/astronauta-*.whl
+
+      - name: Prove installed consumer needs no Bun or source checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          bun_path="$(command -v bun)"
+          rm -f "$bun_path"
+          hash -r
+          if command -v bun >/dev/null 2>&1; then
+            echo 'Bun must not be available to the consumer runtime'
+            exit 1
+          fi
+
+          fixture="$RUNNER_TEMP/installed-okf"
+          home="$RUNNER_TEMP/consumer-home"
+          mkdir -p "$fixture" "$home"
+          printf '%s\n' '---' 'type: Note' 'title: Installed' '---' '# Installed' > "$fixture/installed.md"
+
+          cd "$home"
+          "$RUNNER_TEMP/consumer/bin/astronauta" "$fixture" --port 4322 > "$RUNNER_TEMP/installed-runtime.log" 2>&1 &
+          runtime_pid=$!
+          trap 'kill -TERM "$runtime_pid" 2>/dev/null || true; wait "$runtime_pid" 2>/dev/null || true' EXIT
+
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4322/types/Note > "$RUNNER_TEMP/installed.html"; then
+              break
+            fi
+            if [ "$attempt" -eq 30 ]; then
+              cat "$RUNNER_TEMP/installed-runtime.log"
+              exit 1
+            fi
+            sleep 1
+          done
+
+          grep -F 'Installed' "$RUNNER_TEMP/installed.html"
+          kill -TERM "$runtime_pid"
+          wait "$runtime_pid"
+          trap - EXIT
