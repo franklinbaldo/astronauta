@@ -63,7 +63,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "okf-parser", git = "https://github.com/franklinbaldo/okf-parser.git?rev=33b3e1fc5de3395cc890d06b128899b8e4adbd06" },
+    { name = "okf-parser", specifier = "==0.42.8" },
     { name = "rich", specifier = ">=13.0.0" },
     { name = "typer", specifier = ">=0.9.0" },
 ]
@@ -838,8 +838,8 @@ wheels = [
 
 [[package]]
 name = "okf-parser"
-version = "0.22.0"
-source = { git = "https://github.com/franklinbaldo/okf-parser.git?rev=33b3e1fc5de3395cc890d06b128899b8e4adbd06#33b3e1fc5de3395cc890d06b128899b8e4adbd06" }
+version = "0.42.8"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cyclopts" },
     { name = "duckdb" },
@@ -854,6 +854,14 @@ dependencies = [
     { name = "pydantic" },
     { name = "pyyaml" },
     { name = "ruamel-yaml" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c8/20/6121a5cee11a35e27bfa95680a19a8444105f298f11d4aaa2ee76a1bd7d3/okf_parser-0.42.8.tar.gz", hash = "sha256:59630c06585bbdac871cd3ed84cc1a53ce76b35d4765aeb78fb72140858aca63", size = 459217, upload-time = "2026-08-18T12:19:40.704Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9e/8a/b3366df13fe830c5ab63f5ef6623e4c3ecad407519fa527962a7cffa5f64/okf_parser-0.42.8-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:ce06f2b9323a4bc3f84596c19e4e188b937d4372b7036703154407912c1ec60d", size = 1296668, upload-time = "2026-08-18T12:19:46.059Z" },
+    { url = "https://files.pythonhosted.org/packages/bc/b9/e05f6d91f9cc9203cf2dff2287d0ea04953f038aaf73d2c7804107c05c5f/okf_parser-0.42.8-py3-none-macosx_11_0_arm64.whl", hash = "sha256:134ba4feeb6f8292df9cc604a14f8e0034deb4445a13f6261b8a31791af73204", size = 1210285, upload-time = "2026-08-18T12:19:43.148Z" },
+    { url = "https://files.pythonhosted.org/packages/fd/67/21b3ed16d70ed6777b0221bf8e518b1400b75a84a00dcd8ae7c039419e8b/okf_parser-0.42.8-py3-none-manylinux_2_28_aarch64.whl", hash = "sha256:e60c155d0fe7f0ab7bfddd2c00a8207ea363e4fa5c7ac5a93372ef3f2cdbf38d", size = 1257552, upload-time = "2026-08-18T12:19:44.642Z" },
+    { url = "https://files.pythonhosted.org/packages/db/a9/354d8997f36fa50710c44041db88948d4103cd95189dedbc3558df4723a2/okf_parser-0.42.8-py3-none-manylinux_2_28_x86_64.whl", hash = "sha256:d8688c388ee0014f326e584b8aad338806905fd38b1502d095b4569ab80d46b1", size = 1344722, upload-time = "2026-08-18T12:19:41.815Z" },
+    { url = "https://files.pythonhosted.org/packages/fd/7a/8ace4bf66b36d208d6fdfd444b4b833453b80f9e3c742004f75e36fb6cd3/okf_parser-0.42.8-py3-none-win_amd64.whl", hash = "sha256:39560804341a5162f52728c45748197a044c958ac8e72c21934fb437c8edc377", size = 1290060, upload-time = "2026-08-18T12:19:39.323Z" },
 ]
 
 [[package]]
