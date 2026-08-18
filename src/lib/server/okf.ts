@@ -99,6 +99,7 @@ export type ApplyMutationResult = {
   written: boolean;
   validation: MutationDiagnostic[];
   conflict_paths: string[];
+  preview_token?: string;
   error?: string;
 };
 
@@ -111,7 +112,8 @@ type Capability =
   | 'graph'
   | 'edit_preview'
   | 'edit_write'
-  | 'apply_preview';
+  | 'apply_preview'
+  | 'apply_write';
 
 type GatewayRequest = {
   capability: Capability;
@@ -120,6 +122,7 @@ type GatewayRequest = {
   body?: string;
   expected_source_digest?: string;
   sql?: string;
+  preview_token?: string;
 };
 
 function gatewayUrl(): URL {
@@ -164,4 +167,10 @@ export const okf = {
     gateway<EditMutationResult>({ capability: 'edit_write', ...input }),
   applyPreview: (sql: string) =>
     gateway<ApplyMutationResult>({ capability: 'apply_preview', sql }),
+  applyWrite: (sql: string, previewToken: string) =>
+    gateway<ApplyMutationResult>({
+      capability: 'apply_write',
+      sql,
+      preview_token: previewToken,
+    }),
 };

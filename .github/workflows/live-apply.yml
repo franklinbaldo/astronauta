@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  duckdb-apply-preview:
+  duckdb-apply-reviewed-commit:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -36,7 +36,7 @@ jobs:
           uv sync --frozen
           bun run build
 
-      - name: Preview through Astro Action without write authority
+      - name: Preview then commit the exact reviewed candidate
         shell: bash
         run: |
           set -euo pipefail
@@ -45,15 +45,12 @@ jobs:
           mkdir -p "$fixture"
           printf '%s\n' '---' 'type: Note' 'title: Hello' 'status: todo' '---' 'Body' > "$fixture/note.md"
 
-          uv run astronauta "$fixture" --port 8765 > "$RUNNER_TEMP/gateway.log" 2>&1 &
+          uv run astronauta "$fixture" --write --port 8765 > "$RUNNER_TEMP/gateway.log" 2>&1 &
           gateway_pid=$!
           HOST=127.0.0.1 PORT=4321 node dist/server/entry.mjs > "$RUNNER_TEMP/astro.log" 2>&1 &
           astro_pid=$!
           trap 'kill "$astro_pid" "$gateway_pid" 2>/dev/null || true' EXIT
 
-          # The /apply GET is static until an Action is submitted, so Astro being
-          # ready does not prove that its private Python dependency is listening.
-          # Probe the gateway explicitly before exercising the server-side fetch.
           for attempt in $(seq 1 30); do
             if curl --fail --silent \
               --header 'content-type: application/json' \
@@ -86,9 +83,10 @@ jobs:
 
           html = open(sys.argv[1], encoding="utf-8").read()
           actions = re.findall(r'<form[^>]+action="([^"]+)"', html)
-          if len(actions) != 1 or "applyPreview" not in actions[0]:
+          matches = [action for action in actions if "applyPreview" in action]
+          if len(matches) != 1:
               raise SystemExit(f"expected one initial applyPreview form, got {actions}")
-          open(sys.argv[2], "w", encoding="utf-8").write(actions[0])
+          open(sys.argv[2], "w", encoding="utf-8").write(matches[0])
           PY
 
           preview_action=$(cat "$RUNNER_TEMP/preview-action")
@@ -107,7 +105,38 @@ jobs:
 
           grep -F '1 arquivo(s) serão alterados' "$RUNNER_TEMP/preview.html"
           grep -F 'status: todo' "$fixture/note.md"
-          if grep -F '_action=applyCommit' "$RUNNER_TEMP/preview.html"; then
-            echo 'preview-only slice exposed a commit action' >&2
-            exit 1
-          fi
+
+          python - "$RUNNER_TEMP/preview.html" "$RUNNER_TEMP/commit-action" "$RUNNER_TEMP/preview-token" <<'PY'
+          import html
+          import re
+          import sys
+
+          page = open(sys.argv[1], encoding="utf-8").read()
+          actions = re.findall(r'<form[^>]+action="([^"]+)"', page)
+          matches = [action for action in actions if "applyCommit" in action]
+          if len(matches) != 1:
+              raise SystemExit(f"expected one reviewed applyCommit form, got {actions}")
+          token = re.search(r'name="preview_token" value="([^"]+)"', page)
+          if token is None:
+              raise SystemExit("reviewed preview token missing")
+          open(sys.argv[2], "w", encoding="utf-8").write(html.unescape(matches[0]))
+          open(sys.argv[3], "w", encoding="utf-8").write(html.unescape(token.group(1)))
+          PY
+
+          commit_action=$(cat "$RUNNER_TEMP/commit-action")
+          preview_token=$(cat "$RUNNER_TEMP/preview-token")
+          case "$commit_action" in
+            http*) commit_url="$commit_action" ;;
+            \?*) commit_url="$page_url$commit_action" ;;
+            /*) commit_url="http://127.0.0.1:4321$commit_action" ;;
+            *) commit_url="http://127.0.0.1:4321/$commit_action" ;;
+          esac
+
+          curl --fail-with-body --silent --show-error "$commit_url" \
+            --header 'Origin: http://127.0.0.1:4321' \
+            --header "Referer: $page_url" \
+            --data-urlencode "sql=$sql" \
+            --data-urlencode "preview_token=$preview_token" > "$RUNNER_TEMP/commit.html"
+
+          grep -F 'Alterações gravadas' "$RUNNER_TEMP/commit.html"
+          grep -F 'status: done' "$fixture/note.md"
