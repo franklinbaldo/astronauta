@@ -1,90 +1,89 @@
 # Astronauta 👩‍🚀
 
-**A human interface for exploring and administering Open Knowledge Format (OKF) bundles.** Astronauta sits on top of [`okf-parser`](https://github.com/franklinbaldo/okf-parser): the parser owns OKF semantics, validation, relations and mutation contracts; Astronauta turns those capabilities into a dense, navigable Astro interface for people.
+> **A live, Django-admin-style interface for Open Knowledge Format (OKF v0.2) bundles, powered by `okf-parser` and Astro.**
 
-Astronauta is intentionally optional. Agents and other software can work with OKF directly through `okf-parser`; the web interface exists for human inspection, review and administration.
+Astronauta turns an OKF directory into a zero-registration admin surface. The authored OKF `type` is the model boundary; concept Markdown documents are objects; frontmatter fields, Markdown bodies, normalized links, diagnostics, and schema contracts all come from the canonical `okf-parser` implementation.
 
-## What `main` does today
+The architectural rule is intentionally strict:
 
-The current `main` branch is a read-oriented admin-panel generator. It loads an OKF bundle through `okf-parser`, projects the parsed data into JSON, and renders an Astro interface with four main views:
+> **Astronauta owns presentation and interaction. `okf-parser` owns OKF semantics and filesystem mutation.**
+>
+> **One semantic authority is mandatory. One transport is not.**
 
-- **Overview** — bundle size, concept/type counts, links and conformance status;
-- **Concepts** — browse concepts, metadata and relations;
-- **Graph** — inspect the bundle relationship graph;
-- **Diagnostics** — inspect parser diagnostics and validation problems.
-
-The important boundary is that Astronauta does not define a second OKF model. Parsing, graph construction and diagnostics originate in `okf-parser`; the UI projects them for human use.
+## Architecture
 
 ```text
-OKF bundle
-   │
-   ▼
-okf-parser
-   ├── concepts / relations
-   ├── diagnostics
-   └── graph
-   │
-   ▼
-Astronauta projection
-   │
-   ▼
-Astro human interface
+Browser
+  -> Astro SSR
+  -> server-only OKF capability client
+  -> local OKF application gateway
+     -> canonical okf-parser Bundle / TypeContract / Ibis relations
+     -> OKF bundle
 ```
 
-## Try the current version
+The current stacked implementation uses a private loopback capability transport between Astro and Python. It is deliberately replaceable: `okf-parser#56` is the preferred future GraphQL read adapter, while `okf-parser#65` tracks the explicit preview/commit service required for editing.
 
-Requires Python 3.12+ and Bun.
+There is no generated `src/data/*.json` source of truth and no folder-name fallback for semantic type.
+
+## Current read-only admin
+
+- live bundle dashboard and parser diagnostics;
+- automatic index of producer-defined OKF `type`s;
+- per-type change-list-style views;
+- canonical concept detail pages;
+- authored frontmatter and raw Markdown body;
+- normalized forward, reverse, and unresolved links;
+- interactive graph projection;
+- canonical JSON Schema / `TypeContract` metadata;
+- optional RFC 0006 physical types from `.schema.sql` declarations.
+
+A bundle with a new concept or a new authored type becomes visible after the next request without regeneration or Astronauta-specific registration.
+
+## Local development
+
+Install the locked dependencies:
 
 ```bash
-uv sync
+uv sync --frozen
 bun install --frozen-lockfile
-
-# Parse a bundle and generate the Astro data projection.
-uv run astronauta /path/to/okf-bundle
-
-# Browse it locally.
-bun run dev
 ```
 
-By default the generated projection is written to `src/data/`. You can choose another output directory with `--out` / `-o`.
+Run the private Python gateway in one terminal:
 
-## Where the project is going
+```bash
+uv run astronauta /path/to/okf-bundle
+```
 
-Astronauta is actively evolving from a generated read-only projection into a **live SSR administration surface backed directly by `okf-parser`**. That work is deliberately staged so the web application never acquires its own filesystem or OKF semantics.
-
-The current development stack is testing, in order:
-
-- a live application gateway over `okf-parser` instead of stale generated snapshots;
-- server-rendered reads and richer concept inspection;
-- explicit process-owned write authority;
-- preview-first Markdown body editing with conflict detection;
-- preview-first DuckDB bulk edits using the parser's own compiler;
-- commits bound to the exact reviewed preview;
-- a single `astronauta PATH [--write]` runtime that owns the private gateway and Astro lifecycle.
-
-These capabilities are **development work, not claims about `main`**. Follow the open PR stack starting from the repository's pull requests for the current implementation status.
-
-## Design relationship with Cobogó
-
-Astronauta is also a real high-density consumer/candidate for [`Cobogó`](https://github.com/franklinbaldo/cobogo), Franklin's shared design grammar. The goal is shared semantic foundations and accessible interaction patterns without making Astronauta look like editorial or public-data consumers. Its dark, compact administrative identity remains local to this product.
-
-## Architecture principles
-
-- **`okf-parser` is semantic authority.** Astronauta should not duplicate parsing, identity, graph, validation or mutation rules.
-- **Human surface, not mandatory gateway.** Other tools do not need Astronauta to access an OKF bundle.
-- **Preview before mutation.** Write flows under development preserve parser-owned preview/commit boundaries and conflict checks.
-- **Authority is process-owned.** A browser request must not be able to grant itself filesystem write permission.
-- **Dense does not mean opaque.** Tables, status, relations, focus and keyboard interaction should remain scannable and accessible.
-
-## Development commands
+Then run Astro in another:
 
 ```bash
 bun run dev
-bun run build
-uv run pytest
 ```
 
-See [`AGENTS.md`](./AGENTS.md) for the repository's working conventions.
+Astro defaults to `http://127.0.0.1:8765/gateway`. `ASTRONAUTA_GATEWAY_URL` may select another **loopback** endpoint for tests/development.
+
+### Declared schemas are explicit trusted input
+
+RFC 0006 `.schema.sql` files are trusted DuckDB SQL. Astronauta therefore does **not** discover or execute them merely because they are present in a bundle. The local operator must opt in with the same type-spec template used by `okf-parser`:
+
+```bash
+uv run astronauta /path/to/okf-bundle \
+  --spec-template 'docs/types/{slug}.md'
+```
+
+Browser requests cannot enable or override this setting.
+
+## What is intentionally not implemented yet
+
+The target product shape remains:
+
+```text
+astronauta PATH [--write]
+```
+
+The current `astronauta PATH` command starts **only the private read-only Python gateway**. Issue #7 tracks expanding that same command so it owns the Astro process, packaging, lifecycle, and eventually explicit write capability. The syntax has converged; the product lifecycle has not.
+
+Web editing is also intentionally absent until `okf-parser#65` provides parser-owned preview/commit semantics with optimistic concurrency. Astronauta will not regain a direct Markdown/YAML writer to get there sooner.
 
 ## License
 
