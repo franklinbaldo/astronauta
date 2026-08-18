@@ -3,6 +3,7 @@ from __future__ import annotations
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from astronauta.gateway import concept, concepts, diagnostics, graph, summary
 
@@ -66,6 +67,19 @@ Owns [Alpha](../tasks/alpha.md).
         self.assertTrue(any(item["target_id"] is None for item in alpha["outgoing_links"]))
         self.assertTrue(any(item["source_id"] == ada_id for item in alpha["incoming_links"]))
 
+    def test_concept_and_graph_reads_do_not_use_direct_bundle_projection(self) -> None:
+        with patch(
+            "astronauta.gateway._load_state",
+            side_effect=AssertionError("preferred concept reads must stay behind GraphQL"),
+        ):
+            rows = concepts(self.root)
+            alpha_id = next(row["id"] for row in rows if row["path"] == "tasks/alpha.md")
+            self.assertIsNotNone(concept(self.root, alpha_id))
+            projection = graph(self.root)
+
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(len(projection["nodes"]), 2)
+
     def test_graph_does_not_promote_broken_links_to_nodes(self) -> None:
         projection = graph(self.root)
         node_ids = {item["id"] for item in projection["nodes"]}
@@ -87,6 +101,21 @@ title: Beta
         after = summary(self.root)
         self.assertEqual(after["total_concepts"], before["total_concepts"] + 1)
         self.assertEqual(after["concepts_by_type"]["Task"], 2)
+
+    def test_graphql_reads_create_fresh_live_snapshots_per_call(self) -> None:
+        before = concepts(self.root)
+        (self.root / "tasks" / "beta.md").write_text(
+            """---
+type: Task
+title: Beta
+---
+# Beta
+""",
+            encoding="utf-8",
+        )
+        after = concepts(self.root)
+        self.assertEqual(len(after), len(before) + 1)
+        self.assertEqual([row["title"] for row in after if row["type"] == "Task"], ["Alpha", "Beta"])
 
     def test_parser_diagnostics_are_exposed_without_reclassification(self) -> None:
         findings = diagnostics(self.root)

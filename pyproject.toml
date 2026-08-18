@@ -9,7 +9,7 @@ description = "Live Django-admin-style interface for OKF bundles"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "okf-parser==0.42.8",
+    "okf-parser[graphql]==0.43.0",
     "typer>=0.9.0",
     "rich>=13.0.0",
 ]
