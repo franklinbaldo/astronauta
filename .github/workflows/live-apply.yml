@@ -45,7 +45,10 @@ jobs:
           mkdir -p "$fixture"
           printf '%s\n' '---' 'type: Note' 'title: Hello' 'status: todo' '---' 'Body' > "$fixture/note.md"
 
-          uv run astronauta "$fixture" --write --port 8765 > "$RUNNER_TEMP/gateway.log" 2>&1 &
+          # This E2E intentionally exercises the private transport directly so it
+          # can test the parser/Astro boundary independently of the public runtime
+          # supervisor introduced by this stack slice.
+          uv run python -m astronauta.gateway_http "$fixture" --write --port 8765 > "$RUNNER_TEMP/gateway.log" 2>&1 &
           gateway_pid=$!
           HOST=127.0.0.1 PORT=4321 node dist/server/entry.mjs > "$RUNNER_TEMP/astro.log" 2>&1 &
           astro_pid=$!

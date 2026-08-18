@@ -81,7 +81,7 @@ jobs:
           uv sync --frozen
           bun run build
 
-      - name: Prove filesystem changes are live without generation
+      - name: Prove one command owns the live runtime and cleanup
         shell: bash
         run: |
           set -euo pipefail
@@ -89,19 +89,16 @@ jobs:
           mkdir -p "$fixture"
           printf '%s\n' '---' 'type: Note' 'title: First' '---' '# First' > "$fixture/first.md"
 
-          uv run astronauta "$fixture" --port 8765 > "$RUNNER_TEMP/gateway.log" 2>&1 &
-          gateway_pid=$!
-          HOST=127.0.0.1 PORT=4321 node dist/server/entry.mjs > "$RUNNER_TEMP/astro.log" 2>&1 &
-          astro_pid=$!
-          trap 'kill "$astro_pid" "$gateway_pid" 2>/dev/null || true' EXIT
+          .venv/bin/astronauta "$fixture" --port 4321 > "$RUNNER_TEMP/runtime.log" 2>&1 &
+          runtime_pid=$!
+          trap 'kill -TERM "$runtime_pid" 2>/dev/null || true; wait "$runtime_pid" 2>/dev/null || true' EXIT
 
           for attempt in $(seq 1 30); do
             if curl --fail --silent http://127.0.0.1:4321/types/Note > "$RUNNER_TEMP/before.html"; then
               break
             fi
             if [ "$attempt" -eq 30 ]; then
-              cat "$RUNNER_TEMP/gateway.log"
-              cat "$RUNNER_TEMP/astro.log"
+              cat "$RUNNER_TEMP/runtime.log"
               exit 1
             fi
             sleep 1
@@ -111,20 +108,19 @@ jobs:
           grep -F '1 conceito(s)' "$RUNNER_TEMP/before.html"
 
           printf '%s\n' '---' 'type: Note' 'title: Second' '---' '# Second' > "$fixture/second.md"
-
-          curl --fail --silent \
-            --header 'content-type: application/json' \
-            --data '{"capability":"concepts","concept_type":"Note"}' \
-            http://127.0.0.1:8765/gateway > "$RUNNER_TEMP/gateway-after.json"
-          python -c 'import json,sys; data=json.load(open(sys.argv[1])); assert len(data["result"]) == 2' "$RUNNER_TEMP/gateway-after.json"
-
-          if ! curl --fail --silent http://127.0.0.1:4321/types/Note > "$RUNNER_TEMP/after.html"; then
-            echo '--- gateway log ---'
-            cat "$RUNNER_TEMP/gateway.log"
-            echo '--- astro log ---'
-            cat "$RUNNER_TEMP/astro.log"
-            exit 1
-          fi
-
+          curl --fail --silent http://127.0.0.1:4321/types/Note > "$RUNNER_TEMP/after.html"
           grep -F 'Second' "$RUNNER_TEMP/after.html"
           grep -F '2 conceito(s)' "$RUNNER_TEMP/after.html"
+
+          astro_pid="$(pgrep -f "node $GITHUB_WORKSPACE/dist/server/entry.mjs" | head -n 1 || true)"
+          test -n "$astro_pid"
+
+          kill -TERM "$runtime_pid"
+          wait "$runtime_pid"
+          trap - EXIT
+          sleep 0.2
+          if kill -0 "$astro_pid" 2>/dev/null; then
+            echo "Astro child survived Astronauta shutdown: $astro_pid"
+            cat "$RUNNER_TEMP/runtime.log"
+            exit 1
+          fi
