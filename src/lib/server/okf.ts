@@ -46,7 +46,27 @@ export type GraphProjection = {
   unresolved: Link[];
 };
 
-type Capability = 'summary' | 'concepts' | 'concept' | 'diagnostics' | 'graph';
+export type JsonSchemaNode = {
+  type?: string | string[];
+  title?: string;
+  description?: string;
+  enum?: unknown[];
+  properties?: Record<string, JsonSchemaNode>;
+  required?: string[];
+  items?: JsonSchemaNode;
+  'x-okf-duckdb-type'?: string;
+  [key: string]: unknown;
+};
+
+export type SchemaProjection = {
+  root: string;
+  total_types: number;
+  inferred_types: boolean;
+  casts: string[];
+  schemas: Record<string, JsonSchemaNode>;
+};
+
+type Capability = 'summary' | 'concepts' | 'concept' | 'schema' | 'diagnostics' | 'graph';
 
 type GatewayRequest = {
   capability: Capability;
@@ -87,6 +107,7 @@ export const okf = {
     gateway<Concept[]>({ capability: 'concepts', concept_type: conceptType }),
   concept: (conceptId: string) =>
     gateway<Concept | null>({ capability: 'concept', concept_id: conceptId }),
+  schema: () => gateway<SchemaProjection>({ capability: 'schema' }),
   diagnostics: () => gateway<Diagnostic[]>({ capability: 'diagnostics' }),
   graph: () => gateway<GraphProjection>({ capability: 'graph' }),
 };
