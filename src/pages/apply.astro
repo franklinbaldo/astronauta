@@ -4,9 +4,12 @@ import { actions } from "astro:actions";
 import Layout from "../layouts/Layout.astro";
 
 const preview = Astro.getActionResult(actions.applyPreview);
+const commit = Astro.getActionResult(actions.applyCommit);
 const previewData = preview?.data;
-const mutation = previewData?.mutation;
-const sql = previewData?.input.sql ?? "";
+const commitData = commit?.data;
+const previewMutation = previewData?.mutation;
+const commitMutation = commitData?.mutation;
+const sql = previewData?.input.sql ?? commitData?.input.sql ?? "";
 ---
 
 <Layout title="DuckDB Apply — Astronauta">
@@ -15,8 +18,7 @@ const sql = previewData?.input.sql ?? "";
       <p class="text-xs font-semibold uppercase tracking-wider text-sky-400">RFC 0005</p>
       <h1 class="text-3xl font-bold text-slate-100 tracking-tight mt-1">DuckDB Apply</h1>
       <p class="text-slate-400 text-sm mt-2 max-w-4xl">
-        O okf-parser materializa o bundle, executa o SQL bounded, recompila frontmatter e valida o candidato.
-        Nesta fatia a web expõe somente preview.
+        O preview é produzido pelo okf-parser e o commit só fica alcançável quando o parser devolve um token opaco que vincula exatamente o candidato revisado.
       </p>
     </div>
 
@@ -26,10 +28,32 @@ const sql = previewData?.input.sql ?? "";
 SET status = 'done'
 WHERE __okf_concept_id = 'notes/example'</code></pre>
       <p class="text-xs text-slate-500 mt-3">
-        Identidade, cardinalidade, body e colunas protegidas continuam sob controle do compilador upstream.
-        Commit web só será habilitado quando puder ser vinculado ao preview exato revisado.
+        Identidade, cardinalidade, body, colunas protegidas, compilação e detecção de conflitos permanecem no upstream.
+        Astronauta apenas transporta SQL + token do preview revisado.
       </p>
     </div>
+
+    {commit?.error && (
+      <div class="glass-card p-5 border border-red-800/70">
+        <h2 class="font-semibold text-red-300">Commit não autorizado ou inválido</h2>
+        <p class="text-sm text-slate-400 mt-2">{commit.error.message}</p>
+      </div>
+    )}
+
+    {commitMutation && (
+      <section class:list={["glass-card p-5 border", commitMutation.succeeded && commitMutation.written ? "border-emerald-700/70" : "border-amber-700/70"]}>
+        <h2 class:list={["font-semibold", commitMutation.succeeded && commitMutation.written ? "text-emerald-300" : "text-amber-300"]}>
+          {commitMutation.succeeded && commitMutation.written ? "Alterações gravadas" : "Alterações não gravadas"}
+        </h2>
+        {commitMutation.error && <p class="text-sm text-amber-300 mt-2">{commitMutation.error}</p>}
+        {commitMutation.changed_paths.length > 0 && (
+          <p class="text-sm text-slate-400 mt-2">Arquivos: {commitMutation.changed_paths.join(", ")}</p>
+        )}
+        {commitMutation.conflict_paths.length > 0 && (
+          <p class="text-sm text-amber-300 mt-2">Conflitos: {commitMutation.conflict_paths.join(", ")}</p>
+        )}
+      </section>
+    )}
 
     {preview?.error && (
       <div class="glass-card p-5 border border-red-800/70">
@@ -38,36 +62,50 @@ WHERE __okf_concept_id = 'notes/example'</code></pre>
       </div>
     )}
 
-    {mutation && (
+    {previewMutation && (
       <section class="glass-card p-5 space-y-4 border border-sky-800/60">
         <div>
           <p class="text-xs uppercase tracking-wider text-sky-400 font-semibold">Preview do compilador</p>
           <h2 class="font-semibold text-slate-100 mt-1">
-            {mutation.succeeded
-              ? `${mutation.changed_paths.length} arquivo(s) serão alterados`
+            {previewMutation.succeeded
+              ? `${previewMutation.changed_paths.length} arquivo(s) serão alterados`
               : "O candidato foi rejeitado"}
           </h2>
         </div>
-        {mutation.error && <p class="text-sm text-amber-300">{mutation.error}</p>}
-        {mutation.validation.length > 0 && (
+        {previewMutation.error && <p class="text-sm text-amber-300">{previewMutation.error}</p>}
+        {previewMutation.validation.length > 0 && (
           <div>
             <p class="font-semibold text-red-300 text-sm">Novos diagnósticos normativos</p>
             <ul class="mt-2 space-y-1 text-xs text-slate-400">
-              {mutation.validation.map((item) => (
+              {previewMutation.validation.map((item) => (
                 <li class="font-mono">{item.code} · {item.path} · {item.message}</li>
               ))}
             </ul>
           </div>
         )}
-        {mutation.changed_paths.length > 0 && (
+        {previewMutation.changed_paths.length > 0 && (
           <div>
             <p class="text-sm font-semibold text-slate-300">Changed paths</p>
             <ul class="mt-2 text-xs font-mono text-slate-500 space-y-1">
-              {mutation.changed_paths.map((path) => <li>{path}</li>)}
+              {previewMutation.changed_paths.map((path) => <li>{path}</li>)}
             </ul>
           </div>
         )}
-        <p class="text-xs text-slate-500">Preview somente: nenhum commit é alcançável nesta PR.</p>
+        {previewMutation.succeeded && previewMutation.changed_paths.length > 0 && previewMutation.preview_token && previewData && (
+          <form method="POST" action={actions.applyCommit}>
+            <textarea name="sql" class="hidden">{previewData.input.sql}</textarea>
+            <input type="hidden" name="preview_token" value={previewMutation.preview_token} />
+            <button type="submit" class="rounded bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition">
+              Commit deste preview
+            </button>
+            <p class="text-xs text-slate-500 mt-2">
+              O commit reproduz o candidato e falha fechado se já não corresponder ao preview revisado.
+            </p>
+          </form>
+        )}
+        {previewMutation.succeeded && previewMutation.changed_paths.length > 0 && !previewMutation.preview_token && (
+          <p class="text-xs text-amber-300">O parser não devolveu token de preview; commit indisponível.</p>
+        )}
       </section>
     )}
 
@@ -75,7 +113,7 @@ WHERE __okf_concept_id = 'notes/example'</code></pre>
       <div>
         <label for="sql" class="font-semibold text-slate-100">SQL DuckDB bounded</label>
         <p class="text-xs text-slate-500 mt-1">
-          Astronauta apenas transporta a operação; semântica e validação pertencem ao okf-parser.
+          O contrato aceito é definido pelo RFC 0005 upstream; Astronauta não interpreta o SQL nem seu efeito.
         </p>
       </div>
       <textarea

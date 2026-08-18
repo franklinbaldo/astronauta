@@ -9,8 +9,14 @@ const editInput = z.object({
   expected_source_digest: z.string().regex(/^sha256:[0-9a-f]{64}$/u),
 });
 
-const applyInput = z.object({
+const applyPreviewInput = z.object({
   sql: z.string().min(1).max(256 * 1024),
+});
+
+const applyCommitInput = applyPreviewInput.extend({
+  // The parser owns the token format and semantics. Astronauta only transports
+  // an opaque, bounded value from the reviewed preview back to the commit.
+  preview_token: z.string().min(1).max(4096),
 });
 
 function actionFailure(error: unknown): never {
@@ -51,12 +57,27 @@ export const server = {
 
   applyPreview: defineAction({
     accept: "form",
-    input: applyInput,
+    input: applyPreviewInput,
     handler: async (input) => {
       try {
         return {
           input,
           mutation: await okf.applyPreview(input.sql),
+        };
+      } catch (error) {
+        actionFailure(error);
+      }
+    },
+  }),
+
+  applyCommit: defineAction({
+    accept: "form",
+    input: applyCommitInput,
+    handler: async (input) => {
+      try {
+        return {
+          input,
+          mutation: await okf.applyWrite(input.sql, input.preview_token),
         };
       } catch (error) {
         actionFailure(error);

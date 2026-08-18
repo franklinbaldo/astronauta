@@ -140,6 +140,7 @@ Old body
         assert isinstance(result, dict)
         self.assertEqual(result["changed_paths"], ["note.md"])
         self.assertFalse(result["written"])
+        self.assertIsInstance(result.get("preview_token"), str)
         self.assertEqual(self.source.read_text(encoding="utf-8"), before)
 
     def test_payload_cannot_grant_itself_apply_write_authority(self) -> None:
@@ -149,25 +150,29 @@ Old body
 
         status, payload = self.post(
             url,
-            {"capability": "apply_write", "sql": sql, "allow_write": True},
+            {
+                "capability": "apply_write",
+                "sql": sql,
+                "preview_token": "okf-apply-preview-v1-sha256:" + "0" * 64,
+                "allow_write": True,
+            },
         )
 
         self.assertEqual(status, 403)
         self.assertEqual(payload["error"], "WriteCapabilityDisabled")
         self.assertEqual(self.source.read_text(encoding="utf-8"), before)
 
-    def test_write_enabled_process_commits_duckdb_apply(self) -> None:
+    def test_write_enabled_apply_still_requires_reviewed_preview_token(self) -> None:
         url = self.start(allow_write=True)
+        before = self.source.read_text(encoding="utf-8")
         sql = 'UPDATE "Note" SET status = \'done\' WHERE __okf_concept_id = \'note\''
 
         status, payload = self.post(url, {"capability": "apply_write", "sql": sql})
 
-        self.assertEqual(status, 200)
-        result = payload["result"]
-        self.assertIsInstance(result, dict)
-        assert isinstance(result, dict)
-        self.assertTrue(result["written"])
-        self.assertIn("status: done", self.source.read_text(encoding="utf-8"))
+        self.assertEqual(status, 400)
+        self.assertEqual(payload["error"], "ValueError")
+        self.assertIn("preview_token", str(payload["message"]))
+        self.assertEqual(self.source.read_text(encoding="utf-8"), before)
 
 
 if __name__ == "__main__":
