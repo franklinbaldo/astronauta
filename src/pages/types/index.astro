@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { okf } from '../../lib/server/okf';
+
+const summary = await okf.summary();
+const types = Object.entries(summary.concepts_by_type).sort(([left], [right]) => left.localeCompare(right));
+const typeHref = (type: string) => `/types/${encodeURIComponent(type)}`;
+---
+
+<Layout title="Tipos OKF — Astronauta">
+  <div class="space-y-6">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-wider text-sky-400">Admin models</p>
+      <h1 class="text-3xl font-bold text-slate-100 tracking-tight mt-1">Tipos authored</h1>
+      <p class="text-slate-400 text-sm mt-1">
+        Cada <code class="text-sky-400 font-mono">type</code> OKF vira uma superfície de administração automaticamente.
+      </p>
+    </div>
+
+    <div class="glass-card overflow-hidden">
+      <table class="w-full text-left text-sm text-slate-300">
+        <thead class="bg-slate-950 text-xs uppercase tracking-wider text-slate-500 border-b border-slate-800">
+          <tr><th class="px-6 py-4">Tipo</th><th class="px-6 py-4 text-right">Conceitos</th></tr>
+        </thead>
+        <tbody class="divide-y divide-slate-800">
+          {types.map(([type, count]) => (
+            <tr class="hover:bg-slate-800/40 transition">
+              <td class="px-6 py-4">
+                <a href={typeHref(type)} class="font-mono font-semibold text-sky-400 hover:underline">{type}</a>
+              </td>
+              <td class="px-6 py-4 text-right"><span class="badge badge-blue">{count}</span></td>
+            </tr>
+          ))}
+          {types.length === 0 && (
+            <tr><td colspan="2" class="px-6 py-8 text-center text-slate-500">Nenhum conceito tipado no bundle.</td></tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Layout>
