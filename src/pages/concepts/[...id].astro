@@ -1,0 +1,114 @@
+---
+import FrontmatterFields from '../../components/FrontmatterFields.astro';
+import Layout from '../../layouts/Layout.astro';
+import { okf } from '../../lib/server/okf';
+
+const id = Astro.params.id || '';
+const [concept, collection] = await Promise.all([okf.concept(id), okf.concepts()]);
+const byId = new Map(collection.map((item) => [item.id, item]));
+const conceptHref = (targetId: string) => `/concepts/${targetId.split('/').map(encodeURIComponent).join('/')}`;
+const typeHref = (type: string) => `/types/${encodeURIComponent(type)}`;
+---
+
+<Layout title={`${concept?.title || concept?.id || 'Conceito'} — Astronauta`}>
+  {concept ? (
+    <div class="space-y-6">
+      <div class="flex items-start justify-between gap-4">
+        <div class="min-w-0">
+          <a href={typeHref(concept.type)} class="text-xs font-semibold text-sky-400 hover:underline">← {concept.type}</a>
+          <h1 class="text-3xl font-bold text-slate-100 tracking-tight mt-2 break-words">{concept.title || concept.id}</h1>
+          <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs font-mono text-slate-500">
+            <span>ID: {concept.id}</span>
+            <span>Path: {concept.path}</span>
+          </div>
+        </div>
+        <span class="badge badge-purple font-mono">{concept.type}</span>
+      </div>
+
+      {(concept.source_digest || concept.revision_digest) && (
+        <div class="glass-card p-4 grid gap-2 text-xs font-mono">
+          {concept.source_digest && <div><span class="text-slate-500">source</span> <span class="text-slate-300 break-all">{concept.source_digest}</span></div>}
+          {concept.revision_digest && <div><span class="text-slate-500">revision</span> <span class="text-slate-300 break-all">{concept.revision_digest}</span></div>}
+        </div>
+      )}
+
+      <section class="glass-card p-6 space-y-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Frontmatter</p>
+          <h2 class="text-lg font-bold text-slate-200 mt-1">Campos authored</h2>
+        </div>
+        <FrontmatterFields fields={concept.frontmatter} />
+      </section>
+
+      <section class="glass-card p-6 space-y-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Markdown body</p>
+          <h2 class="text-lg font-bold text-slate-200 mt-1">Conteúdo fonte</h2>
+        </div>
+        <pre class="bg-slate-950/70 border border-slate-800 rounded p-4 text-sm text-slate-300 whitespace-pre-wrap break-words overflow-x-auto">{concept.body || '—'}</pre>
+      </section>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <section class="glass-card p-6 space-y-4">
+          <h2 class="text-lg font-bold text-slate-200">Links de saída</h2>
+          <div class="space-y-2">
+            {(concept.outgoing_links || []).map((link) => {
+              const target = link.target_id ? byId.get(link.target_id) : undefined;
+              return (
+                <div class="rounded border border-slate-800 bg-slate-950/40 p-3 text-sm">
+                  {link.target_id && target ? (
+                    <a href={conceptHref(link.target_id)} class="text-sky-400 font-semibold hover:underline">{target.title || target.id}</a>
+                  ) : (
+                    <span class="text-yellow-400 font-semibold">Não resolvido</span>
+                  )}
+                  <div class="font-mono text-xs text-slate-500 mt-1 break-all">{link.raw_target}</div>
+                </div>
+              );
+            })}
+            {(concept.outgoing_links || []).length === 0 && <p class="text-sm text-slate-500">Nenhum link de saída.</p>}
+          </div>
+        </section>
+
+        <section class="glass-card p-6 space-y-4">
+          <h2 class="text-lg font-bold text-slate-200">Links de entrada</h2>
+          <div class="space-y-2">
+            {(concept.incoming_links || []).map((link) => {
+              const source = byId.get(link.source_id);
+              return (
+                <div class="rounded border border-slate-800 bg-slate-950/40 p-3 text-sm">
+                  {source ? (
+                    <a href={conceptHref(source.id)} class="text-sky-400 font-semibold hover:underline">{source.title || source.id}</a>
+                  ) : (
+                    <span class="font-mono text-slate-300">{link.source_id}</span>
+                  )}
+                  <div class="font-mono text-xs text-slate-500 mt-1 break-all">{link.raw_target}</div>
+                </div>
+              );
+            })}
+            {(concept.incoming_links || []).length === 0 && <p class="text-sm text-slate-500">Nenhum link de entrada.</p>}
+          </div>
+        </section>
+      </div>
+
+      <section class="glass-card p-6 space-y-4">
+        <h2 class="text-lg font-bold text-slate-200">Diagnósticos locais</h2>
+        <div class="space-y-2">
+          {(concept.diagnostics || []).map((diag) => (
+            <div class="rounded border border-slate-800 bg-slate-950/40 p-3 flex gap-3 items-start">
+              <span class={diag.severity === 'warning' ? 'badge badge-yellow' : 'badge badge-red'}>{diag.code}</span>
+              <div><div class="text-sm text-slate-200">{diag.message}</div><div class="text-xs font-mono text-slate-500 mt-1">{diag.severity}</div></div>
+            </div>
+          ))}
+          {(concept.diagnostics || []).length === 0 && <p class="text-sm text-slate-500">Nenhum diagnóstico atribuído a este conceito.</p>}
+        </div>
+      </section>
+    </div>
+  ) : (
+    <div class="glass-card p-8 space-y-3">
+      <p class="text-xs font-semibold uppercase tracking-wider text-red-400">Conceito não encontrado</p>
+      <h1 class="text-2xl font-bold text-slate-100 font-mono break-all">{id}</h1>
+      <p class="text-sm text-slate-400">O gateway não encontrou esta identidade no estado atual do bundle.</p>
+      <a href="/concepts" class="inline-block text-sm font-semibold text-sky-400 hover:underline">Voltar aos conceitos</a>
+    </div>
+  )}
+</Layout>
