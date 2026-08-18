@@ -1,42 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import diagnostics from '../data/diagnostics.json';
+import { okf } from '../lib/server/okf';
+
+const diagnostics = await okf.diagnostics();
 ---
 
-<Layout title="Diagnósticos Relacionais — Astronauta">
+<Layout title="Diagnósticos — Astronauta">
   <div class="space-y-6">
     <div>
       <h1 class="text-3xl font-bold text-slate-100 tracking-tight">Diagnósticos e Validações</h1>
       <p class="text-slate-400 text-sm mt-1">
-        Relatório relacional contendo os {diagnostics.length} avisos e achados apontados pelo <code class="text-sky-400 font-mono">okf-parser</code>.
+        Estado atual reportado pelo <code class="text-sky-400 font-mono">okf-parser</code>: {diagnostics.length} achado(s).
       </p>
     </div>
 
-    <!-- Diagnostics List Table -->
     <div class="glass-card overflow-hidden">
       <div class="overflow-x-auto">
         <table class="w-full text-left text-sm text-slate-300">
           <thead class="bg-slate-950 text-xs font-semibold uppercase tracking-wider text-slate-400 border-b border-slate-800">
             <tr>
-              <th class="px-6 py-4">Código</th>
-              <th class="px-6 py-4">Severidade</th>
-              <th class="px-6 py-4">Caminho</th>
-              <th class="px-6 py-4">Mensagem</th>
+              <th class="px-6 py-4">Código</th><th class="px-6 py-4">Severidade</th><th class="px-6 py-4">Caminho</th><th class="px-6 py-4">Mensagem</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-800">
             {diagnostics.map((diag) => (
               <tr class="hover:bg-slate-800/40 transition">
                 <td class="px-6 py-3 font-mono font-bold text-sky-400">{diag.code}</td>
-                <td class="px-6 py-3">
-                  <span class={diag.severity === 'warning' ? 'badge badge-yellow' : 'badge badge-red'}>
-                    {diag.severity}
-                  </span>
-                </td>
+                <td class="px-6 py-3"><span class={diag.severity === 'warning' ? 'badge badge-yellow' : 'badge badge-red'}>{diag.severity}</span></td>
                 <td class="px-6 py-3 font-mono text-xs text-slate-400">{diag.path}</td>
                 <td class="px-6 py-3 text-slate-200">{diag.message}</td>
               </tr>
             ))}
+            {diagnostics.length === 0 && <tr><td colspan="4" class="px-6 py-8 text-center text-slate-500">Nenhum diagnóstico no estado atual do bundle.</td></tr>}
           </tbody>
         </table>
       </div>

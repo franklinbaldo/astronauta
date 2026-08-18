@@ -1,108 +1,65 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import graphData from '../data/graph.json';
+import { okf } from '../lib/server/okf';
+
+const graph = await okf.graph();
+const graphData = {
+  nodes: graph.nodes.map((node) => ({ ...node, label: node.title || node.id })),
+  edges: graph.edges.filter((edge) => edge.target_id).map((edge) => ({ source: edge.source_id, target: edge.target_id })),
+};
 ---
 
 <Layout title="Grafo de Conhecimento — Astronauta">
   <div class="space-y-6">
     <div class="flex items-center justify-between">
       <div>
-        <h1 class="text-3xl font-bold text-slate-100 tracking-tight">Grafo de Conhecimento Relacional</h1>
+        <h1 class="text-3xl font-bold text-slate-100 tracking-tight">Grafo de Conhecimento</h1>
         <p class="text-slate-400 text-sm mt-1">
-          Visualização interativa NetworkX ({graphData.nodes.length} nós e {graphData.edges.length} conexões).
+          Projeção viva: {graphData.nodes.length} nós, {graphData.edges.length} links resolvidos e {graph.unresolved.length} não resolvido(s).
         </p>
       </div>
     </div>
 
-    <!-- Canvas Container -->
-    <div class="glass-card p-4 h-[650px] relative overflow-hidden flex items-center justify-center" id="graph-container">
+    <div class="glass-card p-4 h-[650px] relative overflow-hidden flex items-center justify-center" id="graph-container" data-graph={JSON.stringify(graphData)}>
       <svg id="graph-svg" class="w-full h-full cursor-grab active:cursor-grabbing"></svg>
     </div>
   </div>
 
   <script>
     import * as d3 from 'd3';
-    import graphData from '../data/graph.json';
 
     const container = document.getElementById('graph-container');
     const svg = d3.select('#graph-svg');
-
     if (container && svg) {
+      const serialized = container.getAttribute('data-graph');
+      const graphData = serialized ? JSON.parse(serialized) : { nodes: [], edges: [] };
       const width = container.clientWidth;
       const height = container.clientHeight;
-
       svg.attr('viewBox', [0, 0, width, height]);
 
-      // Sample a subset for smooth force simulation if graph is huge
-      const nodes = graphData.nodes.slice(0, 150).map((d) => ({ ...d }));
-      const nodeIds = new Set(nodes.map((n) => n.id));
-      const edges = graphData.edges
-        .filter((e) => nodeIds.has(e.source) && nodeIds.has(e.target))
-        .slice(0, 300)
-        .map((d) => ({ ...d }));
+      const nodes = graphData.nodes.slice(0, 150).map((item: any) => ({ ...item }));
+      const nodeIds = new Set(nodes.map((node: any) => node.id));
+      const edges = graphData.edges.filter((edge: any) => nodeIds.has(edge.source) && nodeIds.has(edge.target)).slice(0, 300).map((item: any) => ({ ...item }));
 
-      const simulation = d3
-        .forceSimulation(nodes as any)
-        .force('link', d3.forceLink(edges as any).id((d: any) => d.id).distance(70))
+      const simulation = d3.forceSimulation(nodes as any)
+        .force('link', d3.forceLink(edges as any).id((item: any) => item.id).distance(70))
         .force('charge', d3.forceManyBody().strength(-120))
         .force('center', d3.forceCenter(width / 2, height / 2));
 
-      const g = svg.append('g');
+      const group = svg.append('g');
+      svg.call(d3.zoom<SVGSVGElement, unknown>().on('zoom', (event) => group.attr('transform', event.transform)));
 
-      // Zoom behavior
-      svg.call(
-        d3.zoom<SVGSVGElement, unknown>().on('zoom', (event) => {
-          g.attr('transform', event.transform);
-        })
+      const link = group.append('g').attr('stroke', '#334155').attr('stroke-opacity', 0.6).selectAll('line').data(edges).join('line').attr('stroke-width', 1.5);
+      const node = group.append('g').attr('stroke', '#0f172a').attr('stroke-width', 1.5).selectAll('circle').data(nodes).join('circle').attr('r', 6).attr('fill', '#38bdf8').call(
+        d3.drag<SVGCircleElement, any>()
+          .on('start', (event, item) => { if (!event.active) simulation.alphaTarget(0.3).restart(); item.fx = item.x; item.fy = item.y; })
+          .on('drag', (event, item) => { item.fx = event.x; item.fy = event.y; })
+          .on('end', (event, item) => { if (!event.active) simulation.alphaTarget(0); item.fx = null; item.fy = null; })
       );
-
-      const link = g
-        .append('g')
-        .attr('stroke', '#334155')
-        .attr('stroke-opacity', 0.6)
-        .selectAll('line')
-        .data(edges)
-        .join('line')
-        .attr('stroke-width', 1.5);
-
-      const node = g
-        .append('g')
-        .attr('stroke', '#0f172a')
-        .attr('stroke-width', 1.5)
-        .selectAll('circle')
-        .data(nodes)
-        .join('circle')
-        .attr('r', 6)
-        .attr('fill', '#38bdf8')
-        .call(
-          d3
-            .drag<SVGCircleElement, any>()
-            .on('start', (event, d) => {
-              if (!event.active) simulation.alphaTarget(0.3).restart();
-              d.fx = d.x;
-              d.fy = d.y;
-            })
-            .on('drag', (event, d) => {
-              d.fx = event.x;
-              d.fy = event.y;
-            })
-            .on('end', (event, d) => {
-              if (!event.active) simulation.alphaTarget(0);
-              d.fx = null;
-              d.fy = null;
-            })
-        );
-
-      node.append('title').text((d: any) => d.label);
-
+      node.append('title').text((item: any) => `${item.label} · ${item.type}`);
       simulation.on('tick', () => {
-        link
-          .attr('x1', (d: any) => d.source.x)
-          .attr('y1', (d: any) => d.source.y)
-          .attr('x2', (d: any) => d.target.x)
-          .attr('y2', (d: any) => d.target.y);
-
-        node.attr('cx', (d: any) => d.x).attr('cy', (d: any) => d.y);
+        link.attr('x1', (item: any) => item.source.x).attr('y1', (item: any) => item.source.y).attr('x2', (item: any) => item.target.x).attr('y2', (item: any) => item.target.y);
+        node.attr('cx', (item: any) => item.x).attr('cy', (item: any) => item.y);
       });
     }
   </script>
