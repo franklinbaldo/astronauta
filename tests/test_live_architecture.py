@@ -42,6 +42,24 @@ class LiveArchitectureTests(unittest.TestCase):
         self.assertNotIn("parts[-2]", text)
         self.assertNotIn("write_text", text)
 
+    def test_graphql_remains_behind_python_gateway(self) -> None:
+        gateway = (ROOT / "src" / "astronauta" / "gateway.py").read_text(encoding="utf-8")
+        self.assertIn("GraphQLReadAdapter", gateway)
+
+        offenders: list[str] = []
+        presentation_roots = (
+            ROOT / "src" / "pages",
+            ROOT / "src" / "components",
+            ROOT / "src" / "lib",
+        )
+        for root in presentation_roots:
+            for path in sorted(root.rglob("*")):
+                if path.suffix not in {".astro", ".ts", ".js", ".mjs"}:
+                    continue
+                if "graphql" in path.read_text(encoding="utf-8").lower():
+                    offenders.append(str(path.relative_to(ROOT)))
+        self.assertEqual(offenders, [])
+
 
 if __name__ == "__main__":
     unittest.main()
