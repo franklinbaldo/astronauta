@@ -92,7 +92,26 @@ export type EditMutationResult = {
   error?: string;
 };
 
-type Capability = 'summary' | 'concepts' | 'concept' | 'schema' | 'diagnostics' | 'graph' | 'edit_preview' | 'edit_write';
+export type ApplyMutationResult = {
+  changed_paths: string[];
+  skipped_paths: string[];
+  succeeded: boolean;
+  written: boolean;
+  validation: MutationDiagnostic[];
+  conflict_paths: string[];
+  error?: string;
+};
+
+type Capability =
+  | 'summary'
+  | 'concepts'
+  | 'concept'
+  | 'schema'
+  | 'diagnostics'
+  | 'graph'
+  | 'edit_preview'
+  | 'edit_write'
+  | 'apply_preview';
 
 type GatewayRequest = {
   capability: Capability;
@@ -100,6 +119,7 @@ type GatewayRequest = {
   concept_type?: string;
   body?: string;
   expected_source_digest?: string;
+  sql?: string;
 };
 
 function gatewayUrl(): URL {
@@ -142,4 +162,6 @@ export const okf = {
     gateway<EditMutationResult>({ capability: 'edit_preview', ...input }),
   editWrite: (input: EditMutationInput) =>
     gateway<EditMutationResult>({ capability: 'edit_write', ...input }),
+  applyPreview: (sql: string) =>
+    gateway<ApplyMutationResult>({ capability: 'apply_preview', sql }),
 };
