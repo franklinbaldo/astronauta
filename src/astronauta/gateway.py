@@ -1,9 +1,11 @@
 """Transport-neutral application capabilities over the canonical okf-parser API.
 
-Astronauta presentation code should depend on these capabilities rather than on
+Astronauta presentation code depends on these capabilities rather than on
 Markdown parsing, Ibis expressions, MCP tool names, GraphQL query documents, or
-filesystem mutation. The module intentionally remains a thin read adapter: all
-OKF semantics come from :mod:`okf_parser`.
+filesystem mutation. GraphQL is the preferred concept-read adapter behind this
+boundary; schema, global diagnostics, summary-only aggregates, and writes retain
+their dedicated parser-owned surfaces where the current GraphQL slice does not
+model them yet.
 """
 
 from __future__ import annotations
@@ -15,8 +17,56 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from okf_parser import load_bundle
+from okf_parser import GraphQLReadAdapter, load_bundle
 from okf_parser.service import schema_bundle
+
+_GRAPHQL_PAGE_SIZE = 1000
+_CONCEPTS_QUERY = """
+query AstronautaConcepts($type: String, $first: Int!, $offset: Int!) {
+  concepts(type: $type, first: $first, offset: $offset) {
+    id
+    logicalKey
+    path
+    type
+    title
+    description
+    frontmatter
+    body
+    sourceDigest
+    parsedDigest
+  }
+}
+"""
+_CONCEPT_QUERY = """
+query AstronautaConcept($id: ID!) {
+  concept(id: $id) {
+    id
+    logicalKey
+    path
+    type
+    title
+    description
+    frontmatter
+    body
+    sourceDigest
+    parsedDigest
+    links { sourceId rawTarget targetId exists origin }
+    reverseLinks { sourceId rawTarget targetId exists origin }
+    diagnostics { code severity path message }
+  }
+}
+"""
+_GRAPH_QUERY = """
+query AstronautaGraph($first: Int!, $offset: Int!) {
+  concepts(first: $first, offset: $offset) {
+    id
+    path
+    type
+    title
+    links { sourceId rawTarget targetId exists origin }
+  }
+}
+"""
 
 
 def _json_cell(value: Any) -> Any:
@@ -66,7 +116,80 @@ def _concept_record(row: dict[str, Any]) -> dict[str, Any]:
     return concept
 
 
+def _graphql_concept_record(row: dict[str, Any]) -> dict[str, Any]:
+    """Map the parser GraphQL projection back to Astronauta's stable capability shape."""
+    frontmatter = row.get("frontmatter")
+    return {
+        "id": row["id"],
+        "logical_key": row.get("logicalKey"),
+        "path": row["path"],
+        "type": row["type"],
+        "title": row.get("title"),
+        "description": row.get("description"),
+        "frontmatter": frontmatter if isinstance(frontmatter, dict) else {},
+        "body": row.get("body") or "",
+        "source_digest": row.get("sourceDigest"),
+        "parsed_digest": row.get("parsedDigest"),
+    }
+
+
+def _graphql_link_record(row: dict[str, Any]) -> dict[str, Any]:
+    """Keep GraphQL transport naming out of the public Astronauta capability contract."""
+    return {
+        "source_id": row["sourceId"],
+        "raw_target": row["rawTarget"],
+        "target_id": row.get("targetId"),
+        "exists": bool(row["exists"]),
+        "origin": row["origin"],
+    }
+
+
+def _graphql_data(
+    adapter: GraphQLReadAdapter,
+    query: str,
+    variables: dict[str, object],
+) -> dict[str, Any]:
+    result = adapter.execute(query, variables)
+    if result.errors:
+        raise RuntimeError("okf-parser GraphQL read failed: " + "; ".join(result.errors))
+    if result.data is None:
+        raise RuntimeError("okf-parser GraphQL read returned no data")
+    return result.data
+
+
+def _graphql_collection(
+    root: Path,
+    *,
+    concept_type: str | None = None,
+) -> list[dict[str, Any]]:
+    """Read one live concept snapshot through the embedded GraphQL adapter."""
+    adapter = GraphQLReadAdapter(str(root.resolve()))
+    rows: list[dict[str, Any]] = []
+    offset = 0
+    while True:
+        data = _graphql_data(
+            adapter,
+            _CONCEPTS_QUERY,
+            {"type": concept_type, "first": _GRAPHQL_PAGE_SIZE, "offset": offset},
+        )
+        page = data.get("concepts")
+        if not isinstance(page, list):
+            raise TypeError("okf-parser GraphQL concepts query returned a non-list payload")
+        for item in page:
+            if not isinstance(item, dict):
+                raise TypeError("okf-parser GraphQL concepts query returned a non-object row")
+            rows.append(_graphql_concept_record(item))
+        if len(page) < _GRAPHQL_PAGE_SIZE:
+            break
+        offset += len(page)
+    return sorted(
+        rows,
+        key=lambda item: (_sort_text(item["path"]), _sort_text(item["id"])),
+    )
+
+
 def _load_state(root: Path) -> tuple[Any, list[dict[str, Any]], list[dict[str, Any]]]:
+    """Load direct parser state only for aggregates not yet in the GraphQL read slice."""
     bundle = load_bundle(root.resolve())
     concepts = sorted(
         (_concept_record(row) for row in _records(bundle.concepts)),
@@ -101,28 +224,46 @@ def summary(root: Path) -> dict[str, Any]:
 
 
 def concepts(root: Path, *, concept_type: str | None = None) -> list[dict[str, Any]]:
-    """Return a deterministic live concept collection, optionally by exact type."""
-    _, concept_rows, _ = _load_state(root)
-    if concept_type is None:
-        return concept_rows
-    return [item for item in concept_rows if item["type"] == concept_type]
+    """Return the live concept collection through the preferred GraphQL read adapter."""
+    return _graphql_collection(root, concept_type=concept_type)
 
 
 def concept(root: Path, concept_id: str) -> dict[str, Any] | None:
-    """Return one concept plus canonical forward/reverse link records."""
-    bundle, concept_rows, links = _load_state(root)
-    selected = next((item for item in concept_rows if item["id"] == concept_id), None)
-    if selected is None:
+    """Return one live concept plus canonical links and diagnostics through GraphQL."""
+    adapter = GraphQLReadAdapter(str(root.resolve()))
+    data = _graphql_data(adapter, _CONCEPT_QUERY, {"id": concept_id})
+    row = data.get("concept")
+    if row is None:
         return None
+    if not isinstance(row, dict):
+        raise TypeError("okf-parser GraphQL concept query returned a non-object payload")
 
-    selected = dict(selected)
-    selected["outgoing_links"] = [item for item in links if item.get("source_id") == concept_id]
-    selected["incoming_links"] = [item for item in links if item.get("target_id") == concept_id]
-    selected["diagnostics"] = [
-        _diagnostic_record(item)
-        for item in bundle.diagnostics
-        if item.path == selected["path"]
-    ]
+    selected = _graphql_concept_record(row)
+    outgoing = row.get("links")
+    incoming = row.get("reverseLinks")
+    findings = row.get("diagnostics")
+    if not isinstance(outgoing, list) or not isinstance(incoming, list) or not isinstance(findings, list):
+        raise TypeError("okf-parser GraphQL concept detail returned malformed related records")
+
+    selected["outgoing_links"] = sorted(
+        (_graphql_link_record(item) for item in outgoing if isinstance(item, dict)),
+        key=lambda item: (
+            _sort_text(item.get("source_id")),
+            _sort_text(item.get("target_id")),
+            _sort_text(item.get("raw_target")),
+            _sort_text(item.get("origin")),
+        ),
+    )
+    selected["incoming_links"] = sorted(
+        (_graphql_link_record(item) for item in incoming if isinstance(item, dict)),
+        key=lambda item: (
+            _sort_text(item.get("source_id")),
+            _sort_text(item.get("target_id")),
+            _sort_text(item.get("raw_target")),
+            _sort_text(item.get("origin")),
+        ),
+    )
+    selected["diagnostics"] = [dict(item) for item in findings if isinstance(item, dict)]
     return selected
 
 
@@ -145,38 +286,71 @@ def schemas(root: Path, *, spec_template: str | None = None) -> dict[str, Any]:
 
 
 def diagnostics(root: Path) -> list[dict[str, Any]]:
-    """Return deterministic parser diagnostics without reclassifying severity."""
+    """Return global parser diagnostics until GraphQL exposes a bundle-level query."""
     bundle = load_bundle(root.resolve())
     return [_diagnostic_record(item) for item in bundle.validate()]
 
 
 def graph(root: Path) -> dict[str, Any]:
-    """Return canonical concept nodes plus resolved and unresolved link records."""
-    _, concept_rows, links = _load_state(root)
-    concept_ids = {item["id"] for item in concept_rows}
-    resolved = [
-        item
-        for item in links
-        if isinstance(item.get("target_id"), str) and item["target_id"] in concept_ids
-    ]
-    unresolved = [item for item in links if item not in resolved]
-    return {
-        "nodes": [
+    """Return graph projection through the preferred GraphQL concept/link adapter."""
+    adapter = GraphQLReadAdapter(str(root.resolve()))
+    rows: list[dict[str, Any]] = []
+    offset = 0
+    while True:
+        data = _graphql_data(
+            adapter,
+            _GRAPH_QUERY,
+            {"first": _GRAPHQL_PAGE_SIZE, "offset": offset},
+        )
+        page = data.get("concepts")
+        if not isinstance(page, list):
+            raise TypeError("okf-parser GraphQL graph query returned a non-list payload")
+        for item in page:
+            if not isinstance(item, dict):
+                raise TypeError("okf-parser GraphQL graph query returned a non-object row")
+            rows.append(item)
+        if len(page) < _GRAPHQL_PAGE_SIZE:
+            break
+        offset += len(page)
+
+    nodes = sorted(
+        (
             {
                 "id": item["id"],
                 "path": item["path"],
                 "type": item["type"],
-                "title": item["title"],
+                "title": item.get("title"),
             }
-            for item in concept_rows
-        ],
-        "edges": resolved,
-        "unresolved": unresolved,
-    }
+            for item in rows
+        ),
+        key=lambda item: (_sort_text(item["path"]), _sort_text(item["id"])),
+    )
+    links = sorted(
+        (
+            _graphql_link_record(link)
+            for item in rows
+            for link in item.get("links", [])
+            if isinstance(link, dict)
+        ),
+        key=lambda item: (
+            _sort_text(item.get("source_id")),
+            _sort_text(item.get("target_id")),
+            _sort_text(item.get("raw_target")),
+            _sort_text(item.get("origin")),
+        ),
+    )
+    node_ids = {item["id"] for item in nodes}
+    resolved = [
+        item
+        for item in links
+        if isinstance(item.get("target_id"), str) and item["target_id"] in node_ids
+    ]
+    unresolved = [item for item in links if item not in resolved]
+    return {"nodes": nodes, "edges": resolved, "unresolved": unresolved}
 
 
 def snapshot(root: Path) -> dict[str, Any]:
-    """Convenience projection for early UI migration; not a second domain model."""
+    """Convenience projection for UI migration; not a second domain model."""
     return {
         "summary": summary(root),
         "concepts": concepts(root),
@@ -193,7 +367,7 @@ def read(
     concept_type: str | None = None,
     spec_template: str | None = None,
 ) -> Any:
-    """Dispatch a small capability vocabulary for process/HTTP/GraphQL adapters."""
+    """Dispatch a small capability vocabulary independent of its internal adapter."""
     if capability == "summary":
         return summary(root)
     if capability == "concepts":
