@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.12"
 resolution-markers = [
     "python_full_version >= '3.14' and sys_platform == 'win32'",
@@ -63,7 +63,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "okf-parser" },
+    { name = "okf-parser", git = "https://github.com/franklinbaldo/okf-parser.git?rev=33b3e1fc5de3395cc890d06b128899b8e4adbd06" },
     { name = "rich", specifier = ">=13.0.0" },
     { name = "typer", specifier = ">=0.9.0" },
 ]
@@ -838,8 +838,8 @@ wheels = [
 
 [[package]]
 name = "okf-parser"
-version = "0.1.0"
-source = { registry = "https://pypi.org/simple" }
+version = "0.22.0"
+source = { git = "https://github.com/franklinbaldo/okf-parser.git?rev=33b3e1fc5de3395cc890d06b128899b8e4adbd06#33b3e1fc5de3395cc890d06b128899b8e4adbd06" }
 dependencies = [
     { name = "cyclopts" },
     { name = "duckdb" },
@@ -850,11 +850,10 @@ dependencies = [
     { name = "mdformat-frontmatter" },
     { name = "mdformat-gfm" },
     { name = "networkx" },
+    { name = "pyarrow" },
+    { name = "pydantic" },
     { name = "pyyaml" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/d9/39/24bd58971113803294c947fecff6bcc1527b1885dfd02a29e4e9abfbdf4c/okf_parser-0.1.0.tar.gz", hash = "sha256:805e3abd4c781431949afe9a94b8c89685f588fd3f4156d3553df26bf0e03663", size = 105058, upload-time = "2026-07-26T11:51:29.695Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/86/4e/deffdd27ef9672022b438abcb2adccc119f256e118eac78f7795b8adcfcc/okf_parser-0.1.0-py3-none-any.whl", hash = "sha256:86906ae58c28ed7a62f31e5e06d6fd04bbecfb69ea6dd734cc466d5d77030ec6", size = 14910, upload-time = "2026-07-26T11:51:28.261Z" },
+    { name = "ruamel-yaml" },
 ]
 
 [[package]]
