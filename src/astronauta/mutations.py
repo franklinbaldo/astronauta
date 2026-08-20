@@ -8,7 +8,7 @@ file or serializes frontmatter itself.
 from __future__ import annotations
 
 from pathlib import Path
-from typing import TYPE_CHECKING, Literal
+from typing import Literal
 
 from okf_parser.service import (
     apply_bundle,
@@ -16,9 +16,6 @@ from okf_parser.service import (
     preview_concept_edit,
     write_concept_edit,
 )
-
-if TYPE_CHECKING:
-    pass
 
 
 class WriteCapabilityDisabled(PermissionError):
