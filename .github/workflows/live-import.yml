@@ -97,13 +97,20 @@ jobs:
             *) preview_url="http://127.0.0.1:4321/$preview_action" ;;
           esac
 
-          curl --fail-with-body --silent --show-error "$preview_url" \
+          preview_status=$(curl --silent --show-error --output "$RUNNER_TEMP/preview.html" --write-out '%{http_code}' "$preview_url" \
             --header 'Origin: http://127.0.0.1:4321' \
             --header "Referer: $page_url" \
             --data-urlencode 'source=imports/notes.csv' \
             --data-urlencode 'concept_type=Note' \
             --data-urlencode 'id_column=slug' \
-            --data-urlencode 'on_conflict=skip' > "$RUNNER_TEMP/preview.html"
+            --data-urlencode 'on_conflict=skip')
+          if [ "$preview_status" != 200 ]; then
+            echo "preview HTTP $preview_status"
+            cat "$RUNNER_TEMP/preview.html"
+            cat "$RUNNER_TEMP/astro.log"
+            cat "$RUNNER_TEMP/gateway.log"
+            exit 1
+          fi
 
           grep -F '2 arquivo(s) candidato(s)' "$RUNNER_TEMP/preview.html"
           grep -F 'note/alpha.md' "$RUNNER_TEMP/preview.html"
@@ -132,13 +139,20 @@ jobs:
             *) commit_url="http://127.0.0.1:4321/$commit_action" ;;
           esac
 
-          curl --fail-with-body --silent --show-error "$commit_url" \
+          commit_status=$(curl --silent --show-error --output "$RUNNER_TEMP/commit.html" --write-out '%{http_code}' "$commit_url" \
             --header 'Origin: http://127.0.0.1:4321' \
             --header "Referer: $page_url" \
             --data-urlencode 'source=imports/notes.csv' \
             --data-urlencode 'concept_type=Note' \
             --data-urlencode 'id_column=slug' \
-            --data-urlencode 'on_conflict=skip' > "$RUNNER_TEMP/commit.html"
+            --data-urlencode 'on_conflict=skip')
+          if [ "$commit_status" != 200 ]; then
+            echo "commit HTTP $commit_status"
+            cat "$RUNNER_TEMP/commit.html"
+            cat "$RUNNER_TEMP/astro.log"
+            cat "$RUNNER_TEMP/gateway.log"
+            exit 1
+          fi
 
           grep -F 'Import gravado' "$RUNNER_TEMP/commit.html"
           grep -F 'type: Note' "$fixture/note/alpha.md"
