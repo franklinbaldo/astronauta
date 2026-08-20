@@ -27,8 +27,12 @@ const importInput = z.object({
     .max(256)
     .optional()
     .transform((value) => value || undefined),
+  // Astro's form decoder may represent an unchecked checkbox as an empty
+  // string rather than omitting it. Treat only the literal checked value as
+  // authority to request overwrite; everything else remains false.
   overwrite: z
-    .enum(["on"])
+    .string()
+    .max(16)
     .optional()
     .transform((value) => value === "on"),
   on_conflict: z.enum(["skip", "verify-identical"]).default("skip"),
