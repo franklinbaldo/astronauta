@@ -103,6 +103,7 @@ jobs:
             --data-urlencode 'source=imports/notes.csv' \
             --data-urlencode 'concept_type=Note' \
             --data-urlencode 'id_column=slug' \
+            --data-urlencode 'overwrite=false' \
             --data-urlencode 'on_conflict=skip')
           if [ "$preview_status" != 200 ]; then
             echo "preview HTTP $preview_status"
@@ -145,6 +146,7 @@ jobs:
             --data-urlencode 'source=imports/notes.csv' \
             --data-urlencode 'concept_type=Note' \
             --data-urlencode 'id_column=slug' \
+            --data-urlencode 'overwrite=false' \
             --data-urlencode 'on_conflict=skip')
           if [ "$commit_status" != 200 ]; then
             echo "commit HTTP $commit_status"
