@@ -19,6 +19,21 @@ const applyCommitInput = applyPreviewInput.extend({
   preview_token: z.string().min(1).max(4096),
 });
 
+const importInput = z.object({
+  source: z.string().min(1).max(1024),
+  concept_type: z.string().min(1).max(256),
+  id_column: z
+    .string()
+    .max(256)
+    .optional()
+    .transform((value) => value || undefined),
+  overwrite: z
+    .enum(["on"])
+    .optional()
+    .transform((value) => value === "on"),
+  on_conflict: z.enum(["skip", "verify-identical"]).default("skip"),
+});
+
 function actionFailure(error: unknown): never {
   const message = error instanceof Error ? error.message : String(error);
   throw new ActionError({ code: "BAD_REQUEST", message });
@@ -78,6 +93,36 @@ export const server = {
         return {
           input,
           mutation: await okf.applyWrite(input.sql, input.preview_token),
+        };
+      } catch (error) {
+        actionFailure(error);
+      }
+    },
+  }),
+
+  importPreview: defineAction({
+    accept: "form",
+    input: importInput,
+    handler: async (input) => {
+      try {
+        return {
+          input,
+          mutation: await okf.importPreview(input),
+        };
+      } catch (error) {
+        actionFailure(error);
+      }
+    },
+  }),
+
+  importCommit: defineAction({
+    accept: "form",
+    input: importInput,
+    handler: async (input) => {
+      try {
+        return {
+          input,
+          mutation: await okf.importWrite(input),
         };
       } catch (error) {
         actionFailure(error);
