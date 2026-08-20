@@ -24,7 +24,14 @@ from astronauta.mutations import WriteCapabilityDisabled, dispatch_mutation
 _LOOPBACK_HOST = "127.0.0.1"
 _MAX_REQUEST_BYTES = 4 * 1024 * 1024
 _MUTATION_CAPABILITIES = frozenset(
-    {"edit_preview", "edit_write", "apply_preview", "apply_write"}
+    {
+        "edit_preview",
+        "edit_write",
+        "apply_preview",
+        "apply_write",
+        "import_preview",
+        "import_write",
+    }
 )
 
 
