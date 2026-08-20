@@ -94,7 +94,7 @@ const overwrite = input?.overwrite ?? false;
             <input type="hidden" name="source" value={previewData.input.source} />
             <input type="hidden" name="concept_type" value={previewData.input.concept_type} />
             {previewData.input.id_column && <input type="hidden" name="id_column" value={previewData.input.id_column} />}
-            {previewData.input.overwrite && <input type="hidden" name="overwrite" value="on" />}
+            <input type="hidden" name="overwrite" value={previewData.input.overwrite ? "true" : "false"} />
             <input type="hidden" name="on_conflict" value={previewData.input.on_conflict} />
             <button type="submit" class="rounded bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition">
               Commit deste import
@@ -133,10 +133,13 @@ const overwrite = input?.overwrite ?? false;
         </select>
       </div>
 
-      <label class="flex items-center gap-2 text-sm text-slate-300">
-        <input type="checkbox" name="overwrite" checked={overwrite} />
-        Permitir overwrite explícito
-      </label>
+      <div>
+        <label for="overwrite" class="font-semibold text-slate-100">Overwrite</label>
+        <select id="overwrite" name="overwrite" class="ml-3 bg-slate-950 border border-slate-700 rounded p-2 text-sm text-slate-100">
+          <option value="false" selected={!overwrite}>Preservar arquivos existentes</option>
+          <option value="true" selected={overwrite}>Permitir overwrite explícito</option>
+        </select>
+      </div>
 
       <button type="submit" class="rounded bg-sky-600 hover:bg-sky-500 px-4 py-2 text-sm font-semibold text-white transition">
         Gerar preview
