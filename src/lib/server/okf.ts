@@ -72,6 +72,14 @@ export type EditMutationInput = {
   expected_source_digest: string;
 };
 
+export type ImportMutationInput = {
+  source: string;
+  concept_type: string;
+  id_column?: string;
+  overwrite: boolean;
+  on_conflict: 'skip' | 'verify-identical';
+};
+
 export type MutationDiagnostic = {
   code: string;
   path: string;
@@ -103,6 +111,16 @@ export type ApplyMutationResult = {
   error?: string;
 };
 
+export type ImportMutationResult = {
+  created: string[];
+  would_create: string[];
+  skipped_existing: string[];
+  matched_existing: string[];
+  conflicting_existing: string[];
+  duplicate_ids: string[];
+  written: boolean;
+};
+
 type Capability =
   | 'summary'
   | 'concepts'
@@ -113,7 +131,9 @@ type Capability =
   | 'edit_preview'
   | 'edit_write'
   | 'apply_preview'
-  | 'apply_write';
+  | 'apply_write'
+  | 'import_preview'
+  | 'import_write';
 
 type GatewayRequest = {
   capability: Capability;
@@ -123,6 +143,10 @@ type GatewayRequest = {
   expected_source_digest?: string;
   sql?: string;
   preview_token?: string;
+  source?: string;
+  id_column?: string;
+  overwrite?: boolean;
+  on_conflict?: 'skip' | 'verify-identical';
 };
 
 function gatewayUrl(): URL {
@@ -173,4 +197,8 @@ export const okf = {
       sql,
       preview_token: previewToken,
     }),
+  importPreview: (input: ImportMutationInput) =>
+    gateway<ImportMutationResult>({ capability: 'import_preview', ...input }),
+  importWrite: (input: ImportMutationInput) =>
+    gateway<ImportMutationResult>({ capability: 'import_write', ...input }),
 };

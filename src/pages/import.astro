@@ -1,0 +1,149 @@
+---
+import { actions } from "astro:actions";
+
+import Layout from "../layouts/Layout.astro";
+
+const preview = Astro.getActionResult(actions.importPreview);
+const commit = Astro.getActionResult(actions.importCommit);
+const previewData = preview?.data;
+const commitData = commit?.data;
+const previewMutation = previewData?.mutation;
+const commitMutation = commitData?.mutation;
+const input = previewData?.input ?? commitData?.input;
+const source = input?.source ?? "";
+const conceptType = input?.concept_type ?? "";
+const idColumn = input?.id_column ?? "";
+const onConflict = input?.on_conflict ?? "skip";
+const overwrite = input?.overwrite ?? false;
+---
+
+<Layout title="Importar conceitos — Astronauta">
+  <div class="space-y-6">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-wider text-sky-400">OKF import</p>
+      <h1 class="text-3xl font-bold text-slate-100 tracking-tight mt-1">Importar conceitos</h1>
+      <p class="text-slate-400 text-sm mt-2 max-w-4xl">
+        O Astronauta só transporta a operação. Leitura tabular, identidade, paths, conflitos e serialização continuam pertencendo ao okf-parser.
+        O source é deliberadamente limitado a um CSV, JSON/NDJSON ou Parquet que já esteja dentro do bundle aberto.
+      </p>
+    </div>
+
+    {commit?.error && (
+      <div class="glass-card p-5 border border-red-800/70">
+        <h2 class="font-semibold text-red-300">Commit não autorizado ou inválido</h2>
+        <p class="text-sm text-slate-400 mt-2">{commit.error.message}</p>
+      </div>
+    )}
+
+    {commitMutation && (
+      <section class:list={["glass-card p-5 border", commitMutation.written ? "border-emerald-700/70" : "border-amber-700/70"]}>
+        <h2 class:list={["font-semibold", commitMutation.written ? "text-emerald-300" : "text-amber-300"]}>
+          {commitMutation.written ? "Import gravado" : "Import não gravado"}
+        </h2>
+        {commitMutation.created.length > 0 && (
+          <p class="text-sm text-slate-400 mt-2">Criados: {commitMutation.created.join(", ")}</p>
+        )}
+        {commitMutation.conflicting_existing.length > 0 && (
+          <p class="text-sm text-amber-300 mt-2">Conflitos: {commitMutation.conflicting_existing.join(", ")}</p>
+        )}
+        {commitMutation.duplicate_ids.length > 0 && (
+          <p class="text-sm text-amber-300 mt-2">IDs duplicados: {commitMutation.duplicate_ids.join(", ")}</p>
+        )}
+      </section>
+    )}
+
+    {preview?.error && (
+      <div class="glass-card p-5 border border-red-800/70">
+        <h2 class="font-semibold text-red-300">Preview inválido</h2>
+        <p class="text-sm text-slate-400 mt-2">{preview.error.message}</p>
+      </div>
+    )}
+
+    {previewMutation && previewData && (
+      <section class="glass-card p-5 space-y-4 border border-sky-800/60">
+        <div>
+          <p class="text-xs uppercase tracking-wider text-sky-400 font-semibold">Preview do parser</p>
+          <h2 class="font-semibold text-slate-100 mt-1">
+            {previewMutation.would_create.length} arquivo(s) candidato(s)
+          </h2>
+        </div>
+
+        {previewMutation.would_create.length > 0 && (
+          <div>
+            <p class="text-sm font-semibold text-slate-300">Would create</p>
+            <ul class="mt-2 text-xs font-mono text-slate-500 space-y-1">
+              {previewMutation.would_create.map((path) => <li>{path}</li>)}
+            </ul>
+          </div>
+        )}
+        {previewMutation.skipped_existing.length > 0 && (
+          <p class="text-sm text-slate-400">Existentes preservados: {previewMutation.skipped_existing.join(", ")}</p>
+        )}
+        {previewMutation.matched_existing.length > 0 && (
+          <p class="text-sm text-emerald-300">Existentes idênticos: {previewMutation.matched_existing.join(", ")}</p>
+        )}
+        {previewMutation.conflicting_existing.length > 0 && (
+          <p class="text-sm text-amber-300">Conflitos: {previewMutation.conflicting_existing.join(", ")}</p>
+        )}
+        {previewMutation.duplicate_ids.length > 0 && (
+          <p class="text-sm text-amber-300">IDs duplicados: {previewMutation.duplicate_ids.join(", ")}</p>
+        )}
+
+        {previewMutation.would_create.length > 0 && previewMutation.conflicting_existing.length === 0 && previewMutation.duplicate_ids.length === 0 && (
+          <form method="POST" action={actions.importCommit}>
+            <input type="hidden" name="source" value={previewData.input.source} />
+            <input type="hidden" name="concept_type" value={previewData.input.concept_type} />
+            {previewData.input.id_column && <input type="hidden" name="id_column" value={previewData.input.id_column} />}
+            <input type="hidden" name="overwrite" value={previewData.input.overwrite ? "true" : "false"} />
+            <input type="hidden" name="on_conflict" value={previewData.input.on_conflict} />
+            <button type="submit" class="rounded bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition">
+              Commit deste import
+            </button>
+            <p class="text-xs text-slate-500 mt-2">
+              O commit só é aceito quando o processo Astronauta foi iniciado com <code>--write</code>. A semântica do import continua upstream.
+            </p>
+          </form>
+        )}
+      </section>
+    )}
+
+    <form method="POST" action={actions.importPreview} class="glass-card p-6 space-y-4">
+      <div>
+        <label for="source" class="font-semibold text-slate-100">Source relativo ao bundle</label>
+        <p class="text-xs text-slate-500 mt-1">Ex.: <code>imports/notes.csv</code>. Paths absolutos e escapes com <code>..</code> são recusados no gateway.</p>
+        <input id="source" name="source" required value={source} class="mt-2 w-full bg-slate-950 border border-slate-700 rounded p-3 font-mono text-sm text-slate-100" />
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <label for="concept_type" class="font-semibold text-slate-100">Tipo OKF</label>
+          <input id="concept_type" name="concept_type" required value={conceptType} class="mt-2 w-full bg-slate-950 border border-slate-700 rounded p-3 text-sm text-slate-100" />
+        </div>
+        <div>
+          <label for="id_column" class="font-semibold text-slate-100">Coluna de ID (opcional)</label>
+          <input id="id_column" name="id_column" value={idColumn} class="mt-2 w-full bg-slate-950 border border-slate-700 rounded p-3 font-mono text-sm text-slate-100" />
+        </div>
+      </div>
+
+      <div>
+        <label for="on_conflict" class="font-semibold text-slate-100">Conflitos</label>
+        <select id="on_conflict" name="on_conflict" class="ml-3 bg-slate-950 border border-slate-700 rounded p-2 text-sm text-slate-100">
+          <option value="skip" selected={onConflict === "skip"}>Preservar existentes</option>
+          <option value="verify-identical" selected={onConflict === "verify-identical"}>Exigir valor idêntico</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="overwrite" class="font-semibold text-slate-100">Overwrite</label>
+        <select id="overwrite" name="overwrite" class="ml-3 bg-slate-950 border border-slate-700 rounded p-2 text-sm text-slate-100">
+          <option value="false" selected={!overwrite}>Preservar arquivos existentes</option>
+          <option value="true" selected={overwrite}>Permitir overwrite explícito</option>
+        </select>
+      </div>
+
+      <button type="submit" class="rounded bg-sky-600 hover:bg-sky-500 px-4 py-2 text-sm font-semibold text-white transition">
+        Gerar preview
+      </button>
+    </form>
+  </div>
+</Layout>
