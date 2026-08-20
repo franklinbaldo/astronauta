@@ -7,12 +7,18 @@ file or serializes frontmatter itself.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from pathlib import Path
+from typing import TYPE_CHECKING, Literal
 
-from okf_parser.service import apply_bundle, preview_concept_edit, write_concept_edit
+from okf_parser.service import (
+    apply_bundle,
+    import_bundle,
+    preview_concept_edit,
+    write_concept_edit,
+)
 
 if TYPE_CHECKING:
-    from pathlib import Path
+    pass
 
 
 class WriteCapabilityDisabled(PermissionError):
@@ -25,6 +31,42 @@ def _required_string(payload: dict[str, object], name: str) -> str:
         msg = f"{name} must be a string"
         raise ValueError(msg)
     return value
+
+
+def _optional_string(payload: dict[str, object], name: str) -> str | None:
+    value = payload.get(name)
+    if value is None:
+        return None
+    if not isinstance(value, str):
+        msg = f"{name} must be a string"
+        raise ValueError(msg)
+    return value or None
+
+
+def _optional_bool(payload: dict[str, object], name: str, *, default: bool = False) -> bool:
+    value = payload.get(name, default)
+    if not isinstance(value, bool):
+        msg = f"{name} must be a boolean"
+        raise ValueError(msg)
+    return value
+
+
+def _bounded_import_source(root: Path, payload: dict[str, object]) -> str:
+    """Resolve a browser-selected source without granting arbitrary local-file reads."""
+    source = Path(_required_string(payload, "source"))
+    if source.is_absolute():
+        raise ValueError("source must be a path relative to the bundle root")
+    root = root.resolve()
+    resolved = (root / source).resolve()
+    try:
+        resolved.relative_to(root)
+    except ValueError as exc:
+        raise ValueError("source must remain inside the bundle root") from exc
+    if resolved.suffix.lower() not in {".csv", ".json", ".jsonl", ".ndjson", ".parquet"}:
+        raise ValueError("source must be CSV, JSON/NDJSON, or Parquet")
+    if not resolved.is_file():
+        raise ValueError("source does not exist inside the bundle root")
+    return str(resolved)
 
 
 def dispatch_mutation(
@@ -78,6 +120,29 @@ def dispatch_mutation(
             sql=sql,
             write=False,
             spec_template=spec_template,
+        )
+
+    if capability in {"import_preview", "import_write"}:
+        source = _bounded_import_source(root, payload)
+        concept_type = _required_string(payload, "concept_type")
+        id_column = _optional_string(payload, "id_column")
+        overwrite = _optional_bool(payload, "overwrite")
+        on_conflict = _optional_string(payload, "on_conflict") or "skip"
+        if on_conflict not in {"skip", "verify-identical"}:
+            raise ValueError("on_conflict must be 'skip' or 'verify-identical'")
+        conflict_policy: Literal["skip", "verify-identical"] = on_conflict
+        if capability == "import_write" and not allow_write:
+            raise WriteCapabilityDisabled(
+                "write capabilities are disabled; start Astronauta with --write"
+            )
+        return import_bundle(
+            source,
+            str(root),
+            concept_type,
+            id_column=id_column,
+            write=capability == "import_write",
+            overwrite=overwrite,
+            on_conflict=conflict_policy,
         )
 
     msg = f"unknown mutation capability: {capability}"
