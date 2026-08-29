@@ -79,6 +79,34 @@ uv run astronauta /path/to/okf-bundle \
 
 Browser requests cannot enable or override this setting.
 
+## Liveness e custo de leitura
+
+Construir o `GraphQLReadAdapter` percorre e indexa o bundle inteiro. Num bundle
+de 5.597 conceitos isso custa cerca de 13 s, enquanto cada query contra o
+adapter já construído custa cerca de 0,05 s: o custo é todo da construção, não
+do que se lê. Reconstruir a cada capability transformava `/concepts` em 27 s.
+
+O gateway memoriza o adapter por bundle e afere o frescor antes de reusá-lo,
+por `stat` da árvore — cerca de 0,18 s para 5.597 arquivos, 75× mais barato que
+reconstruir. Qualquer criação, remoção, renomeação ou escrita muda a impressão
+(quantidade, mtime máximo e bytes) e força a reconstrução, inclusive as
+escritas feitas pelo próprio Astronauta em `--write`.
+
+A promessa continua valendo: um conceito novo ou editado aparece na requisição
+seguinte, sem regeneração e sem reiniciar o processo. `tests/test_adapter_cache.py`
+existe para que essa promessa quebre ruidosamente se o cache regredir.
+
+### Busca e paginação em `/concepts`
+
+| Parâmetro | Efeito |
+|---|---|
+| `?q=` | busca acento-insensível em id, título, descrição, tipo, caminho e valores de frontmatter |
+| `?type=` | restringe ao tipo authored |
+| `?page=` | página de 60 conceitos |
+
+A busca é um formulário GET: funciona sem JavaScript e a URL é compartilhável.
+O filtro client-side refina apenas a página já carregada.
+
 ## Development and packaging boundary
 
 The public runtime contract has converged on:
