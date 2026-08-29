@@ -2,15 +2,60 @@
 import Layout from '../layouts/Layout.astro';
 import { okf } from '../lib/server/okf';
 
-const selectedType = Astro.url.searchParams.get('type') || undefined;
-const [concepts, graph] = await Promise.all([okf.concepts(selectedType), okf.graph()]);
-const incoming = new Map<string, number>();
-const outgoing = new Map<string, number>();
+const PAGE_SIZE = 60;
+
+const params = Astro.url.searchParams;
+const selectedType = params.get('type') || undefined;
+const query = (params.get('q') || '').trim();
+const requestedPage = Number.parseInt(params.get('page') || '1', 10);
+
+// A projecao de grafo custa segundos num bundle grande e servia apenas para
+// exibir o grau em cada card. A pagina de detalhe ja lista os links reais, com
+// precisao, entao a lista nao paga esse preco.
+const allConcepts = await okf.concepts(selectedType);
+
+// Busca acento-insensivel sobre identidade, texto autoral e valores de
+// frontmatter: quem procura "acrelandia" espera achar Acrelandia, cujo nome
+// vive no frontmatter e nao no id.
+const fold = (value: string) =>
+  value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+const haystackOf = (concept: (typeof allConcepts)[number]) =>
+  fold(
+    [
+      concept.id,
+      concept.title || '',
+      concept.description || '',
+      concept.type,
+      concept.path,
+      ...Object.values(concept.frontmatter || {}).map((value) =>
+        typeof value === 'string' || typeof value === 'number' ? String(value) : '',
+      ),
+    ].join(' '),
+  );
+
+const needle = fold(query);
+const matches = needle ? allConcepts.filter((concept) => haystackOf(concept).includes(needle)) : allConcepts;
+
+const totalPages = Math.max(1, Math.ceil(matches.length / PAGE_SIZE));
+const page = Math.min(Math.max(1, Number.isNaN(requestedPage) ? 1 : requestedPage), totalPages);
+const start = (page - 1) * PAGE_SIZE;
+const concepts = matches.slice(start, start + PAGE_SIZE);
+
 const conceptHref = (id: string) => `/concepts/${id.split('/').map(encodeURIComponent).join('/')}`;
-for (const edge of graph.edges) {
-  outgoing.set(edge.source_id, (outgoing.get(edge.source_id) || 0) + 1);
-  if (edge.target_id) incoming.set(edge.target_id, (incoming.get(edge.target_id) || 0) + 1);
-}
+
+const pageHref = (target: number) => {
+  const next = new URLSearchParams();
+  if (selectedType) next.set('type', selectedType);
+  if (query) next.set('q', query);
+  if (target > 1) next.set('page', String(target));
+  const suffix = next.toString();
+  return suffix ? `/concepts?${suffix}` : '/concepts';
+};
+
+const filtering = Boolean(query || selectedType);
+const first = matches.length === 0 ? 0 : start + 1;
+const last = start + concepts.length;
 ---
 
 <Layout title="Explorador de Conceitos — Astronauta">
@@ -19,44 +64,109 @@ for (const edge of graph.edges) {
       <div>
         <h1 class="text-3xl font-bold text-slate-100 tracking-tight">Conceitos OKF</h1>
         <p class="text-slate-400 text-sm mt-1">
-          {selectedType ? `Tipo authored: ${selectedType}` : 'Coleção canônica viva'} · {concepts.length} conceito(s)
+          {selectedType ? `Tipo authored: ${selectedType}` : 'Coleção canônica viva'}
+          {' · '}
+          {matches.length === allConcepts.length
+            ? `${allConcepts.length} conceito(s)`
+            : `${matches.length} de ${allConcepts.length} conceito(s)`}
+          {matches.length > 0 && ` · exibindo ${first}–${last}`}
         </p>
       </div>
-      {selectedType && <a href="/concepts" class="text-xs font-semibold text-sky-400 hover:underline">Limpar tipo</a>}
+      {filtering && (
+        <a href="/concepts" class="text-xs font-semibold text-sky-400 hover:underline whitespace-nowrap">
+          Limpar filtros
+        </a>
+      )}
     </div>
 
-    <div class="glass-card p-4 flex gap-4">
-      <input type="text" id="search" placeholder="Buscar por ID, título, caminho ou tipo..." class="w-full bg-slate-950 border border-slate-700 rounded px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-400" />
-    </div>
+    <form method="get" action="/concepts" class="glass-card p-4 flex gap-3 items-center">
+      {selectedType && <input type="hidden" name="type" value={selectedType} />}
+      <input
+        type="text"
+        name="q"
+        id="search"
+        value={query}
+        placeholder="Buscar por ID, título, caminho ou tipo..."
+        class="w-full bg-slate-950 border border-slate-700 rounded px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-400"
+      />
+      <button
+        type="submit"
+        class="px-4 py-2 rounded bg-sky-500/20 border border-sky-500/40 text-sky-300 text-sm font-semibold hover:bg-sky-500/30 whitespace-nowrap"
+      >
+        Buscar
+      </button>
+    </form>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="concepts-grid">
-      {concepts.map((concept) => (
-        <article class="glass-card p-5 flex flex-col justify-between concept-card space-y-3" data-id={concept.id} data-type={concept.type} data-title={concept.title || ''} data-path={concept.path}>
-          <div>
-            <div class="flex items-center justify-between gap-2 mb-2">
-              <a href={`/types/${encodeURIComponent(concept.type)}`} class="badge badge-purple font-mono text-xs hover:opacity-80">{concept.type}</a>
-              <span class="text-xs text-slate-500 font-mono truncate">{concept.path}</span>
+    {matches.length === 0 ? (
+      <div class="glass-card p-8 text-center text-slate-400 text-sm">
+        Nenhum conceito corresponde a <span class="font-mono text-slate-200">{query}</span>
+        {selectedType && <> no tipo <span class="font-mono text-slate-200">{selectedType}</span></>}.
+      </div>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="concepts-grid">
+        {concepts.map((concept) => (
+          <article
+            class="glass-card p-5 flex flex-col justify-between concept-card space-y-3"
+            data-id={concept.id}
+            data-type={concept.type}
+            data-title={concept.title || ''}
+            data-path={concept.path}
+            data-fields={Object.values(concept.frontmatter || {})
+              .map((value) => (typeof value === 'string' || typeof value === 'number' ? String(value) : ''))
+              .join(' ')}
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <a href={`/types/${encodeURIComponent(concept.type)}`} class="badge badge-purple font-mono text-xs hover:opacity-80">{concept.type}</a>
+                <span class="text-xs text-slate-500 font-mono truncate">{concept.path}</span>
+              </div>
+              <h3 class="text-base font-bold line-clamp-2"><a href={conceptHref(concept.id)} class="text-slate-200 hover:text-sky-400 transition-colors">{concept.title || concept.id}</a></h3>
+              <p class="text-xs text-slate-400 font-mono mt-1 break-all">ID: {concept.id}</p>
             </div>
-            <h3 class="text-base font-bold line-clamp-2"><a href={conceptHref(concept.id)} class="text-slate-200 hover:text-sky-400 transition-colors">{concept.title || concept.id}</a></h3>
-            <p class="text-xs text-slate-400 font-mono mt-1 break-all">ID: {concept.id}</p>
-          </div>
-          <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-            <span>Entrada: <strong class="text-sky-400">{incoming.get(concept.id) || 0}</strong></span>
-            <span>Saída resolvida: <strong class="text-purple-400">{outgoing.get(concept.id) || 0}</strong></span>
-          </div>
-        </article>
-      ))}
-    </div>
+            <div class="pt-3 border-t border-slate-800 text-xs text-slate-400 line-clamp-2">
+              {concept.description || <span class="text-slate-600">sem descrição</span>}
+            </div>
+          </article>
+        ))}
+      </div>
+    )}
+
+    {totalPages > 1 && (
+      <nav class="flex items-center justify-between gap-4 text-sm" aria-label="Paginação de conceitos">
+        {page > 1 ? (
+          <a href={pageHref(page - 1)} class="px-4 py-2 rounded border border-slate-700 text-slate-300 hover:border-sky-400 hover:text-sky-300">← Anterior</a>
+        ) : (
+          <span class="px-4 py-2 rounded border border-slate-800 text-slate-600">← Anterior</span>
+        )}
+        <span class="text-slate-400">Página <strong class="text-slate-200">{page}</strong> de {totalPages}</span>
+        {page < totalPages ? (
+          <a href={pageHref(page + 1)} class="px-4 py-2 rounded border border-slate-700 text-slate-300 hover:border-sky-400 hover:text-sky-300">Próxima →</a>
+        ) : (
+          <span class="px-4 py-2 rounded border border-slate-800 text-slate-600">Próxima →</span>
+        )}
+      </nav>
+    )}
   </div>
 
   <script>
+    // Refino instantaneo dentro da pagina ja carregada. A busca autoritativa e
+    // a do servidor (submit do formulario), que percorre o bundle inteiro.
     const searchInput = document.getElementById('search') as HTMLInputElement;
     const cards = document.querySelectorAll('.concept-card');
     searchInput?.addEventListener('input', (event) => {
-      const query = (event.target as HTMLInputElement).value.toLowerCase();
+      const value = (event.target as HTMLInputElement).value.toLowerCase();
       cards.forEach((card) => {
-        const haystack = [card.getAttribute('data-id'), card.getAttribute('data-title'), card.getAttribute('data-type'), card.getAttribute('data-path')].filter(Boolean).join(' ').toLowerCase();
-        (card as HTMLElement).style.display = haystack.includes(query) ? 'flex' : 'none';
+        const haystack = [
+          card.getAttribute('data-id'),
+          card.getAttribute('data-title'),
+          card.getAttribute('data-type'),
+          card.getAttribute('data-path'),
+          card.getAttribute('data-fields'),
+        ]
+          .filter(Boolean)
+          .join(' ')
+          .toLowerCase();
+        (card as HTMLElement).style.display = haystack.includes(value) ? 'flex' : 'none';
       });
     });
   </script>
