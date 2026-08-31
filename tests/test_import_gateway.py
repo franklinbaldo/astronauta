@@ -62,6 +62,19 @@ class ImportGatewayTests(unittest.TestCase):
             "on_conflict": "skip",
         }
 
+    def preview(self, url: str, *, overwrite: bool = False) -> tuple[dict[str, object], str]:
+        request = self.request_payload("import_preview")
+        request["overwrite"] = overwrite
+        status, payload = self.post(url, request)
+        self.assertEqual(status, 200)
+        result = payload["result"]
+        self.assertIsInstance(result, dict)
+        assert isinstance(result, dict)
+        token = result.get("preview_token")
+        self.assertIsInstance(token, str)
+        assert isinstance(token, str)
+        return request, token
+
     def test_import_preview_is_available_without_write_and_does_not_mutate(self) -> None:
         url = self.start(allow_write=False)
 
@@ -72,6 +85,7 @@ class ImportGatewayTests(unittest.TestCase):
         self.assertIsInstance(result, dict)
         assert isinstance(result, dict)
         self.assertEqual(result["would_create"], ["note/alpha.md", "note/beta.md"])
+        self.assertIsInstance(result["preview_token"], str)
         self.assertFalse(result["written"])
         self.assertFalse((self.root / "note").exists())
 
@@ -79,6 +93,7 @@ class ImportGatewayTests(unittest.TestCase):
         url = self.start(allow_write=False)
         request = self.request_payload("import_write")
         request["allow_write"] = True
+        request["preview_token"] = "opaque"
 
         status, payload = self.post(url, request)
 
@@ -86,10 +101,13 @@ class ImportGatewayTests(unittest.TestCase):
         self.assertEqual(payload["error"], "WriteCapabilityDisabled")
         self.assertFalse((self.root / "note").exists())
 
-    def test_write_enabled_process_commits_exact_parser_import(self) -> None:
+    def test_write_enabled_process_commits_exact_reviewed_import(self) -> None:
         url = self.start(allow_write=True)
+        request, token = self.preview(url)
+        request["capability"] = "import_write"
+        request["preview_token"] = token
 
-        status, payload = self.post(url, self.request_payload("import_write"))
+        status, payload = self.post(url, request)
 
         self.assertEqual(status, 200)
         result = payload["result"]
@@ -101,6 +119,47 @@ class ImportGatewayTests(unittest.TestCase):
         self.assertIn("type: Note", alpha)
         self.assertIn("slug: alpha", alpha)
         self.assertIn("title: Alpha", alpha)
+
+    def test_changed_source_after_preview_fails_without_partial_writes(self) -> None:
+        url = self.start(allow_write=True)
+        request, token = self.preview(url)
+        self.source.write_text("slug,title\nalpha,Changed\nbeta,Beta\n", encoding="utf-8")
+        request["capability"] = "import_write"
+        request["preview_token"] = token
+
+        status, _payload = self.post(url, request)
+
+        self.assertEqual(status, 400)
+        self.assertFalse((self.root / "note" / "alpha.md").exists())
+        self.assertFalse((self.root / "note" / "beta.md").exists())
+
+    def test_changed_overwrite_destination_after_preview_fails_without_partial_writes(self) -> None:
+        note_dir = self.root / "note"
+        note_dir.mkdir()
+        alpha = note_dir / "alpha.md"
+        alpha.write_text("---\ntype: Note\ntitle: Old\n---\n", encoding="utf-8")
+        url = self.start(allow_write=True)
+        request, token = self.preview(url, overwrite=True)
+        newer = "---\ntype: Note\ntitle: Newer\n---\n"
+        alpha.write_text(newer, encoding="utf-8")
+        request["capability"] = "import_write"
+        request["preview_token"] = token
+
+        status, _payload = self.post(url, request)
+
+        self.assertEqual(status, 400)
+        self.assertEqual(alpha.read_text(encoding="utf-8"), newer)
+        self.assertFalse((note_dir / "beta.md").exists())
+
+    def test_import_write_requires_reviewed_preview_token(self) -> None:
+        url = self.start(allow_write=True)
+
+        status, payload = self.post(url, self.request_payload("import_write"))
+
+        self.assertEqual(status, 400)
+        self.assertEqual(payload["error"], "ValueError")
+        self.assertIn("preview_token", str(payload["message"]))
+        self.assertFalse((self.root / "note").exists())
 
     def test_import_source_cannot_escape_bundle_root(self) -> None:
         url = self.start(allow_write=False)
