@@ -128,16 +128,28 @@ def dispatch_mutation(
         if on_conflict not in {"skip", "verify-identical"}:
             raise ValueError("on_conflict must be 'skip' or 'verify-identical'")
         conflict_policy: Literal["skip", "verify-identical"] = on_conflict
-        if capability == "import_write" and not allow_write:
-            raise WriteCapabilityDisabled(
-                "write capabilities are disabled; start Astronauta with --write"
+        if capability == "import_write":
+            if not allow_write:
+                raise WriteCapabilityDisabled(
+                    "write capabilities are disabled; start Astronauta with --write"
+                )
+            preview_token = _required_string(payload, "preview_token")
+            return import_bundle(
+                source,
+                str(root),
+                concept_type,
+                id_column=id_column,
+                write=True,
+                overwrite=overwrite,
+                on_conflict=conflict_policy,
+                expected_preview_token=preview_token,
             )
         return import_bundle(
             source,
             str(root),
             concept_type,
             id_column=id_column,
-            write=capability == "import_write",
+            write=False,
             overwrite=overwrite,
             on_conflict=conflict_policy,
         )
