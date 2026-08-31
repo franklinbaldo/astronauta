@@ -119,6 +119,7 @@ export type ImportMutationResult = {
   conflicting_existing: string[];
   duplicate_ids: string[];
   written: boolean;
+  preview_token?: string;
 };
 
 type Capability =
@@ -199,6 +200,10 @@ export const okf = {
     }),
   importPreview: (input: ImportMutationInput) =>
     gateway<ImportMutationResult>({ capability: 'import_preview', ...input }),
-  importWrite: (input: ImportMutationInput) =>
-    gateway<ImportMutationResult>({ capability: 'import_write', ...input }),
+  importWrite: (input: ImportMutationInput, previewToken: string) =>
+    gateway<ImportMutationResult>({
+      capability: 'import_write',
+      ...input,
+      preview_token: previewToken,
+    }),
 };

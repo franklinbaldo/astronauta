@@ -34,6 +34,11 @@ const importInput = z.object({
   on_conflict: z.enum(["skip", "verify-identical"]).default("skip"),
 });
 
+const importCommitInput = importInput.extend({
+  // Opaque parser-owned review identity; the browser cannot mint its semantics.
+  preview_token: z.string().min(1).max(4096),
+});
+
 function actionFailure(error: unknown): never {
   const message = error instanceof Error ? error.message : String(error);
   throw new ActionError({ code: "BAD_REQUEST", message });
@@ -117,12 +122,12 @@ export const server = {
 
   importCommit: defineAction({
     accept: "form",
-    input: importInput,
-    handler: async (input) => {
+    input: importCommitInput,
+    handler: async ({ preview_token, ...input }) => {
       try {
         return {
           input,
-          mutation: await okf.importWrite(input),
+          mutation: await okf.importWrite(input, preview_token),
         };
       } catch (error) {
         actionFailure(error);
