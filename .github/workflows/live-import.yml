@@ -119,7 +119,7 @@ jobs:
           test ! -e "$fixture/note/alpha.md"
           test ! -e "$fixture/note/beta.md"
 
-          python - "$RUNNER_TEMP/preview.html" "$RUNNER_TEMP/commit-action" <<'PY'
+          python - "$RUNNER_TEMP/preview.html" "$RUNNER_TEMP/commit-action" "$RUNNER_TEMP/preview-token" <<'PY'
           import html
           import re
           import sys
@@ -129,10 +129,15 @@ jobs:
           matches = [action for action in actions if "importCommit" in action]
           if len(matches) != 1:
               raise SystemExit(f"expected one reviewed importCommit form, got {actions}")
+          token = re.search(r'name="preview_token" value="([^"]+)"', page)
+          if token is None:
+              raise SystemExit("reviewed importCommit form has no preview_token")
           open(sys.argv[2], "w", encoding="utf-8").write(html.unescape(matches[0]))
+          open(sys.argv[3], "w", encoding="utf-8").write(html.unescape(token.group(1)))
           PY
 
           commit_action=$(cat "$RUNNER_TEMP/commit-action")
+          preview_token=$(cat "$RUNNER_TEMP/preview-token")
           case "$commit_action" in
             http*) commit_url="$commit_action" ;;
             \?*) commit_url="$page_url$commit_action" ;;
@@ -147,7 +152,8 @@ jobs:
             --data-urlencode 'concept_type=Note' \
             --data-urlencode 'id_column=slug' \
             --data-urlencode 'overwrite=false' \
-            --data-urlencode 'on_conflict=skip')
+            --data-urlencode 'on_conflict=skip' \
+            --data-urlencode "preview_token=$preview_token")
           if [ "$commit_status" != 200 ]; then
             echo "commit HTTP $commit_status"
             cat "$RUNNER_TEMP/commit.html"
