@@ -89,18 +89,19 @@ const overwrite = input?.overwrite ?? false;
           <p class="text-sm text-amber-300">IDs duplicados: {previewMutation.duplicate_ids.join(", ")}</p>
         )}
 
-        {previewMutation.would_create.length > 0 && previewMutation.conflicting_existing.length === 0 && previewMutation.duplicate_ids.length === 0 && (
+        {previewMutation.preview_token && previewMutation.would_create.length > 0 && previewMutation.conflicting_existing.length === 0 && previewMutation.duplicate_ids.length === 0 && (
           <form method="POST" action={actions.importCommit}>
             <input type="hidden" name="source" value={previewData.input.source} />
             <input type="hidden" name="concept_type" value={previewData.input.concept_type} />
             {previewData.input.id_column && <input type="hidden" name="id_column" value={previewData.input.id_column} />}
             <input type="hidden" name="overwrite" value={previewData.input.overwrite ? "true" : "false"} />
             <input type="hidden" name="on_conflict" value={previewData.input.on_conflict} />
+            <input type="hidden" name="preview_token" value={previewMutation.preview_token} />
             <button type="submit" class="rounded bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition">
               Commit deste import
             </button>
             <p class="text-xs text-slate-500 mt-2">
-              O commit só é aceito quando o processo Astronauta foi iniciado com <code>--write</code>. A semântica do import continua upstream.
+              O commit só é aceito quando o processo Astronauta foi iniciado com <code>--write</code> e o estado ainda corresponde ao preview revisado. A identidade opaca do preview e a semântica do import continuam upstream.
             </p>
           </form>
         )}
