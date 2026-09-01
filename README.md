@@ -119,7 +119,9 @@ The public runtime contract has converged on:
 astronauta PATH [--write]
 ```
 
-In a repository/source checkout, the command consumes the already-built `dist/server/entry.mjs`. The next distribution slice packages that standalone Astro output into the installed artifact so a fresh consumer does not need Bun or a prior frontend build. The CLI already reserves a package-local `_web/server/entry.mjs` slot for that transition, so packaging will not change the user-facing command or the gateway contract.
+In a repository/source checkout, the command can consume the already-built `dist/server/entry.mjs`. The installed wheel already carries the standalone Astro runtime in the package-local `_web/server/entry.mjs`, and the `installed-artifact` CI gate installs that artifact in a fresh consumer environment to prove that running the installed package does not require Bun, a source checkout, or a prior frontend build. Packaging therefore preserves the same user-facing command and gateway contract rather than introducing a second runtime entrypoint.
+
+This repository state does not by itself imply that a GitHub Release or PyPI distribution is currently published; those channels must be verified independently before being presented as available.
 
 For frontend hot-reload work, the private gateway transport can still be run directly as development plumbing with `python -m astronauta.gateway_http`; it is not the product CLI.
 
