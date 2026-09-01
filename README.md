@@ -38,7 +38,11 @@ There is no generated `src/data/*.json` source of truth, no folder-name fallback
 - optional RFC 0006 physical types from trusted `.schema.sql` declarations;
 - conflict-safe Markdown body preview/commit with `source_digest` compare-and-swap;
 - DuckDB-backed Apply preview;
-- Apply commit bound to the exact opaque `preview_token` returned by the reviewed preview.
+- Apply commit bound to the exact opaque `preview_token` returned by the reviewed preview;
+- import/create through the canonical `okf-parser` import service, with preview required before commit;
+- import/create commit bound to the exact opaque `preview_token` returned by the reviewed preview, so stale reviewed state fails closed before filesystem mutation.
+
+These write paths remain process-owned capabilities: the browser transports parser-owned review identity but cannot mint its meaning or grant itself write authority. Filesystem-changing commits only exist when Astronauta was started with `--write`.
 
 A bundle with a new concept or a new authored type becomes visible after the next request without regeneration or Astronauta-specific registration.
 
