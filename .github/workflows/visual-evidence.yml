@@ -98,6 +98,13 @@ jobs:
             --screenshot=artifacts/read-390x844.png \
             http://127.0.0.1:4321/types/Note
 
+          uv run --with playwright==1.55.0 python scripts/assert-responsive-layout.py \
+            http://127.0.0.1:4321/types/Note \
+            --width 390 --height 844 \
+            --must-fit 'header' \
+            --must-fit 'header nav' \
+            --output artifacts/read-layout-390x844.json
+
           kill -TERM "$runtime_pid"
           wait "$runtime_pid"
           trap - EXIT
@@ -138,6 +145,15 @@ jobs:
             --screenshot=artifacts/write-390x844.png \
             "$page_url"
 
+          uv run --with playwright==1.55.0 python scripts/assert-responsive-layout.py \
+            "$page_url" \
+            --width 390 --height 844 \
+            --must-fit 'header' \
+            --must-fit 'header nav' \
+            --must-fit 'h1' \
+            --must-fit 'textarea#body' \
+            --output artifacts/write-layout-390x844.json
+
           kill -TERM "$runtime_pid"
           wait "$runtime_pid"
           trap - EXIT
@@ -159,9 +175,9 @@ jobs:
               "event": os.environ["EVENT_NAME"],
               "captures": [
                   {"mode": "read-only", "route": "/types/Note", "viewport": {"width": 1280, "height": 900}, "file": "read-1280x900.png"},
-                  {"mode": "read-only", "route": "/types/Note", "viewport": {"width": 390, "height": 844}, "file": "read-390x844.png"},
+                  {"mode": "read-only", "route": "/types/Note", "viewport": {"width": 390, "height": 844}, "file": "read-390x844.png", "layout": "read-layout-390x844.json"},
                   {"mode": "write-enabled", "route": "/concepts/edit/note-01", "viewport": {"width": 1280, "height": 900}, "file": "write-1280x900.png"},
-                  {"mode": "write-enabled", "route": "/concepts/edit/note-01", "viewport": {"width": 390, "height": 844}, "file": "write-390x844.png"},
+                  {"mode": "write-enabled", "route": "/concepts/edit/note-01", "viewport": {"width": 390, "height": 844}, "file": "write-390x844.png", "layout": "write-layout-390x844.json"},
               ],
               "functional_proof": {
                   "read_fixture_first": "Nota 01",
