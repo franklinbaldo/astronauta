@@ -18,16 +18,16 @@ const { title = "Astronauta — OKF Admin Panel" } = Astro.props;
   </head>
   <body class="bg-slate-900 text-slate-100 flex flex-col min-h-screen">
     <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <div class="flex items-center space-x-3">
-          <a href="/" class="flex items-center space-x-3 group">
-            <span class="text-2xl">👩‍🚀</span>
+      <div class="max-w-7xl w-full min-w-0 mx-auto px-4 sm:px-6 lg:px-8 min-h-16 py-3 sm:py-0 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+        <div class="flex items-center space-x-3 min-w-0">
+          <a href="/" class="flex items-center space-x-3 group min-w-0">
+            <span class="text-2xl shrink-0">👩‍🚀</span>
             <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent group-hover:opacity-90">Astronauta</span>
           </a>
-          <span class="px-2 py-0.5 text-xs font-semibold rounded bg-slate-800 text-slate-400 border border-slate-700">OKF v0.2</span>
+          <span class="px-2 py-0.5 text-xs font-semibold rounded bg-slate-800 text-slate-400 border border-slate-700 shrink-0">OKF v0.2</span>
         </div>
 
-        <nav class="flex items-center space-x-5">
+        <nav class="flex flex-wrap items-center gap-x-5 gap-y-2 min-w-0 sm:flex-nowrap" aria-label="Navegação principal">
           <a href="/" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Dashboard</a>
           <a href="/types" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Tipos</a>
           <a href="/concepts" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Conceitos</a>
@@ -40,7 +40,7 @@ const { title = "Astronauta — OKF Admin Panel" } = Astro.props;
       </div>
     </header>
 
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="flex-grow max-w-7xl w-full min-w-0 mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <slot />
     </main>
 
