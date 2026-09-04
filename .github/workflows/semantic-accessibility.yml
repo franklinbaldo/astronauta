@@ -1,0 +1,154 @@
+name: Semantic accessibility
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: semantic-accessibility-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: package.json
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: "0.11.21"
+          python-version: "3.12"
+
+      - name: Build the real SSR application
+        run: |
+          bun install --frozen-lockfile
+          uv sync --frozen
+          bun run build
+          bun add --no-save axe-core@4.10.3
+
+      - name: Install Chrome
+        id: chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Prepare deterministic OKF fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          fixture="$RUNNER_TEMP/accessibility-okf"
+          mkdir -p "$fixture"
+          for i in $(seq -w 1 12); do
+            printf '%s\n' \
+              '---' \
+              'type: Note' \
+              "title: Nota $i" \
+              'status: todo' \
+              '---' \
+              "Corpo da nota $i para prova de acessibilidade do Astronauta." \
+              > "$fixture/note-$i.md"
+          done
+          echo "fixture=$fixture" >> "$GITHUB_ENV"
+
+      - name: Audit read and write states in Chromium
+        shell: bash
+        env:
+          CHROME: ${{ steps.chrome.outputs.chrome-path }}
+        run: |
+          set -uo pipefail
+          mkdir -p artifacts
+          read_url='http://127.0.0.1:4321/types/Note'
+          write_url='http://127.0.0.1:4322/concepts/edit/note-01'
+
+          .venv/bin/astronauta "$fixture" --port 4321 > "$RUNNER_TEMP/read-a11y.log" 2>&1 &
+          read_pid=$!
+          .venv/bin/astronauta "$fixture" --write --port 4322 > "$RUNNER_TEMP/write-a11y.log" 2>&1 &
+          write_pid=$!
+          trap 'kill -TERM "$read_pid" "$write_pid" 2>/dev/null || true' EXIT
+
+          for url in "$read_url" "$write_url"; do
+            ready=0
+            for attempt in $(seq 1 30); do
+              if curl --fail --silent "$url" > /dev/null; then
+                ready=1
+                break
+              fi
+              sleep 1
+            done
+            if [ "$ready" -ne 1 ]; then
+              cat "$RUNNER_TEMP/read-a11y.log" || true
+              cat "$RUNNER_TEMP/write-a11y.log" || true
+              exit 1
+            fi
+          done
+
+          status=0
+          uv run --with playwright==1.55.0 python scripts/assert-axe.py \
+            "$read_url" --axe-source node_modules/axe-core/axe.min.js \
+            --width 390 --height 844 --output artifacts/read-axe-390x844.json || status=1
+          uv run --with playwright==1.55.0 python scripts/assert-keyboard-focus.py \
+            "$read_url" --width 390 --height 844 \
+            --output artifacts/read-keyboard-390x844.json || status=1
+          uv run --with playwright==1.55.0 python scripts/assert-axe.py \
+            "$write_url" --axe-source node_modules/axe-core/axe.min.js \
+            --width 390 --height 844 --output artifacts/write-axe-390x844.json || status=1
+          uv run --with playwright==1.55.0 python scripts/assert-keyboard-focus.py \
+            "$write_url" --width 390 --height 844 \
+            --output artifacts/write-keyboard-390x844.json || status=1
+
+          kill -TERM "$read_pid" "$write_pid" 2>/dev/null || true
+          wait "$read_pid" 2>/dev/null || true
+          wait "$write_pid" 2>/dev/null || true
+          trap - EXIT
+          exit "$status"
+
+      - name: Write audit provenance
+        if: always()
+        env:
+          EVALUATED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          MERGE_REF_SHA: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          payload = {
+              "evaluated_sha": os.environ["EVALUATED_SHA"],
+              "merge_ref_sha": os.environ["MERGE_REF_SHA"] if os.environ["EVENT_NAME"] == "pull_request" else None,
+              "event": os.environ["EVENT_NAME"],
+              "runtime": "Astronauta SSR with deterministic Note fixture",
+              "browser": "Chrome stable controlled through Playwright 1.55.0",
+              "viewport": {"width": 390, "height": 844},
+              "routes": [
+                  {"mode": "read-only", "route": "/types/Note", "axe": "read-axe-390x844.json", "keyboard": "read-keyboard-390x844.json"},
+                  {"mode": "write-enabled", "route": "/concepts/edit/note-01", "axe": "write-axe-390x844.json", "keyboard": "write-keyboard-390x844.json"},
+              ],
+          }
+          Path("artifacts/accessibility-evidence.json").write_text(
+              json.dumps(payload, indent=2) + "\n", encoding="utf-8"
+          )
+          PY
+
+      - name: Preserve accessibility evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: astronauta-accessibility-${{ github.event.pull_request.head.sha || github.sha }}
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 30
