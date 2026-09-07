@@ -28,6 +28,11 @@ const contractLabel = (field: Record<string, unknown>) => {
 const declaredCount = properties.filter(([, field]) => typeof field['x-okf-duckdb-type'] === 'string').length;
 const first = concepts.length === 0 ? 0 : start + 1;
 const last = start + concepts.length;
+const collectionSummary = concepts.length === 0
+  ? 'Nenhum conceito nesta página.'
+  : page === 1 && !hasMore
+    ? `${concepts.length} conceito(s) no estado atual do bundle.`
+    : `Exibindo ${first}–${last}${hasMore ? '+' : ''} no estado atual do bundle.`;
 ---
 
 <Layout title={`${type || 'Tipo'} — Astronauta`}>
@@ -36,9 +41,7 @@ const last = start + concepts.length;
       <div>
         <a href="/types" class="text-xs font-semibold text-sky-400 hover:underline">← Todos os tipos</a>
         <h1 class="text-3xl font-bold text-slate-100 tracking-tight mt-2 font-mono">{type}</h1>
-        <p class="text-slate-400 text-sm mt-1">
-          {concepts.length === 0 ? 'Nenhum conceito nesta página.' : `Exibindo ${first}–${last}${hasMore ? '+' : ''} no estado atual do bundle.`}
-        </p>
+        <p class="text-slate-400 text-sm mt-1">{collectionSummary}</p>
       </div>
       <div class="flex gap-2">
         <span class="badge badge-purple">type</span>
