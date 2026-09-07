@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { okf } from '../lib/server/okf';
+import { okf, type Concept } from '../lib/server/okf';
 
 const PAGE_SIZE = 60;
 
@@ -8,11 +8,17 @@ const params = Astro.url.searchParams;
 const selectedType = params.get('type') || undefined;
 const query = (params.get('q') || '').trim();
 const requestedPage = Number.parseInt(params.get('page') || '1', 10);
+const page = Math.max(1, Number.isNaN(requestedPage) ? 1 : requestedPage);
+const start = (page - 1) * PAGE_SIZE;
 
-// A projecao de grafo custa segundos num bundle grande e servia apenas para
-// exibir o grau em cada card. A pagina de detalhe ja lista os links reais, com
-// precisao, entao a lista nao paga esse preco.
-const allConcepts = await okf.concepts(selectedType);
+// Busca textual ainda percorre a coleção completa porque o parser não expõe
+// busca bounded autoritativa. Navegação comum usa a primitive paginada do
+// parser e transporta somente a janela necessária + um item sentinela.
+let concepts: Concept[];
+let hasMore = false;
+let totalPages: number | null = null;
+let allConcepts: Concept[] | null = null;
+let matches: Concept[] | null = null;
 
 // Busca acento-insensivel sobre identidade, texto autoral e valores de
 // frontmatter: quem procura "acrelandia" espera achar Acrelandia, cujo nome
@@ -20,7 +26,7 @@ const allConcepts = await okf.concepts(selectedType);
 const fold = (value: string) =>
   value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
-const haystackOf = (concept: (typeof allConcepts)[number]) =>
+const haystackOf = (concept: Concept) =>
   fold(
     [
       concept.id,
@@ -34,13 +40,18 @@ const haystackOf = (concept: (typeof allConcepts)[number]) =>
     ].join(' '),
   );
 
-const needle = fold(query);
-const matches = needle ? allConcepts.filter((concept) => haystackOf(concept).includes(needle)) : allConcepts;
-
-const totalPages = Math.max(1, Math.ceil(matches.length / PAGE_SIZE));
-const page = Math.min(Math.max(1, Number.isNaN(requestedPage) ? 1 : requestedPage), totalPages);
-const start = (page - 1) * PAGE_SIZE;
-const concepts = matches.slice(start, start + PAGE_SIZE);
+if (query) {
+  allConcepts = await okf.concepts(selectedType);
+  const needle = fold(query);
+  matches = allConcepts.filter((concept) => haystackOf(concept).includes(needle));
+  totalPages = Math.max(1, Math.ceil(matches.length / PAGE_SIZE));
+  concepts = matches.slice(start, start + PAGE_SIZE);
+  hasMore = page < totalPages;
+} else {
+  const bounded = await okf.conceptPage(start, PAGE_SIZE, selectedType);
+  concepts = bounded.items;
+  hasMore = bounded.has_more;
+}
 
 const conceptHref = (id: string) => `/concepts/${id.split('/').map(encodeURIComponent).join('/')}`;
 
@@ -54,8 +65,13 @@ const pageHref = (target: number) => {
 };
 
 const filtering = Boolean(query || selectedType);
-const first = matches.length === 0 ? 0 : start + 1;
+const first = concepts.length === 0 ? 0 : start + 1;
 const last = start + concepts.length;
+const resultSummary = query && matches && allConcepts
+  ? `${matches.length} de ${allConcepts.length} conceito(s)`
+  : concepts.length === 0
+    ? 'nenhum conceito nesta página'
+    : `exibindo ${first}–${last}${hasMore ? '+' : ''}`;
 ---
 
 <Layout title="Explorador de Conceitos — Astronauta">
@@ -66,10 +82,7 @@ const last = start + concepts.length;
         <p class="text-slate-400 text-sm mt-1">
           {selectedType ? `Tipo authored: ${selectedType}` : 'Coleção canônica viva'}
           {' · '}
-          {matches.length === allConcepts.length
-            ? `${allConcepts.length} conceito(s)`
-            : `${matches.length} de ${allConcepts.length} conceito(s)`}
-          {matches.length > 0 && ` · exibindo ${first}–${last}`}
+          {resultSummary}
         </p>
       </div>
       {filtering && (
@@ -97,10 +110,9 @@ const last = start + concepts.length;
       </button>
     </form>
 
-    {matches.length === 0 ? (
+    {concepts.length === 0 ? (
       <div class="glass-card p-8 text-center text-slate-400 text-sm">
-        Nenhum conceito corresponde a <span class="font-mono text-slate-200">{query}</span>
-        {selectedType && <> no tipo <span class="font-mono text-slate-200">{selectedType}</span></>}.
+        {query ? <span>Nenhum conceito corresponde a <span class="font-mono text-slate-200">{query}</span>{selectedType && <> no tipo <span class="font-mono text-slate-200">{selectedType}</span></>}.</span> : <span>Nenhum conceito nesta página.</span>}
       </div>
     ) : (
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="concepts-grid">
@@ -131,15 +143,15 @@ const last = start + concepts.length;
       </div>
     )}
 
-    {totalPages > 1 && (
+    {(page > 1 || hasMore) && (
       <nav class="flex items-center justify-between gap-4 text-sm" aria-label="Paginação de conceitos">
         {page > 1 ? (
           <a href={pageHref(page - 1)} class="px-4 py-2 rounded border border-slate-700 text-slate-300 hover:border-sky-400 hover:text-sky-300">← Anterior</a>
         ) : (
           <span class="px-4 py-2 rounded border border-slate-800 text-slate-600">← Anterior</span>
         )}
-        <span class="text-slate-400">Página <strong class="text-slate-200">{page}</strong> de {totalPages}</span>
-        {page < totalPages ? (
+        <span class="text-slate-400">Página <strong class="text-slate-200">{page}</strong>{totalPages ? ` de ${totalPages}` : ''}</span>
+        {hasMore ? (
           <a href={pageHref(page + 1)} class="px-4 py-2 rounded border border-slate-700 text-slate-300 hover:border-sky-400 hover:text-sky-300">Próxima →</a>
         ) : (
           <span class="px-4 py-2 rounded border border-slate-800 text-slate-600">Próxima →</span>
