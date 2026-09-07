@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from astronauta.gateway import concept, concepts, diagnostics, graph, summary
+from astronauta.gateway import concept, concept_page, concepts, diagnostics, graph, summary
 
 
 class GatewayTests(unittest.TestCase):
@@ -54,6 +54,42 @@ Owns [Alpha](../tasks/alpha.md).
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["path"], "tasks/alpha.md")
         self.assertEqual(rows[0]["frontmatter"]["status"], "open")
+
+    def test_bounded_page_uses_one_limit_plus_one_query(self) -> None:
+        def row(index: int) -> dict[str, object]:
+            return {
+                "id": f"concept-{index}",
+                "logicalKey": None,
+                "path": f"items/{index}.md",
+                "type": "Item",
+                "title": f"Item {index}",
+                "description": None,
+                "frontmatter": {},
+                "body": "",
+                "sourceDigest": None,
+                "parsedDigest": None,
+            }
+
+        with (
+            patch("astronauta.gateway._read_adapter", return_value=object()),
+            patch(
+                "astronauta.gateway._graphql_data",
+                return_value={"concepts": [row(7), row(8), row(9)]},
+            ) as graphql_data,
+        ):
+            result = concept_page(self.root, concept_type="Item", offset=7, limit=2)
+
+        self.assertEqual([item["id"] for item in result["items"]], ["concept-7", "concept-8"])
+        self.assertTrue(result["has_more"])
+        graphql_data.assert_called_once()
+        variables = graphql_data.call_args.args[2]
+        self.assertEqual(variables, {"type": "Item", "first": 3, "offset": 7})
+
+    def test_bounded_page_rejects_invalid_window(self) -> None:
+        with self.assertRaisesRegex(ValueError, "offset"):
+            concept_page(self.root, offset=-1, limit=1)
+        with self.assertRaisesRegex(ValueError, "limit"):
+            concept_page(self.root, offset=0, limit=1000)
 
     def test_detail_preserves_forward_reverse_and_broken_links(self) -> None:
         rows = concepts(self.root)
