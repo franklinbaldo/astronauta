@@ -59,6 +59,26 @@ title: Hello
         self.assertEqual(result[0]["type"], "Note")
         self.assertEqual(result[0]["path"], "note.md")
 
+    def test_transports_bounded_concept_page(self) -> None:
+        (self.root / "second.md").write_text(
+            """---
+type: Note
+title: Second
+---
+# Second
+""",
+            encoding="utf-8",
+        )
+        status, payload = self.post(
+            {"capability": "concept_page", "concept_type": "Note", "offset": 0, "limit": 1}
+        )
+        self.assertEqual(status, 200)
+        result = payload["result"]
+        self.assertIsInstance(result, dict)
+        assert isinstance(result, dict)
+        self.assertEqual(len(result["items"]), 1)
+        self.assertTrue(result["has_more"])
+
     def test_running_server_observes_new_concepts(self) -> None:
         status, payload = self.post({"capability": "concepts", "concept_type": "Note"})
         self.assertEqual(status, 200)
@@ -92,6 +112,11 @@ title: Second
 
     def test_rejects_non_string_selector_values(self) -> None:
         status, payload = self.post({"capability": "concept", "concept_id": ["not", "an", "id"]})
+        self.assertEqual(status, 400)
+        self.assertEqual(payload["error"], "ValueError")
+
+    def test_rejects_non_integer_page_selectors(self) -> None:
+        status, payload = self.post({"capability": "concept_page", "offset": "0", "limit": 1})
         self.assertEqual(status, 400)
         self.assertEqual(payload["error"], "ValueError")
 

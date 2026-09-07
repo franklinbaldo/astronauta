@@ -68,6 +68,8 @@ def _read_adapter(root: Path) -> Any:
 def reset_adapter_cache() -> None:
     """Descarta os adapters memorizados. Usado por testes e apos mutacao."""
     _adapter_cache.clear()
+
+
 _CONCEPTS_QUERY = """
 query AstronautaConcepts($type: String, $first: Int!, $offset: Int!) {
   concepts(type: $type, first: $first, offset: $offset) {
@@ -275,6 +277,36 @@ def concepts(root: Path, *, concept_type: str | None = None) -> list[dict[str, A
     return _graphql_collection(root, concept_type=concept_type)
 
 
+def concept_page(
+    root: Path,
+    *,
+    concept_type: str | None = None,
+    offset: int = 0,
+    limit: int = 60,
+) -> dict[str, Any]:
+    """Return one parser-ordered bounded window plus a sentinel-derived ``has_more``."""
+    if offset < 0:
+        raise ValueError("offset must be >= 0")
+    if limit < 1 or limit >= _GRAPHQL_PAGE_SIZE:
+        raise ValueError(f"limit must be between 1 and {_GRAPHQL_PAGE_SIZE - 1}")
+
+    adapter = _read_adapter(root)
+    data = _graphql_data(
+        adapter,
+        _CONCEPTS_QUERY,
+        {"type": concept_type, "first": limit + 1, "offset": offset},
+    )
+    page = data.get("concepts")
+    if not isinstance(page, list):
+        raise TypeError("okf-parser GraphQL concepts query returned a non-list payload")
+    rows: list[dict[str, Any]] = []
+    for item in page:
+        if not isinstance(item, dict):
+            raise TypeError("okf-parser GraphQL concepts query returned a non-object row")
+        rows.append(_graphql_concept_record(item))
+    return {"items": rows[:limit], "has_more": len(rows) > limit}
+
+
 def concept(root: Path, concept_id: str) -> dict[str, Any] | None:
     """Return one live concept plus canonical links and diagnostics through GraphQL."""
     adapter = _read_adapter(root)
@@ -412,6 +444,8 @@ def read(
     *,
     concept_id: str | None = None,
     concept_type: str | None = None,
+    offset: int = 0,
+    limit: int = 60,
     spec_template: str | None = None,
 ) -> Any:
     """Dispatch a small capability vocabulary independent of its internal adapter."""
@@ -419,6 +453,8 @@ def read(
         return summary(root)
     if capability == "concepts":
         return concepts(root, concept_type=concept_type)
+    if capability == "concept_page":
+        return concept_page(root, concept_type=concept_type, offset=offset, limit=limit)
     if capability == "concept":
         if not concept_id:
             raise ValueError("concept capability requires concept_id")
@@ -439,10 +475,21 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("root", type=Path, help="OKF bundle root")
     parser.add_argument(
         "capability",
-        choices=("summary", "concepts", "concept", "schema", "diagnostics", "graph", "snapshot"),
+        choices=(
+            "summary",
+            "concepts",
+            "concept_page",
+            "concept",
+            "schema",
+            "diagnostics",
+            "graph",
+            "snapshot",
+        ),
     )
     parser.add_argument("--concept-id")
     parser.add_argument("--type", dest="concept_type")
+    parser.add_argument("--offset", type=int, default=0)
+    parser.add_argument("--limit", type=int, default=60)
     parser.add_argument(
         "--spec-template",
         help="opt into trusted RFC 0006 .schema.sql discovery using this type-spec template",
@@ -457,6 +504,8 @@ def main() -> None:
         args.capability,
         concept_id=args.concept_id,
         concept_type=args.concept_type,
+        offset=args.offset,
+        limit=args.limit,
         spec_template=args.spec_template,
     )
     print(json.dumps(result, ensure_ascii=False, separators=(",", ":")))

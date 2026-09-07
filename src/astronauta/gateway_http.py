@@ -73,10 +73,16 @@ class GatewayHandler(BaseHTTPRequestHandler):
             else:
                 concept_id = payload.get("concept_id")
                 concept_type = payload.get("concept_type")
+                offset = payload.get("offset", 0)
+                limit = payload.get("limit", 60)
                 if concept_id is not None and not isinstance(concept_id, str):
                     raise ValueError("concept_id must be a string")
                 if concept_type is not None and not isinstance(concept_type, str):
                     raise ValueError("concept_type must be a string")
+                if not isinstance(offset, int) or isinstance(offset, bool):
+                    raise ValueError("offset must be an integer")
+                if not isinstance(limit, int) or isinstance(limit, bool):
+                    raise ValueError("limit must be an integer")
                 # spec_template deliberately cannot come from the browser payload:
                 # RFC 0006 declarations are trusted DuckDB SQL and must be opted in
                 # by the operator when the local gateway process starts.
@@ -85,6 +91,8 @@ class GatewayHandler(BaseHTTPRequestHandler):
                     capability,
                     concept_id=concept_id,
                     concept_type=concept_type,
+                    offset=offset,
+                    limit=limit,
                     spec_template=self.server.spec_template,
                 )
         except WriteCapabilityDisabled as exc:
