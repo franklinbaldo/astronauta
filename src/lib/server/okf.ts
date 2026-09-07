@@ -29,6 +29,11 @@ export type Concept = {
   diagnostics?: Diagnostic[];
 };
 
+export type ConceptPage = {
+  items: Concept[];
+  has_more: boolean;
+};
+
 export type Summary = {
   root: string;
   markdown_count: number;
@@ -125,6 +130,7 @@ export type ImportMutationResult = {
 type Capability =
   | 'summary'
   | 'concepts'
+  | 'concept_page'
   | 'concept'
   | 'schema'
   | 'diagnostics'
@@ -140,6 +146,8 @@ type GatewayRequest = {
   capability: Capability;
   concept_id?: string;
   concept_type?: string;
+  offset?: number;
+  limit?: number;
   body?: string;
   expected_source_digest?: string;
   sql?: string;
@@ -181,6 +189,13 @@ export const okf = {
   summary: () => gateway<Summary>({ capability: 'summary' }),
   concepts: (conceptType?: string) =>
     gateway<Concept[]>({ capability: 'concepts', concept_type: conceptType }),
+  conceptPage: (offset: number, limit: number, conceptType?: string) =>
+    gateway<ConceptPage>({
+      capability: 'concept_page',
+      concept_type: conceptType,
+      offset,
+      limit,
+    }),
   concept: (conceptId: string) =>
     gateway<Concept | null>({ capability: 'concept', concept_id: conceptId }),
   schema: () => gateway<SchemaProjection>({ capability: 'schema' }),
